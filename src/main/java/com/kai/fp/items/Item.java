@@ -41,29 +41,40 @@ public abstract class Item implements Renderable, ItemBehavior {
     @Override
     public void render(DrawPoint dp, Graphics g) {
         g.drawImage(image, dp.getX(), dp.getY(), null);
-        if (isHovered()) drawHUD(new DrawPoint(0,0), g);
+        if (isHovered()) {
+            drawHUD(new DrawPoint(0,45), g);
+        }
     }
 
     public void drawHUD(DrawPoint dp, Graphics g) {
         g.setFont(new MFont(1.2));
 
-        int stringHeight = g.getFontMetrics().getAscent()+5;
+        int stringHeight = g.getFontMetrics().getAscent()+4;
         int stringWidth = (int)(g.getFontMetrics().stringWidth(description) * 0.90);
         int totalStringHeight = stringHeight * (5 + behaviors.size() + (behaviors.size()-1));
 
         g.setColor(new Color(50, 78, 105));
-        g.fillRect(10, 10, stringWidth, totalStringHeight+10);
-
+        g.fillRect(dp.getX()+10, dp.getY()+15, stringWidth, totalStringHeight+10);
         g.setColor(rarity.getColor());
-        g.drawString(id, dp.getX() + 15, dp.getY() + 30);
-        g.drawString("Rarity: " + rarity.toString().substring(0,1).toUpperCase() + rarity.toString().substring(1), dp.getX() + 15, dp.getY() + 30 + stringHeight);
-
+        g.drawString(id, dp.getX() + 15, dp.getY() + 36);
+        dp.y += 5;
+        g.drawString("Rarity: " + rarity.toString().substring(0,1).toUpperCase() + rarity.toString().substring(1), dp.getX() + 15, dp.getY() + 36 + stringHeight);
         g.setFont(new MFont(1));
-        g.drawString(description, dp.getX()+15, dp.getY()+(stringHeight*2));
+        dp.y += 5;
+        g.drawString(description, dp.getX()+15, dp.getY()+36+(stringHeight*2));
+        dp.y+=5;
+        int i = 1;
 
-        int lineCount = 1;
         g.setColor(Color.WHITE);
-        g.drawLine(dp.getX()+15, dp.getY() + 30 + (stringHeight* (2+1)) - 5, stringWidth-5, dp.getY()+30 + (stringHeight*(2+1) - 5));
+        g.drawLine(dp.getX()+15, dp.getY() + 36 + (stringHeight* (2+i)) - 5, stringWidth-5, dp.getY()+36 + (stringHeight*(2+i) - 5));
+        i++;
+
+        g.setFont(new MFont(1.2));
+        g.setColor(new Color(187, 187, 187));
+
+        for (ItemBehavior behavior: behaviors) {
+            g.drawString(behavior.getDescription(), dp.getX()+15, dp.getY()+36+(stringHeight * (2+i)));
+        }
     }
 
     @Override
@@ -114,4 +125,18 @@ public abstract class Item implements Renderable, ItemBehavior {
         this.owner = owner;
     }*/
 
+    @Override
+    public String toString() {
+        String s =  "Item{" +
+                "id='" + id + '\'' +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                ", rarity=" + rarity +
+                ", behaviors=\'";
+        for (ItemBehavior ib: behaviors) {
+            s += (ib.getDescription() + " ");
+        }
+        s+="\'}";
+        return s;
+    }
 }

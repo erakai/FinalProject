@@ -1,17 +1,34 @@
 package com.kai.fp.core;
 
+import com.kai.fp.display.Hoverable;
 import com.kai.fp.display.Screen;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Kai on May 16, 2019
  */
 public class InputHandler implements Updatable {
     private boolean up, down, left, right;
+
+    private static List<Hoverable> hoverables = new ArrayList<>();
+    private int currentMouseX, currentMouseY;
+
+    public void mouseExists(int cx, int cy) {
+        this.currentMouseX = cx;
+        this.currentMouseY = cy;
+    }
+
+    public static void addHoverable(Hoverable h) {
+        hoverables.add(h);
+    }
+
+
 
     public void createMap(Screen comp) {
         InputMap im = comp.getInputMap();
@@ -56,6 +73,10 @@ public class InputHandler implements Updatable {
         if (left) Camera.x -= Camera.speed;
         if (up) Camera.y -= Camera.speed;
         if (down) Camera.y += Camera.speed;*/
+
+        for (Hoverable h: hoverables) {
+            h.updateHovered(currentMouseX, currentMouseY);
+        }
     }
 
     class DirectionAction extends AbstractAction {

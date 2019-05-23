@@ -11,9 +11,11 @@ import java.util.List;
  */
 public class Armor extends Item {
 
-    public Armor(String id, BufferedImage image, List<ItemBehavior> behaviors, String description, ItemType type) {
-        super(id, image, behaviors, description, type);
+    public Armor(String id, BufferedImage image, List<ItemBehavior> behaviors, String description, Rarity rarity) {
+        super(id, image, behaviors, description, ItemType.ARMOR, rarity);
     }
 
-
+    public Armor(Item otherItem) {
+        super(otherItem);
+    }
 }

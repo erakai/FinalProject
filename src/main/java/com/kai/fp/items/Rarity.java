@@ -12,7 +12,7 @@ public enum Rarity {
 
     private Color color;
     Rarity(Color c) {
-        this.color = color;
+        this.color = c;
     }
 
     public Color getColor() {

@@ -14,4 +14,5 @@ public abstract class InanimateObj extends GameObject implements Renderable {
         setPhysical(true);
     }
 
+
 }

@@ -5,6 +5,7 @@ import com.kai.fp.util.DrawPoint;
 import com.kai.fp.world.WorldLocation;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * @author Kai on May 10, 2019
@@ -13,7 +14,9 @@ public abstract class GameObject implements Renderable {
     private WorldLocation location;
     private int width, height;
     protected AnimationPlayer anim = new AnimationPlayer();
+    private BufferedImage loneImage = null;
     private boolean physical = true;
+    private boolean markedForRemoval = false;
 
     public GameObject(WorldLocation location, int width, int height) {
         this.location = location;
@@ -21,15 +24,24 @@ public abstract class GameObject implements Renderable {
         this.height = height;
 
         Animation idleAnim = getIdleAnim();
-        idleAnim.setTitle("idle");
-        anim.addAnim(idleAnim);
-        anim.setRepeatingAnim("idle");
+        if (idleAnim.getFrameCount() == 1) {
+            loneImage = idleAnim.getFrame(0);
+        } else {
+            idleAnim.setTitle("idle");
+            anim.addAnim(idleAnim);
+            anim.setRepeatingAnim("idle");
+        }
+
         addAnims();
     }
 
     @Override
     public void render(DrawPoint dp, Graphics g) {
-        g.drawImage(anim.nextFrame(), dp.getX(), dp.getY(), null);
+        if (loneImage == null) {
+            g.drawImage(anim.nextFrame(), dp.getX(), dp.getY(), null);
+        } else {
+            g.drawImage(loneImage, dp.getX(), dp.getY(), null);
+        }
     }
 
     public boolean checkCollision(GameObject otherObject) {
@@ -71,6 +83,18 @@ public abstract class GameObject implements Renderable {
         this.physical = physical;
     }
 
+    public void setLoneImage(BufferedImage loneImage) {
+        this.loneImage = loneImage;
+    }
+
     protected abstract Animation getIdleAnim();
     protected void addAnims() {}
+
+    public void die() {
+        markedForRemoval = true;
+    }
+
+    public boolean isMarkedForRemoval() {
+        return markedForRemoval;
+    }
 }

@@ -34,6 +34,11 @@ public class Player extends Entity {
 
     public Player(WorldLocation location) {
         super(location, 30, 35);
+
+    }
+
+    @Override
+    protected void addAnims() {
         anim.addAnim("run right", runRight);
         anim.addAnim("idle left", idleLeft);
         anim.addAnim("run left", runLeft);

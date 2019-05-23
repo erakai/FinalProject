@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 public abstract class HUDComponent implements Renderable {
     private BufferedImage image;
     private int x, y, width, height;
+    private boolean onScreen = false;
+
 
     public HUDComponent(int x, int y, BufferedImage image, int width, int height) {
         this.x=x;
@@ -24,6 +26,8 @@ public abstract class HUDComponent implements Renderable {
     @Override
     public void render(DrawPoint dp, Graphics g) {
         g.drawImage(image, dp.getX(), dp.getY(), null);
+        x = dp.getX();
+        y = dp.getY();
     }
 
     public boolean checkCollisionWithMouse(int otherX, int otherY) {
@@ -37,5 +41,13 @@ public abstract class HUDComponent implements Renderable {
 
     public int getY() {
         return y;
+    }
+
+    public void setOnScreen(boolean onScreen) {
+        this.onScreen = onScreen;
+    }
+
+    public boolean isOnScreen() {
+        return onScreen;
     }
 }

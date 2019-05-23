@@ -22,11 +22,11 @@ world is 32x32 tiles, tiles are 16x16
 
 DONE 1. finish collision - 1 hour
 2. add items - 1.5 hours
-3. add inventory gui and support for high level ui classes - 2 hours
+DONE (ish) 3. add inventory gui and support for high level ui classes - 2 hours
 4. add equippable items - 1 hour
 5. add projectile support/weapons - 2.5 hours
 6. fix the thousand issues that spring up - 1 hour
-7. add npcs and place them around - 0.75 hours
+7. add npcs and place them around - 0.75 hours3
 8. add an actually nice dialogue system - 1.5 hours
 9. add more tiles + worlds - 1 hour
 10. add portals that transport to other worlds/quests - 1 hour
@@ -37,3 +37,22 @@ DONE 1. finish collision - 1 hour
 15. add bosses - 4 hours
 
 25.5 hours
+
+
+
+to finish items:
+1. add display layers so the chest item display doesn't clip under the tiles
+    -  did a shitty job thats not actually what i wanted to do but it does it
+2. let item loader give random items
+    - easy
+3. have chests generate random items
+    - easy
+4. place chests around map
+    - easy
+5. let you see gui when hovering over frames
+6. make the armor equippable on click
+
+
+
+
+

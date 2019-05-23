@@ -1,5 +1,8 @@
 package com.kai.fp.world;
 
+import com.kai.fp.items.ItemLoader;
+import com.kai.fp.items.Rarity;
+import com.kai.fp.objs.inanimate.LootChest;
 import com.kai.fp.objs.inanimate.Rock;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.util.TextFileLoader;
@@ -58,15 +61,36 @@ class WorldLoader {
             case "s":
                 tile = new WorldTile(location, ResourceManager.getTileResource("stone"));
                 break;
-            case "v": case "_":
+            case "_":
                 tile = new WorldTile(location, ResourceManager.getTileResource("void"));
+                break;
+            case "v":
+                tile = new WorldTile(location, ResourceManager.getTileResource("fake void"));
+                break;
         }
 
         if (!occupyingString.equals("_")) {
-            switch (occupyingString.toLowerCase()) {
+            switch (occupyingString) {
                 case "r":
                     tile.setOccupying(new Rock(new WorldLocation(row, col)));
                     break;
+                case "C":
+                    LootChest chest = new LootChest(new WorldLocation(row, col));
+                    chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));
+                    tile.setOccupying(chest);
+                    break;
+                case "R":
+                    LootChest rareChest = new LootChest(new WorldLocation(row, col));
+                    rareChest.addItem(ItemLoader.getRandomItem(Rarity.RARE));
+                    tile.setOccupying(rareChest);
+                    break;
+                case "G":
+                    LootChest glyphicChest = new LootChest(new WorldLocation(row, col));
+                    glyphicChest.addItem(ItemLoader.getRandomItem(Rarity.GLYPHIC));
+                    tile.setOccupying(glyphicChest);
+                    break;
+                default:
+                    System.out.println(occupyingString + " produced an error.");
             }
 
             tile.setWalkable(!tile.getOccupying().isPhysical());

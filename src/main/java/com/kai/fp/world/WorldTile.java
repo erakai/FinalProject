@@ -32,6 +32,9 @@ public class WorldTile extends GameObject implements Renderable {
         g.drawImage(tileImage, dp.getX(), dp.getY(), null);
         if (occupying != null) {
             occupying.render(dp, g);
+            if (occupying.isMarkedForRemoval()) {
+                occupying = null;
+            }
         }
     }
 

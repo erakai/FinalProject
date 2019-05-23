@@ -13,7 +13,7 @@
     <Tile id="grass" x="64" y="0"/>
     <Tile id="stone" x="32" y="0"/>
     <Tile id="void" x="0" y="0" walkable="false"/>
-
+    <Tile id="fake void" x="0" y="0"/>
 
 
 

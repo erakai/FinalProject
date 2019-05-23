@@ -21,8 +21,8 @@ public class HUD extends HUDComponent {
     public HUD() {
         super(Globals.DISPLAY_WIDTH - 96, Globals.DISPLAY_HEIGHT-105, playerDisplay, 96, 105);
 
-        weaponFrame = new ItemFrame(getX() + 10, getY() + 12, Item.ItemType.WEAPON);
-        armorFrame = new ItemFrame(getX() + 10, getY() + 60, Item.ItemType.ARMOR);
+        weaponFrame = new ItemFrame(getX() + 8, getY() + 12, Item.ItemType.WEAPON);
+        armorFrame = new ItemFrame(getX() + 8, getY() + 56, Item.ItemType.ARMOR);
     }
 
     @Override
