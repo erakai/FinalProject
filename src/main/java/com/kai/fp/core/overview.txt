@@ -1,0 +1,39 @@
+https://stackoverflow.com/questions/9997006/slick2d-and-jbox2d-how-to-draw?answertab=votes#tab-top
+
+top-down rotmg-esque game
+
+multiple worlds?
+on start, world is loaded from text file with letters representing objects/floor/stuff
+world is stores in very large array of game objects?
+camera centers on player and updates/draws all other objects inside it's "display"
+    - every loop checks if objects are inside camera and if they are then update
+    - player/camera have an x and y relative to the world but the camera handles drawing on display
+
+random enemies and items loaded from xml
+enemies spawn in increasing waves and
+
+
+
+OKAY DOCUMENTING THIS WILL SLOW ME DOWN TOO MUCH SORRY FUTURE ME
+
+
+world is 32x32 tiles, tiles are 16x16
+
+
+DONE 1. finish collision - 1 hour
+2. add items - 1.5 hours
+3. add inventory gui and support for high level ui classes - 2 hours
+4. add equippable items - 1 hour
+5. add projectile support/weapons - 2.5 hours
+6. fix the thousand issues that spring up - 1 hour
+7. add npcs and place them around - 0.75 hours
+8. add an actually nice dialogue system - 1.5 hours
+9. add more tiles + worlds - 1 hour
+10. add portals that transport to other worlds/quests - 1 hour
+11. add enemies with behavior - 3 hours
+12. add pathfinding - no idea, 2+ hours?
+13. add like 10 more enemies - 2 hours
+14. add more items and make them drop - 1 hour
+15. add bosses - 4 hours
+
+25.5 hours

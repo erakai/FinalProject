@@ -1,0 +1,31 @@
+s_ s_ s_ s_ g_ g_ g_ gR
+s_ s_ s_ __ __ g_ g_ g_ g_ g_ g_ g_ g_ s_ g_
+s_ s_ g_ g_ __ g_ g_ g_ g_ g_ g_ g_ g_ s_ g_ s_
+s_ s_ g_ g_ g_ g_ g_ s_ s_ s_ s_ g_
+sR sR s_ g_ g_ g_ s_ s_ sR g_ g_ g_ g_ s_ gR __ __ __ __ __ __ __
+__ __ s_ __ __ g_ g_ __ __ __ __ __ __ __ __ g_ s_ sR s_ g_ g_ g_ g_ g_ __ __ __ __ __ __ g_ gR
+__ __ s_ __ __ g_ g_ __ __ __ g_ g_ sR s_ g_ g_ g_ g_ __ __ __ __ g_ g_ s_ s_ s_
+__ __ g_ __ __ g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_ g_ g_ __ __ s_ s_
+__ __ g_ __ __ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_ g_ s_ sR s_ g_ g_ g_ g_ g_ __ __ __ __ __ __ g_ gR
+__ __ g_ __ __ g_ g_ sR s_ g_ g_ g_ g_ __ __ __ __ g_ g_ s_ s_ s_
+__ s_ g_ __ __ g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_ g_ g_ __ __ s_ s_
+__ g_ gR __ __ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_
+__ g_ __ __ __ __ __ __ __ __ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_
+g_ g_ g_ __ __ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_
+g_ gR g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ s_ s_ s_
+gR g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_ g_ g_ g_ s_ s_ s_
+g_ g_ g_ g_ g_ g_ g_ g_ s_ g_ s_ s_ s_ s_ s_
+g_ g_ g_ g_ g_ g_ g_ g_ s_ g_ s_ g_ s_ s_ sR g_ g_ g_ g_ s_ gR __ __ __ __ __ __ __
+g_ g_ g_ g_ g_ g_ g_ s_ s_ s_ s_ g_ g_ s_ s_ sR g_ g_ g_ g_ s_ gR __ __ __ __ __ __ __
+g_ s_ s_ sR g_ g_ g_ g_ s_ gR __ __ __ __ __ __ __ g_ s_ s_ sR g_ g_ g_ g_ s_ gR __ __ __ __ __ __ __
+g_ s_ sR s_ g_ g_ g_ g_ g_ __ __ __ __ __ __ g_ gR
+g_ g_ sR s_ g_ g_ g_ g_ __ __ __ __ g_ g_ s_ s_ s_
+g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_ g_ g_ __ __ s_ s_
+g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_ g_ s_ sR s_ g_ g_ g_ g_ g_ __ __ __ __ __ __ g_ gR
+__ __ __ __ __ g_ g_ sR s_ g_ g_ g_ g_ __ __ __ __ g_ g_ s_ s_ s_
+g_ g_ g_ g_ g_ g_ gR g_ g_ g_ g_ g_ g_ __ __ s_ s_
+g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ gR gR gR gR
+g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ gR
+g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ g_ gR
+g_ gR g_ g_ g_ g_ g_ g_ gR g_ g_ g_ gR
+gR gR gR gR gR gR gR gR gR gR gR gR gR
