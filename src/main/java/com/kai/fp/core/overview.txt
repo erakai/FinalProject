@@ -50,8 +50,17 @@ to finish items:
 4. place chests around map
     - easy
 5. let you see gui when hovering over frames
+   - easy but kinda stupid
 6. make the armor equippable on click
+    - took a little bit (like 90 minutes) to write the 7 lines of code htat solved everything but i did it
 
+
+
+
+1. make armor equippable CHECK
+2. add portals
+3. add npc
+4. add dialogue
 
 
 

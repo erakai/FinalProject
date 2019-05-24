@@ -27,6 +27,7 @@ public class Screen extends JPanel implements Updatable {
 
         inputHandler = new InputHandler();
         inputHandler.createMap(this);
+        addMouseListener(inputHandler);
         hud = new HUD();
 
         renderOnTop = new HashMap<>();

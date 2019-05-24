@@ -14,6 +14,8 @@ public abstract class HUDComponent implements Renderable {
     private int x, y, width, height;
     private boolean onScreen = false;
 
+    private boolean markedForRemoval = false;
+
 
     public HUDComponent(int x, int y, BufferedImage image, int width, int height) {
         this.x=x;
@@ -49,5 +51,13 @@ public abstract class HUDComponent implements Renderable {
 
     public boolean isOnScreen() {
         return onScreen;
+    }
+
+    public void die() {
+        markedForRemoval = true;
+    }
+
+    public boolean isMarkedForRemoval() {
+        return markedForRemoval;
     }
 }

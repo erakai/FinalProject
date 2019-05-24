@@ -85,6 +85,14 @@ public class LootChest extends InanimateObj implements Updatable {
     }
 
     @Override
+    public void die() {
+        super.die();
+        for (ItemFrame i: items) {
+            i.die();
+        }
+    }
+
+    @Override
     protected Animation getIdleAnim() {
         return new Animation("none", new BufferedImage[] {commonChest});
     }

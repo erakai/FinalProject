@@ -29,7 +29,16 @@ public class HUD extends HUDComponent {
     public void render(DrawPoint dp, Graphics g) {
         super.render(new DrawPoint(getX(), getY()), g);
 
-        weaponFrame.render(new DrawPoint(weaponFrame.getX(), weaponFrame.getY()), g);
-        armorFrame.render(new DrawPoint(armorFrame.getX(), armorFrame.getY()), g);
+        weaponFrame.render(new DrawPoint(getX() + 8, getY() + 12), g);
+        armorFrame.render(new DrawPoint(getX() + 8, getY() + 56), g);
+
+    }
+
+    public ItemFrame getWeaponFrame() {
+        return weaponFrame;
+    }
+
+    public ItemFrame getArmorFrame() {
+        return armorFrame;
     }
 }

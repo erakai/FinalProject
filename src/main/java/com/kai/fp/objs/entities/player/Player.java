@@ -31,9 +31,11 @@ public class Player extends Entity {
 
 
     public boolean up, down, left, right;
+    private PlayerInventory inventory;
 
     public Player(WorldLocation location) {
         super(location, 30, 35);
+        inventory = new PlayerInventory(this);
 
     }
 
@@ -81,5 +83,9 @@ public class Player extends Entity {
     @Override
     protected Animation getIdleAnim() {
         return new Animation("idle", idleRight);
+    }
+
+    public PlayerInventory getInventory() {
+        return inventory;
     }
 }

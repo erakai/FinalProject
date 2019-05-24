@@ -84,7 +84,12 @@ public class StatManager {
 
         @Override
         public String toString() {
-            return name + ": " + getValue();
+            return "Stat{" +
+                    "name='" + name + '\'' +
+                    ", baseValue=" + baseValue +
+                    ", positiveChange=" + positiveChange +
+                    ", negativeChange=" + negativeChange +
+                    '}';
         }
     }
 

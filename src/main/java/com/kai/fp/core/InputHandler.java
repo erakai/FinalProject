@@ -1,22 +1,24 @@
 package com.kai.fp.core;
 
+import com.kai.fp.display.Clickable;
+import com.kai.fp.display.HUDComponent;
 import com.kai.fp.display.Hoverable;
 import com.kai.fp.display.Screen;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author Kai on May 16, 2019
  */
-public class InputHandler implements Updatable {
+public class InputHandler implements Updatable, MouseListener {
     private boolean up, down, left, right;
 
     private static List<Hoverable> hoverables = new ArrayList<>();
+    private static List<Clickable> clickables = new ArrayList<>();
     private int currentMouseX, currentMouseY;
 
     public void mouseExists(int cx, int cy) {
@@ -28,6 +30,9 @@ public class InputHandler implements Updatable {
         hoverables.add(h);
     }
 
+    public static void addClickable(Clickable c) {
+        clickables.add(c);
+    }
 
 
     public void createMap(Screen comp) {
@@ -74,9 +79,46 @@ public class InputHandler implements Updatable {
         if (up) Camera.y -= Camera.speed;
         if (down) Camera.y += Camera.speed;*/
 
+        List<Hoverable> toRemove = new ArrayList<>();
         for (Hoverable h: hoverables) {
             h.updateHovered(currentMouseX, currentMouseY);
+            if (h instanceof HUDComponent) {
+                if (((HUDComponent) h).isMarkedForRemoval()) toRemove.add(h);
+            }
         }
+        hoverables.removeAll(toRemove);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        List<Clickable> toRemove = new ArrayList<>();
+        for (Clickable c: clickables) {
+            c.possibleClick(e.getX(), e.getY());
+            if (c instanceof HUDComponent) {
+                if (((HUDComponent) c).isMarkedForRemoval()) toRemove.add(c);
+            }
+        }
+        clickables.removeAll(toRemove);
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 
     class DirectionAction extends AbstractAction {
