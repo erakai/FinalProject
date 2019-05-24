@@ -3,6 +3,7 @@ package com.kai.fp.world;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.inanimate.LootChest;
+import com.kai.fp.objs.inanimate.Portal;
 import com.kai.fp.objs.inanimate.Rock;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.util.TextFileLoader;
@@ -67,6 +68,9 @@ class WorldLoader {
             case "v":
                 tile = new WorldTile(location, ResourceManager.getTileResource("fake void"));
                 break;
+            default:
+                System.out.println(tileString + " is not recognized as a tile.");
+
         }
 
         if (!occupyingString.equals("_")) {
@@ -88,6 +92,9 @@ class WorldLoader {
                     LootChest glyphicChest = new LootChest(new WorldLocation(row, col));
                     glyphicChest.addItem(ItemLoader.getRandomItem(Rarity.GLYPHIC));
                     tile.setOccupying(glyphicChest);
+                    break;
+                case "p":
+                    tile.setOccupying(new Portal(new WorldLocation(row, col)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

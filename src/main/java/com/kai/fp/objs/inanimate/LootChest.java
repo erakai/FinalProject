@@ -8,7 +8,6 @@ import com.kai.fp.items.Item;
 import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.Animation;
 import com.kai.fp.util.DrawPoint;
-import com.kai.fp.util.Globals;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.world.WorldLocation;
 

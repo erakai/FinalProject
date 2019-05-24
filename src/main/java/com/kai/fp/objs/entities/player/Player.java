@@ -36,7 +36,6 @@ public class Player extends Entity {
     public Player(WorldLocation location) {
         super(location, 30, 35);
         inventory = new PlayerInventory(this);
-
     }
 
     @Override
@@ -48,7 +47,6 @@ public class Player extends Entity {
 
     @Override
     public void update(long delta) {
-
         if (right) {
             anim.setRepeatingAnim("run right");
         } else if (left) {
@@ -87,5 +85,17 @@ public class Player extends Entity {
 
     public PlayerInventory getInventory() {
         return inventory;
+    }
+
+    public void setInventory(PlayerInventory inventory) {
+        inventory.removeArmor();
+        inventory.removeWeapon();
+        if (inventory.getArmor() != null) {
+            this.inventory.equipItem(inventory.getArmor());
+        }
+        if (inventory.getWeapon() != null) {
+            this.inventory.equipItem(inventory.getWeapon());
+        }
+
     }
 }

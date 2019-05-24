@@ -16,14 +16,17 @@ import java.util.Map;
  * @author Kai on May 10, 2019
  */
 public class Screen extends JPanel implements Updatable {
+    private static Screen instance;
     private InputHandler inputHandler;
     private static HUD hud;
 
     private static Map<DrawPoint, Renderable> renderOnTop;
 
     public Screen() {
+        setLayout(null);
         setPreferredSize(new Dimension(Globals.DISPLAY_WIDTH, Globals.DISPLAY_HEIGHT));
         setBackground(Color.black);
+        instance = this;
 
         inputHandler = new InputHandler();
         inputHandler.createMap(this);
@@ -72,6 +75,14 @@ public class Screen extends JPanel implements Updatable {
 
     public static void addRenderOnTop(DrawPoint dp, Renderable r) {
         renderOnTop.put(dp, r);
+    }
+
+    public static Screen getInstance() {
+        return instance;
+    }
+
+    public InputHandler getInputHandler() {
+        return inputHandler;
     }
 
 }

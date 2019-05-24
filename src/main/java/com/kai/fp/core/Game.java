@@ -4,6 +4,7 @@ import com.kai.fp.display.Screen;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.objs.GameObject;
 import com.kai.fp.objs.entities.player.Player;
+import com.kai.fp.objs.entities.player.PlayerInventory;
 import com.kai.fp.util.Globals;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.world.World;
@@ -24,6 +25,7 @@ public class Game implements Runnable, Updatable {
     public static State gamestate = State.START;
 
     private Screen display;
+    private static String currentWorldName;
     private static World currentWorld;
     private static Camera camera;
     private static Player player;
@@ -42,7 +44,7 @@ public class Game implements Runnable, Updatable {
         updatables = new ArrayList<>();
         addQueue = new ArrayList<>();
 
-        nextWorld("testworld");
+        nextWorld("testworld1");
 
     }
 
@@ -87,9 +89,21 @@ public class Game implements Runnable, Updatable {
     }
 
     public static void nextWorld(String id) {
+        currentWorldName = id;
+        updatables.clear();
+        InputHandler.reset();
         camera = new Camera();
         currentWorld = new World(id);
+
+        PlayerInventory inv = null;
+        if (player != null) {
+            inv = player.getInventory();
+        }
         player = new Player(new WorldLocation(0, 0));
+        if (inv != null) {
+            player.setInventory(inv);
+        }
+
 
         gamestate = State.RUNNING;
     }
@@ -100,5 +114,9 @@ public class Game implements Runnable, Updatable {
 
     public static void addUpdatable(Updatable u) {
         addQueue.add(u);
+    }
+
+    public static String getCurrentWorldName() {
+        return currentWorldName;
     }
 }

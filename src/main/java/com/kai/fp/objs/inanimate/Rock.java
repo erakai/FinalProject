@@ -17,7 +17,6 @@ public class Rock extends InanimateObj {
 
     public Rock(WorldLocation location) {
         super(location);
-        anim.setFramesPerSecond(1);
     }
 
     @Override

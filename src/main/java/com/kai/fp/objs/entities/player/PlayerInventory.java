@@ -53,4 +53,11 @@ public class PlayerInventory {
         return w;
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public Armor getArmor() {
+        return armor;
+    }
 }

@@ -34,6 +34,10 @@ public class InputHandler implements Updatable, MouseListener {
         clickables.add(c);
     }
 
+    public static void reset() {
+        clickables.clear();
+        hoverables.clear();
+    }
 
     public void createMap(Screen comp) {
         InputMap im = comp.getInputMap();
@@ -120,6 +124,7 @@ public class InputHandler implements Updatable, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
 
     class DirectionAction extends AbstractAction {
         private String dir;
