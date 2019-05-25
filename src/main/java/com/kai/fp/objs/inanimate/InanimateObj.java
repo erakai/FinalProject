@@ -13,7 +13,6 @@ public abstract class InanimateObj extends GameObject implements Renderable {
         super(location, 32, 32);
         setPhysical(true);
         anim.setFramesPerSecond(1);
-
     }
 
 

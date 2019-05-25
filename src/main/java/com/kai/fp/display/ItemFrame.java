@@ -46,7 +46,9 @@ public class ItemFrame extends HUDComponent implements Hoverable, Clickable {
 
     @Override
     public void updateHovered(int mouseX, int mouseY) {
-        if (item != null && isOnScreen()) item.setHovered(checkCollisionWithMouse(mouseX, mouseY));
+        if (item != null && isOnScreen()) {
+            item.setHovered(checkCollisionWithMouse(mouseX, mouseY));
+        }
     }
 
     @Override

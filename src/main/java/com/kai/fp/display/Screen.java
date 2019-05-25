@@ -23,11 +23,18 @@ public class Screen extends JPanel implements Updatable {
     private static Map<DrawPoint, Renderable> renderOnTop;
 
     public Screen() {
+        init();
+    }
+
+    public void init() {
         setLayout(null);
         setPreferredSize(new Dimension(Globals.DISPLAY_WIDTH, Globals.DISPLAY_HEIGHT));
         setBackground(Color.black);
         instance = this;
 
+        if (inputHandler != null ) {
+            removeMouseListener(inputHandler);
+        }
         inputHandler = new InputHandler();
         inputHandler.createMap(this);
         addMouseListener(inputHandler);
@@ -52,21 +59,23 @@ public class Screen extends JPanel implements Updatable {
         int y = (int)getLocationOnScreen().getY();
         int currentMouseX = (int) (MouseInfo.getPointerInfo().getLocation().getX() - x);
         int currentMouseY = (int) (MouseInfo.getPointerInfo().getLocation().getY() - y);
-        inputHandler.mouseExists(currentMouseX, currentMouseY);
+        if (inputHandler != null) {
+            inputHandler.mouseExists(currentMouseX, currentMouseY);
 
-        switch (Game.gamestate) {
-            case RUNNING:
-                Camera.render(g);
-                hud.render(null, g);
-                break;
+
+            switch (Game.gamestate) {
+                case RUNNING:
+                    Camera.render(g);
+                    hud.render(null, g);
+                    break;
+            }
+
+            for (DrawPoint dp : renderOnTop.keySet()) {
+                renderOnTop.get(dp).render(dp, g);
+            }
+
+            renderOnTop.clear();
         }
-
-        for (DrawPoint dp: renderOnTop.keySet()) {
-            renderOnTop.get(dp).render(dp, g);
-        }
-
-        renderOnTop.clear();
-
     }
 
     public static HUD getHud() {

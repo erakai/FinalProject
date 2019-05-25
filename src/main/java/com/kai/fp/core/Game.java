@@ -24,7 +24,7 @@ public class Game implements Runnable, Updatable {
     public enum State{START, RUNNING, LOADING, END}
     public static State gamestate = State.START;
 
-    private Screen display;
+    private static Screen display;
     private static String currentWorldName;
     private static World currentWorld;
     private static Camera camera;
@@ -45,7 +45,6 @@ public class Game implements Runnable, Updatable {
         addQueue = new ArrayList<>();
 
         nextWorld("testworld1");
-
     }
 
     public void run() {
@@ -89,22 +88,32 @@ public class Game implements Runnable, Updatable {
     }
 
     public static void nextWorld(String id) {
+        System.out.println("Transitioning to world " + id);
         currentWorldName = id;
         updatables.clear();
         InputHandler.reset();
-        camera = new Camera();
+        display.init();
         currentWorld = new World(id);
 
-        PlayerInventory inv = null;
-        if (player != null) {
-            inv = player.getInventory();
-        }
-        player = new Player(new WorldLocation(0, 0));
-        if (inv != null) {
-            player.setInventory(inv);
+        if (player == null) {
+            player = new Player(new WorldLocation(0,0));
+        } else {
+            player.getLocation().setWorldX(0);
+            player.getLocation().setWorldY(0);
+            currentWorld.addEntity(player);
+
+            if (player.getInventory().getArmor() != null) {
+                Screen.getHud().getArmorFrame().setItem(player.getInventory().getArmor());
+            }
+            if (player.getInventory().getWeapon() != null) {
+                Screen.getHud().getWeaponFrame().setItem(player.getInventory().getWeapon());
+            }
         }
 
-
+        camera = new Camera();
+        Camera.x = player.getScreenX() - Globals.DISPLAY_WIDTH/2;
+        Camera.y = player.getScreenY() - Globals.DISPLAY_HEIGHT/2;
+        camera.getEntities().clear();
         gamestate = State.RUNNING;
     }
 

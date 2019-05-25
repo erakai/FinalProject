@@ -46,6 +46,6 @@ public class FPButton extends JButton {
 
         g.setColor(Color.WHITE);
         g.setFont(new MFont(1.3));
-        g.drawString("Teleport", getX()+12, getY()+ 30);
+        g.drawString("Proceed", getX()+15, getY()+ 30);
     }
 }

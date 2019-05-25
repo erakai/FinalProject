@@ -39,7 +39,7 @@ public class Portal extends InanimateObj implements Updatable, Clickable {
         String name = Game.getCurrentWorldName();
         name = name.substring(0,name.length()-1) + (Integer.valueOf(name.substring(name.length()-1)) + 1);
         Game.nextWorld(name);
-
+        Screen.getInstance().remove(button);
     }
 
     @Override

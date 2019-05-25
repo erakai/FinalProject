@@ -45,4 +45,8 @@ public class Camera implements Updatable {
     public static int getCenterY() {
         return y + (height/2);
     }
+
+    public List<Entity> getEntities() {
+        return entities;
+    }
 }

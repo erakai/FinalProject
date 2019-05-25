@@ -58,7 +58,7 @@ to finish items:
 
 
 1. make armor equippable CHECK
-2. add portals
+2. add portals CHECK
 3. add npc
 4. add dialogue
 

@@ -5,6 +5,7 @@ import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.inanimate.LootChest;
 import com.kai.fp.objs.inanimate.Portal;
 import com.kai.fp.objs.inanimate.Rock;
+import com.kai.fp.objs.inanimate.Tentacle;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.util.TextFileLoader;
 
@@ -55,7 +56,7 @@ class WorldLoader {
         WorldLocation location = new WorldLocation((WorldTile.WIDTH * col), (WorldTile.HEIGHT * row));
 
         WorldTile tile = null;
-        switch (tileString.toLowerCase()) {
+        switch (tileString) {
             case "g":
                 tile = new WorldTile(location, ResourceManager.getTileResource("grass"));
                 break;
@@ -67,6 +68,15 @@ class WorldLoader {
                 break;
             case "v":
                 tile = new WorldTile(location, ResourceManager.getTileResource("fake void"));
+                break;
+            case "f":
+                tile = new WorldTile(location, ResourceManager.getTileResource("fleshy"));
+                break;
+            case "e":
+                tile = new WorldTile(location, ResourceManager.getTileResource("extra red fleshy"));
+                break;
+            case "l":
+                tile = new WorldTile(location, ResourceManager.getTileResource("red light"));
                 break;
             default:
                 System.out.println(tileString + " is not recognized as a tile.");
@@ -95,6 +105,9 @@ class WorldLoader {
                     break;
                 case "p":
                     tile.setOccupying(new Portal(new WorldLocation(row, col)));
+                    break;
+                case "t":
+                    tile.setOccupying(new Tentacle(new WorldLocation(row, col)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");
