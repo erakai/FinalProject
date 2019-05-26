@@ -28,6 +28,7 @@ public class Screen extends JPanel implements Updatable {
 
     public void init() {
         setLayout(null);
+        setFocusable(true);
         setPreferredSize(new Dimension(Globals.DISPLAY_WIDTH, Globals.DISPLAY_HEIGHT));
         setBackground(Color.black);
         instance = this;

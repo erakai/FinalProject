@@ -20,6 +20,7 @@ public class FPButton extends JButton {
 
     public FPButton(int x, int y, Clickable c) {
         setBounds(x, y, 96, 48);
+        setFocusable(false);
         this.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent e) {
                 SwingUtilities.invokeLater(() -> {isHovering=true;});
@@ -31,7 +32,9 @@ public class FPButton extends JButton {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                c.possibleClick(e.getX(), e.getY());
+                SwingUtilities.invokeLater(() -> {
+                    c.possibleClick(e.getX(), e.getY());
+                });
             }
         });
     }

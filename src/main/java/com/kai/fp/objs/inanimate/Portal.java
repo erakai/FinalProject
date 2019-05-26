@@ -40,12 +40,15 @@ public class Portal extends InanimateObj implements Updatable, Clickable {
         name = name.substring(0,name.length()-1) + (Integer.valueOf(name.substring(name.length()-1)) + 1);
         Game.nextWorld(name);
         Screen.getInstance().remove(button);
+        button = null;
     }
 
     @Override
     public void update(long delta) {
-        if (!button.isVisible() && checkCollision(Game.getPlayer())) { button.setVisible(true); };
-        if (button.isVisible() && !checkCollision(Game.getPlayer())) button.setVisible(false);
+        if (button != null) {
+            if (!button.isVisible() && checkCollision(Game.getPlayer())) { button.setVisible(true); }
+            if (button.isVisible() && !checkCollision(Game.getPlayer())) button.setVisible(false);
+        }
     }
 
     @Override

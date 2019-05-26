@@ -44,6 +44,7 @@ class WorldLoader {
             }
             System.out.println();
         }*/
+        System.out.println(" ==== FINISHED LOADING " + worldName + " ====\n");
         return worldTiles;
     }
 

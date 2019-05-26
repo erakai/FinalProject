@@ -23,6 +23,7 @@ public abstract class Enemy extends Entity {
 
     boolean active = false;
     private EnemyTier tier;
+    private String id;
     private double rateOfFire = 1;
 
     int attackTick, maxAttackTick;
@@ -36,6 +37,7 @@ public abstract class Enemy extends Entity {
         super(location, base.getWidth(), base.getHeight());
         active = true;
         tier = base.getTier();
+        id = base.getId();
         for (StatManager.Stat s : base.getStats().getStats().values()) {
             getStat(s.getName()).baseValue = s.baseValue;
         }
@@ -103,4 +105,17 @@ public abstract class Enemy extends Entity {
     public void setRateofFire(double rateofFire) {
         this.rateOfFire = rateofFire;
     }
+
+    public void setTier(EnemyTier tier) {
+        this.tier = tier;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }

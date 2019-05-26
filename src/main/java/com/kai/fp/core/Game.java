@@ -3,6 +3,7 @@ package com.kai.fp.core;
 import com.kai.fp.display.Screen;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.objs.GameObject;
+import com.kai.fp.objs.entities.enemies.EnemyLoader;
 import com.kai.fp.objs.entities.player.Player;
 import com.kai.fp.util.Globals;
 import com.kai.fp.util.ResourceManager;
@@ -41,6 +42,7 @@ public class Game implements Runnable, Updatable {
 
         new ItemLoader();
         new ResourceManager();
+        new EnemyLoader();
 
         updatables = new ArrayList<>();
         addQueue = new ArrayList<>();

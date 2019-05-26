@@ -15,6 +15,8 @@ public class Weapon extends Item {
     private String[] hudLines;
     private ItemFire fireMode;
 
+    //TODO: Add delay between attacks based on item rate of fire.
+
     public Weapon(String id, BufferedImage image, List<ItemBehavior> behaviors, String description, Rarity rarity, ItemFire fireMode, String[] hudLines, List<Projectile> projectiles) {
         super(id, image, behaviors, description, ItemType.WEAPON, rarity);
         this.fireMode = fireMode;
