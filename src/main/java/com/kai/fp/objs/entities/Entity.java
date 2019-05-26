@@ -21,7 +21,7 @@ public abstract class Entity extends GameObject implements Updatable {
         stats.addStat("max health", "The maximum health of the entity", 50);
 
         //TODO: Do I really want to do this?
-        Game.getWorld().addEntity(this);
+        Game.getWorld().addObject(this);
     }
 
     public AnimationPlayer getAnim() {
@@ -72,5 +72,9 @@ public abstract class Entity extends GameObject implements Updatable {
         if (tile != null && tile.isWalkable()) {
             getLocation().moveDown(getStat("speed").getValue());
         }
+    }
+
+    public void takeDamage(int amu) {
+
     }
 }

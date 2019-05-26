@@ -23,6 +23,13 @@ public class Tentacle extends InanimateObj {
     public Tentacle(WorldLocation location) {
         super(location);
         anim.setFramesPerSecond(3);
+
+//    if (Math.random() > 0.5) {
+//        for (int i = 0; i < frames.length; i++) {
+//            frames[i] = ResourceManager.mirrorImage(frames[i]);
+//        }
+//        anim.setRepeatingAnim(new Animation("idle", frames));
+//    }
     }
 
 
@@ -30,4 +37,5 @@ public class Tentacle extends InanimateObj {
     protected Animation getIdleAnim() {
         return new Animation("idle", frames);
     }
+
 }

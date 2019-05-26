@@ -1,6 +1,8 @@
 package com.kai.fp.items;
 
+import com.kai.fp.objs.Projectile;
 import com.kai.fp.objs.entities.player.Player;
+import com.kai.fp.util.ProjectileLoader;
 import com.kai.fp.util.ResourceManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,7 +30,7 @@ public class ItemLoader {
 
     static {
         try {
-            loadArmor();
+            loadItems();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -46,16 +48,18 @@ public class ItemLoader {
         for (Item i : glyphicItems.values()) {
             System.out.println(i);
         }
+
+        System.out.println(" ==== ITEM LOADING FINISHED ====\n");
     }
 
-    private static void loadArmor() throws ParserConfigurationException, IOException, SAXException {
-        InputStream file = ItemLoader.class.getResourceAsStream("/xmls/armor.xml");
+    private static void loadItems() throws ParserConfigurationException, IOException, SAXException {
+        InputStream file = ItemLoader.class.getResourceAsStream("/xmls/items.xml");
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         documentBuilderFactory.setIgnoringComments(true);
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(file);
 
-        NodeList itemNodeList = document.getElementsByTagName("Armor");
+        NodeList itemNodeList = document.getElementsByTagName("Item");
         for (int i = 0; i < itemNodeList.getLength(); i++) {
             Element itemElement = (Element) itemNodeList.item(i);
 
@@ -98,7 +102,26 @@ public class ItemLoader {
                 behaviors.add(getSpecialBehavior(keywordElement.getTextContent()));
             }
 
-            Item item = new Armor(id, image, behaviors, description, rarity);
+            Item item = null;
+            if (itemElement.getAttribute("type").equals("armor")) {
+                item = new Armor(id, image, behaviors, description, rarity);
+            } else if (itemElement.getAttribute("type").equals("weapon")) {
+                ItemFire firemode = ItemFire.valueOf(itemElement.getAttribute("firemode"));
+                List<Projectile> projList = new ArrayList<>();
+
+                NodeList projectileNodeList = itemElement.getElementsByTagName("projectile");
+                for (int k = 0; k < projectileNodeList.getLength(); k++) {
+                    projList.add(ProjectileLoader.getProjectile((Element)projectileNodeList.item(k)));
+                }
+
+                NodeList lineList = itemElement.getElementsByTagName("line");
+                String[] hudLines = new String[lineList.getLength()];
+                for (int m = 0; m < lineList.getLength(); m++) {
+                    hudLines[m] = lineList.item(m).getTextContent();
+                }
+
+                item = new Weapon(id, image, behaviors, description, rarity, firemode, hudLines, projList);
+            }
             if (rarity == Rarity.COMMON) {
                 commonItems.put(id, item);
             } else if (rarity == Rarity.RARE) {
@@ -107,7 +130,6 @@ public class ItemLoader {
                 glyphicItems.put(id, item);
             }
         }
-
     }
 
     private static ItemBehavior getSpecialBehavior(String keyword) {
@@ -142,7 +164,7 @@ public class ItemLoader {
         if (items.get(name).getType() == Item.ItemType.ARMOR) {
             return new Armor(items.get(name));
         } else {
-            return null;
+            return new Weapon((Weapon)items.get(name));
         }
     }
 

@@ -23,6 +23,8 @@ public abstract class Item implements Renderable, ItemBehavior {
     private ItemType type;
     private Rarity rarity;
 
+    int hudLength, stringWidth;
+
     private boolean hovered = false;
 
     public Item(String id, BufferedImage image, List<ItemBehavior> behaviors, String description, ItemType type, Rarity rarity) {
@@ -50,11 +52,12 @@ public abstract class Item implements Renderable, ItemBehavior {
         g.setFont(new MFont(1.2));
 
         int stringHeight = g.getFontMetrics().getAscent()+4;
-        int stringWidth = (int)(g.getFontMetrics().stringWidth(description) * 0.90);
+        int vstringWidth = (int)(g.getFontMetrics().stringWidth(description) * 0.90);
         int totalStringHeight = stringHeight * (5 + behaviors.size() + (behaviors.size()-1));
+        if (stringWidth != vstringWidth) stringWidth = vstringWidth;
 
         g.setColor(new Color(50, 78, 105));
-        g.fillRect(dp.getX()+10, dp.getY()+15, stringWidth, totalStringHeight+10);
+        g.fillRect(dp.getX()+10, dp.getY()+15, vstringWidth, totalStringHeight+10);
         g.setColor(rarity.getColor());
         g.drawString(id, dp.getX() + 15, dp.getY() + 36);
         dp.y += 5;
@@ -74,6 +77,10 @@ public abstract class Item implements Renderable, ItemBehavior {
 
         for (ItemBehavior behavior: behaviors) {
             g.drawString(behavior.getDescription(), dp.getX()+15, dp.getY()+36+(stringHeight * (2+i)));
+        }
+
+        if (hudLength != dp.getY()+36+(stringHeight * (2+i))) {
+            hudLength = dp.getY()+36+(stringHeight * (2+i));
         }
     }
 

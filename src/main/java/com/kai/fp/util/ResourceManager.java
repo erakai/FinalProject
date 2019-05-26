@@ -30,8 +30,17 @@ public class ResourceManager {
     private static Map<String, BufferedImage> sprites = new HashMap<>();
     private static Map<String, TileResource> tiles = new HashMap<>();
 
+    private static final String[] imagesToLoad = {
+            "button", "chestcontents", "chests", "hud", "itemframe", "items", "observer", "player",
+            "portals", "rock", "tentacle", "tiles"
+    };
+
     static {
-        loadSprites("src/main/resources/sprites/");
+        try {
+            loadSprites();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         try {
             loadTiles();
@@ -49,19 +58,10 @@ public class ResourceManager {
         return tiles.get(key);
     }
 
-    private static void loadSprites(String path) {
-        File dir1 = new File(path);
-        File[] listOfFiles1 = dir1.listFiles();
-        for (File f : listOfFiles1) {
-            if (f.isFile()) {
-/*
-                System.out.println(f.getName().replaceAll("\\.png", "") + " : " + f.getPath());
-*/
-                load(f.getName().replaceAll("\\.png", ""), f.getPath());
-            }
-            if (f.isDirectory()) {
-                loadSprites(f.getPath());
-            }
+    private static void loadSprites() throws IOException {
+        for (String s :imagesToLoad) {
+            BufferedImage image = (ImageIO.read(ResourceManager.class.getResourceAsStream("/sprites/"+s+".png")));
+            sprites.put(s, image);
         }
     }
     private static BufferedImage load(String name, String path) {
@@ -123,6 +123,12 @@ public class ResourceManager {
         return bimage;
 
     }
+
+        /*
+    THE BELOW METHODS ARE TAKEN FROM https://code.google.com/archive/p/game-engine-for-java/source.
+    I take no credit for any of the below code.
+     */
+
     public static BufferedImage mirrorImage(BufferedImage simg) {
         int width = simg.getWidth();
         int height = simg.getHeight();
@@ -149,5 +155,35 @@ public class ResourceManager {
         return mirrored;
     }
 
+    public static BufferedImage rotate(Image img, double angle) {
+        double sin = Math.abs(Math.sin(Math.toRadians(angle))),
+                cos = Math.abs(Math.cos(Math.toRadians(angle)));
 
+        int w = img.getWidth(null),
+                h = img.getHeight(null);
+
+        int neww = (int) Math.floor(w*cos + h*sin),
+                newh = (int) Math.floor(h*cos + w*sin);
+
+        BufferedImage bimg = toBufferedImage(getEmptyImage(neww, newh));
+        Graphics2D g = bimg.createGraphics();
+
+        g.translate((neww-w)/2, (newh-h)/2);
+        g.rotate(Math.toRadians(angle), w/2, h/2);
+        g.drawRenderedImage(toBufferedImage(img), null);
+        g.dispose();
+
+        return toBufferedImage(toImage(bimg));
+    }
+
+    public static Image getEmptyImage(int width, int height) {
+        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        return toImage(img);
+    }
+
+    public static Image toImage(BufferedImage bimage) {
+        // Casting is enough to convert from BufferedImage to Image
+        Image img = (Image) bimage;
+        return img;
+    }
 }

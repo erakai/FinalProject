@@ -1,9 +1,7 @@
 package com.kai.fp.objs.entities.player;
 
 import com.kai.fp.display.Screen;
-import com.kai.fp.items.Armor;
-import com.kai.fp.items.Item;
-import com.kai.fp.items.Weapon;
+import com.kai.fp.items.*;
 
 public class PlayerInventory {
     private Player owner;
@@ -13,6 +11,8 @@ public class PlayerInventory {
 
     public PlayerInventory(Player owner) {
         this.owner = owner;
+        equipItem(ItemLoader.getItem("Test Armor", Rarity.COMMON));
+        equipItem(ItemLoader.getItem("Test Weapon", Rarity.COMMON));
     }
 
     public void equipItem(Item i) {

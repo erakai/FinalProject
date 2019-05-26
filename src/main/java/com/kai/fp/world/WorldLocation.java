@@ -12,6 +12,11 @@ public class WorldLocation {
         this.worldY = worldTileY;
     }
 
+    public WorldLocation(WorldLocation o) {
+        worldX = o.getWorldX();
+        worldY = o.getWorldY();
+    }
+
     public int getWorldX() {
         return worldX;
     }
@@ -58,5 +63,13 @@ public class WorldLocation {
 
     public void moveDown(int amu) {
         worldY+=amu;
+    }
+
+    @Override
+    public String toString() {
+        return "WorldLocation{" +
+                "worldX=" + worldX +
+                ", worldY=" + worldY +
+                '}';
     }
 }

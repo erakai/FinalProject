@@ -4,6 +4,8 @@ import com.kai.fp.display.Clickable;
 import com.kai.fp.display.HUDComponent;
 import com.kai.fp.display.Hoverable;
 import com.kai.fp.display.Screen;
+import com.kai.fp.items.Weapon;
+import com.kai.fp.world.WorldLocation;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -100,7 +102,14 @@ public class InputHandler implements Updatable, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        SwingUtilities.invokeLater(() -> {
+            Weapon w = Game.getPlayer().getInventory().getWeapon();
+            if (w != null) {
+                int screenX = e.getX();
+                int screenY = e.getY();
+                w.fire(new WorldLocation(screenX+Camera.x,screenY+Camera.y));
+            }
+        });
     }
 
     @Override

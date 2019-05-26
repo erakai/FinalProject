@@ -74,9 +74,7 @@ public class ItemFrame extends HUDComponent implements Hoverable, Clickable {
     }
 
     public void setItem(Item item) {
-        if (setType == null || (setType != null && item.getType() == setType)) {
-            this.item = item;
-        }
+        this.item = item;
     }
 
     public Item getItem() {

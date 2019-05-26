@@ -4,7 +4,6 @@ import com.kai.fp.display.Screen;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.objs.GameObject;
 import com.kai.fp.objs.entities.player.Player;
-import com.kai.fp.objs.entities.player.PlayerInventory;
 import com.kai.fp.util.Globals;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.world.World;
@@ -32,8 +31,10 @@ public class Game implements Runnable, Updatable {
 
     private long previousFrameTime = -1;
 
+    //TODO: Make it so that loot chests and other things that should be updated in the camera are updated in the camera.
     private static List<Updatable> updatables;
     private static List<Updatable> addQueue;
+    private static List<GameObject> worldAddQueue;
 
     public Game(Screen display) {
         this.display = display;
@@ -44,7 +45,7 @@ public class Game implements Runnable, Updatable {
         updatables = new ArrayList<>();
         addQueue = new ArrayList<>();
 
-        nextWorld("testworld1");
+        nextWorld("world1");
     }
 
     public void run() {
@@ -67,6 +68,7 @@ public class Game implements Runnable, Updatable {
     }
 
     public void update(long delta) {
+
         camera.update(delta);
         display.update(delta);
 
@@ -88,19 +90,24 @@ public class Game implements Runnable, Updatable {
     }
 
     public static void nextWorld(String id) {
-        System.out.println("Transitioning to world " + id);
+        System.out.println("Transitioning to " + id);
         currentWorldName = id;
         updatables.clear();
         InputHandler.reset();
         display.init();
+        worldAddQueue = new ArrayList<>();
         currentWorld = new World(id);
+        for (GameObject o: worldAddQueue) {
+            currentWorld.addObject(o);
+        }
+        worldAddQueue.clear();
 
         if (player == null) {
             player = new Player(new WorldLocation(0,0));
         } else {
             player.getLocation().setWorldX(0);
             player.getLocation().setWorldY(0);
-            currentWorld.addEntity(player);
+            currentWorld.addObject(player);
 
             if (player.getInventory().getArmor() != null) {
                 Screen.getHud().getArmorFrame().setItem(player.getInventory().getArmor());
@@ -113,7 +120,7 @@ public class Game implements Runnable, Updatable {
         camera = new Camera();
         Camera.x = player.getScreenX() - Globals.DISPLAY_WIDTH/2;
         Camera.y = player.getScreenY() - Globals.DISPLAY_HEIGHT/2;
-        camera.getEntities().clear();
+        camera.getGameObjects().clear();
         gamestate = State.RUNNING;
     }
 
@@ -127,5 +134,9 @@ public class Game implements Runnable, Updatable {
 
     public static String getCurrentWorldName() {
         return currentWorldName;
+    }
+
+    public static void addToWorldQueue(GameObject o) {
+        worldAddQueue.add(o);
     }
 }

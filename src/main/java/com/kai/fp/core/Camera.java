@@ -1,5 +1,6 @@
 package com.kai.fp.core;
 
+import com.kai.fp.objs.GameObject;
 import com.kai.fp.objs.entities.Entity;
 import com.kai.fp.util.DrawPoint;
 import com.kai.fp.util.Globals;
@@ -16,22 +17,24 @@ public class Camera implements Updatable {
     public static int x = 0, y = 0;
     public static int width = Globals.DISPLAY_WIDTH, height = Globals.DISPLAY_HEIGHT;
 
-    private List<Entity> entities = new ArrayList<>();
+    private List<GameObject> gameObjects = new ArrayList<>();
 
     @Override
     public void update(long delta) {
-        if (Game.getWorld().isEntitiesModified()) {
-            this.entities = Game.getWorld().getEntities();
+        if (Game.getWorld().isObjectsModified()) {
+            this.gameObjects = Game.getWorld().getObjects();
         }
 
-        List<Entity> toRemove = new ArrayList<>();
-        for (Entity e: entities) {
+        List<GameObject> toRemove = new ArrayList<>();
+        for (GameObject e: gameObjects) {
             if (e.distanceTo(getCenterX(), getCenterY()) < Math.sqrt(width*width + height*height)) {
-                e.update(delta);
+                if (e instanceof Updatable) {
+                    ((Updatable) e).update(delta);
+                }
                 if (e.isMarkedForRemoval()) toRemove.add(e);
             }
         }
-        entities.removeAll(toRemove);
+        gameObjects.removeAll(toRemove);
     }
 
     public static void render(Graphics g) {
@@ -46,7 +49,7 @@ public class Camera implements Updatable {
         return y + (height/2);
     }
 
-    public List<Entity> getEntities() {
-        return entities;
+    public List<GameObject> getGameObjects() {
+        return gameObjects;
     }
 }

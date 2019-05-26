@@ -2,7 +2,9 @@ package com.kai.fp.world;
 
 import com.kai.fp.core.Camera;
 import com.kai.fp.core.Renderable;
-import com.kai.fp.objs.entities.Entity;
+import com.kai.fp.display.Screen;
+import com.kai.fp.objs.GameObject;
+import com.kai.fp.objs.Projectile;
 import com.kai.fp.util.DrawPoint;
 
 import java.awt.*;
@@ -16,17 +18,17 @@ import java.util.ArrayList;
  */
 public class World implements Renderable {
     private WorldTile[][] worldTiles;
-    private List<Entity> entities;
-    private boolean entitiesModified = true;
+    private List<GameObject> gameObjects;
+    private boolean objectsModified = true;
 
     public World(String worldName) {
         worldTiles = WorldLoader.load(worldName);
-        entities = new ArrayList<>();
-
+        gameObjects = new ArrayList<>();
     }
 
     @Override
     public void render(DrawPoint dp, Graphics g) {
+
         for (int h = 0; h < worldTiles.length; h++)  {
             for (int r = 0; r < worldTiles[h].length; r++) {
                 if (worldTiles[h][r] != null) {
@@ -41,9 +43,10 @@ public class World implements Renderable {
             }
         }
 
-        for (Entity e: entities) {
+        for (GameObject e: gameObjects) {
             if (e.distanceTo(Camera.getCenterX(), Camera.getCenterY()) <  Math.sqrt(Camera.width*Camera.width + Camera.height*Camera.height)/2) {
-                e.render(new DrawPoint(e.getScreenX() - dp.getX(), e.getScreenY() - dp.getY()),g);
+                //TODO: I desperately need display layers.
+                e.render(new DrawPoint(e.getScreenX() - dp.getX(), e.getScreenY() - dp.getY()), g);
             }
         }
 
@@ -57,23 +60,23 @@ public class World implements Renderable {
         }
     }
 
-    public void addEntity(Entity e) {
-        entities.add(e);
-        entitiesModified = true;
+    public void addObject(GameObject e) {
+        gameObjects.add(e);
+        objectsModified = true;
     }
 
-    public void removeEntity(Entity e) {
-        entities.remove(e);
-        entitiesModified = true;
+    public void removeObject(GameObject e) {
+        gameObjects.remove(e);
+        objectsModified = true;
     }
 
-    public List<Entity> getEntities() {
-        entitiesModified = false;
-        return entities;
+    public List<GameObject> getObjects() {
+        objectsModified = false;
+        return gameObjects;
     }
 
-    public boolean isEntitiesModified() {
-        return entitiesModified;
+    public boolean isObjectsModified() {
+        return objectsModified;
     }
 
 }

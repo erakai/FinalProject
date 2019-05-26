@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<items>
+    <Item type ="armor" id="Test Armor" rarity="common" imgcoords="0 0">
+        <stat id="speed">1</stat>
+        <description>An extremely dull armor used to test human capacity to survive long programming sessions.</description>
+    </Item>
+    <Item type="armor" id="Rare Test Armor" rarity="rare" imgcoords="0 0">
+        <stat id="speed">2</stat>
+        <description>A dull armor used to test human capacity to survive long programming sessions.</description>
+    </Item>
+    <Item type="armor" id="Glyphic Test Armor" rarity="glyphic" imgcoords="0 0">
+        <stat id="speed">3</stat>
+        <description>An shiny armor used to test human capacity to survive long programming sessions.</description>
+    </Item>
+
+    <Item type="weapon" id="Test Weapon" firemode="STRAIGHT_FIRE" rarity="common" imgcoords="0 16">
+        <stat id="speed">1</stat>
+        <description>A fairly weak weapon designed to show proof of concept for weapons.</description>
+        <projectile imgcoords="0 24" width="8" height="8" speed="8" variance="15" damage="8" range="15"/>
+        <hud>
+            <line>Damage: 3</line>
+            <line>Range: 15</line>
+            <line>Projectile Speed: 8</line>
+        </hud>
+    </Item>
+
+
+
+</items>

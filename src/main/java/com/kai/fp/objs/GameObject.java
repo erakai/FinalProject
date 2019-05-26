@@ -87,6 +87,10 @@ public abstract class GameObject implements Renderable {
         this.loneImage = loneImage;
     }
 
+    public BufferedImage getLoneImage() {
+        return loneImage;
+    }
+
     protected abstract Animation getIdleAnim();
     protected void addAnims() {}
 
