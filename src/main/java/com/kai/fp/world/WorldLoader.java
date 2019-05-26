@@ -2,10 +2,7 @@ package com.kai.fp.world;
 
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.items.Rarity;
-import com.kai.fp.objs.inanimate.LootChest;
-import com.kai.fp.objs.inanimate.Portal;
-import com.kai.fp.objs.inanimate.Rock;
-import com.kai.fp.objs.inanimate.Tentacle;
+import com.kai.fp.objs.inanimate.*;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.util.TextFileLoader;
 
@@ -108,6 +105,9 @@ class WorldLoader {
                     break;
                 case "t":
                     tile.setOccupying(new Tentacle(new WorldLocation(row, col)));
+                    break;
+                case "w":
+                    tile.setOccupying(new RedWall(new WorldLocation(row, col)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

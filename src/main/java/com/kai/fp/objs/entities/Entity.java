@@ -17,11 +17,22 @@ public abstract class Entity extends GameObject implements Updatable {
         super(location, width, height);
 
         stats = new StatManager();
-        stats.addStat("speed", "How fast the entity moves", 3);
+        stats.addStat("speed", "How fast the entity moves", 2);
         stats.addStat("max health", "The maximum health of the entity", 50);
+        stats.addStat("health", "The current health of the entity", 50);
+        stats.addStat("defense", "Reduces the amount of damage taken", 0);
+        stats.addStat("damage", "Increases the amount of damage dealt", 0);
 
         //TODO: Do I really want to do this?
+        //im from 2 days in the future and the answer is no but idk how to change it
         Game.getWorld().addObject(this);
+    }
+
+    @Override
+    public void update(long delta) {
+        if (getStat("health").getValue() < 1) {
+            die();
+        }
     }
 
     public AnimationPlayer getAnim() {
@@ -35,7 +46,6 @@ public abstract class Entity extends GameObject implements Updatable {
     public StatManager.Stat getStat(String title) {
         return stats.getStat(title);
     }
-
 
 
     public void moveRight(int amu) {
@@ -75,6 +85,13 @@ public abstract class Entity extends GameObject implements Updatable {
     }
 
     public void takeDamage(int amu) {
-
+        int realAmount = (int)(amu - (getStat("defense").getValue()));
+        stats.decStat("health", realAmount);
     }
+
+    public void heal(int amu) {
+        stats.removeDecStat("health", amu);
+    }
+
+
 }

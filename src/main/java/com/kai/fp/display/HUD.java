@@ -1,9 +1,11 @@
 package com.kai.fp.display;
 
+import com.kai.fp.core.Game;
 import com.kai.fp.core.Renderable;
 import com.kai.fp.items.Item;
 import com.kai.fp.util.DrawPoint;
 import com.kai.fp.util.Globals;
+import com.kai.fp.util.MFont;
 import com.kai.fp.util.ResourceManager;
 
 import java.awt.*;
@@ -32,6 +34,16 @@ public class HUD extends HUDComponent {
         weaponFrame.render(new DrawPoint(getX() + 8, getY() + 12), g);
         armorFrame.render(new DrawPoint(getX() + 8, getY() + 56), g);
 
+        g.setColor(Color.RED);
+        int playerHealth = Game.getPlayer().getStat("health").getValue();
+        int maxPlayerHealth = Game.getPlayer().getStat("max health").getValue();
+        g.fillRect(getX()+48, (int)(getY()+13 + ((1.00 - ((double)playerHealth/maxPlayerHealth)) * 78)), 14, (int)((double)playerHealth/maxPlayerHealth * 78));
+
+        g.setColor(Color.BLACK);
+        g.setFont(new MFont(1.2));
+        g.drawString(playerHealth + "", getX() + 68, getY() + 55);
+        g.drawString("----", getX()+68, getY()+62);
+        g.drawString(maxPlayerHealth+ "", getX()+68, getY()+72);
     }
 
     public ItemFrame getWeaponFrame() {

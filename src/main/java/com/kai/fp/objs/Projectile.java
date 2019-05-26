@@ -29,7 +29,7 @@ public class Projectile extends GameObject implements Updatable {
     public Projectile(WorldLocation location, WorldLocation target, Entity owner, Projectile base) {
         super(location, base.getWidth(), base.getHeight());
         this.owner = owner;
-        setDamage(base.getDamage());
+        setDamage(base.getDamage() + owner.getStat("damage").getValue());
         setSpeed(base.getSpeed());
         setTarget(target);
         setRange(base.getRange());

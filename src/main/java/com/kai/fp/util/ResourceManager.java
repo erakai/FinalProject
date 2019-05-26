@@ -32,7 +32,7 @@ public class ResourceManager {
 
     private static final String[] imagesToLoad = {
             "button", "chestcontents", "chests", "hud", "itemframe", "items", "observer", "player",
-            "portals", "rock", "tentacle", "tiles"
+            "portals", "rock", "tentacle", "tiles", "redwall"
     };
 
     static {

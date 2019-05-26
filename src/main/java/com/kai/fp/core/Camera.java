@@ -21,8 +21,10 @@ public class Camera implements Updatable {
 
     @Override
     public void update(long delta) {
-        if (Game.getWorld().isObjectsModified()) {
-            this.gameObjects = Game.getWorld().getObjects();
+        if (Game.getWorld() != null) {
+            if (Game.getWorld().isObjectsModified()) {
+                this.gameObjects = Game.getWorld().getObjects();
+            }
         }
 
         List<GameObject> toRemove = new ArrayList<>();
@@ -38,7 +40,9 @@ public class Camera implements Updatable {
     }
 
     public static void render(Graphics g) {
-        Game.getWorld().render(new DrawPoint(x, y), g);
+        if (Game.getWorld() != null) {
+            Game.getWorld().render(new DrawPoint(x, y), g);
+        }
     }
 
     public static int getCenterX() {

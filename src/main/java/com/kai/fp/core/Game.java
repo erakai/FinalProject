@@ -90,12 +90,14 @@ public class Game implements Runnable, Updatable {
     }
 
     public static void nextWorld(String id) {
+        //TODO: rewrite this method so it doesnt break every other second
         System.out.println("Transitioning to " + id);
         currentWorldName = id;
         updatables.clear();
         InputHandler.reset();
         display.init();
         worldAddQueue = new ArrayList<>();
+        currentWorld = null;
         currentWorld = new World(id);
         for (GameObject o: worldAddQueue) {
             currentWorld.addObject(o);
@@ -109,12 +111,8 @@ public class Game implements Runnable, Updatable {
             player.getLocation().setWorldY(0);
             currentWorld.addObject(player);
 
-            if (player.getInventory().getArmor() != null) {
-                Screen.getHud().getArmorFrame().setItem(player.getInventory().getArmor());
-            }
-            if (player.getInventory().getWeapon() != null) {
-                Screen.getHud().getWeaponFrame().setItem(player.getInventory().getWeapon());
-            }
+            Screen.getHud().getArmorFrame().setItem(player.getInventory().getArmor());
+            Screen.getHud().getWeaponFrame().setItem(player.getInventory().getWeapon());
         }
 
         camera = new Camera();

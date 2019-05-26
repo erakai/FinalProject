@@ -37,7 +37,7 @@ public class Weapon extends Item {
         int totalStringHeight = stringHeight * (hudLines.length + 1);
 
         g.setColor(new Color(50, 78, 105));
-        g.fillRect(dp.getX()+10, hudLength, stringWidth, totalStringHeight+10);
+        g.fillRect(dp.getX()+10, hudLength+5, stringWidth, totalStringHeight+10);
         g.setColor(Color.WHITE);
         g.drawLine(dp.getX()+15, hudLength+12, stringWidth-5, hudLength+12);
         g.setColor(new Color(187, 187, 187));

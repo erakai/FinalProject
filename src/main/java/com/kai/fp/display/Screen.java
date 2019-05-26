@@ -39,8 +39,11 @@ public class Screen extends JPanel implements Updatable {
         inputHandler.createMap(this);
         addMouseListener(inputHandler);
         hud = new HUD();
+        hud.getArmorFrame().setOnScreen(true);
+        hud.getWeaponFrame().setOnScreen(true);
 
         renderOnTop = new HashMap<>();
+
         //don't remove this or there is a 2 second freeze upon hovering over an item for the first time
         getFontMetrics(new MFont(1.0));
     }
