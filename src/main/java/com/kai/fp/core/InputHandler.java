@@ -17,7 +17,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author Kai on May 16, 2019
  */
 public class InputHandler implements Updatable, MouseListener {
-    private boolean up, down, left, right;
 
     private static List<Hoverable> hoverables = new ArrayList<>();
     private static List<Clickable> clickables = new ArrayList<>();

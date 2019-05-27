@@ -23,9 +23,6 @@ public abstract class Entity extends GameObject implements Updatable {
         stats.addStat("defense", "Reduces the amount of damage taken", 0);
         stats.addStat("damage", "Increases the amount of damage dealt", 0);
 
-        //TODO: Do I really want to do this?
-        //im from 2 days in the future and the answer is no but idk how to change it
-        Game.getWorld().addObject(this);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class ProjectileLoader {
                 Integer.valueOf(projElement.getAttribute("width")),
                 Integer.valueOf(projElement.getAttribute("height"))
         };
-        BufferedImage image = ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("items"), coords[0], coords[1], 8, 8).getScaledInstance(coords[2], coords[3], Image.SCALE_FAST));
+        BufferedImage image = ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("projectiles"), coords[0], coords[1], 8, 8).getScaledInstance(coords[2], coords[3], Image.SCALE_FAST));
         int damage = Integer.valueOf(projElement.getAttribute("damage"));
         int range = Integer.valueOf(projElement.getAttribute("range")) * 15;
         int speed = Integer.valueOf(projElement.getAttribute(("speed")));

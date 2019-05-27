@@ -1,7 +1,10 @@
 package com.kai.fp.world;
 
+import com.kai.fp.core.Game;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.items.Rarity;
+import com.kai.fp.objs.entities.enemies.w1.Goblin;
+import com.kai.fp.objs.entities.enemies.w1.RangedGoblin;
 import com.kai.fp.objs.inanimate.*;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.util.TextFileLoader;
@@ -110,11 +113,19 @@ class WorldLoader {
                 case "w":
                     tile.setOccupying(new RedWall(new WorldLocation(row, col)));
                     break;
+                case "!":
+                    Game.addToWorldQueue(new Goblin(new WorldLocation(location)));
+                    break;
+                case "?":
+                    Game.addToWorldQueue(new RangedGoblin(new WorldLocation(location)));
+                    break;
                 default:
                     System.out.println(occupyingString + " produced an error.");
             }
 
-            tile.setWalkable(!tile.getOccupying().isPhysical());
+            if (tile.getOccupying() != null) {
+                tile.setWalkable(!tile.getOccupying().isPhysical());
+            }
         }
         return tile;
     }

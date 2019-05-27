@@ -17,7 +17,7 @@
     <Item type="weapon" id="Test Weapon" firemode="STRAIGHT_FIRE" rarity="common" imgcoords="0 16">
         <stat id="speed">1</stat>
         <description>A fairly weak weapon designed to show proof of concept for weapons.</description>
-        <projectile imgcoords="0 24" width="8" height="8" speed="8" variance="15" damage="8" range="15"/>
+        <projectile imgcoords="8 0" width="8" height="8" speed="8" variance="15" damage="8" range="15"/>
         <hud>
             <line>Damage: 8</line>
             <line>Range: 15</line>
@@ -27,9 +27,9 @@
     <Item type="weapon" id="Test Glyphic Shotgun" firemode="GLYPHIC_SHOTGUN_FIRE" rarity="glyphic" imgcoords="0 16">
         <stat id="damage">2</stat>
         <description>A random item designed to test if weapons actually work.</description>
-        <projectile imgcoords="0 24" width="8" height="8" speed="7" variance="15" damage="3" range="6"/>
+        <projectile imgcoords="16 0" width="8" height="8" speed="7" variance="15" damage="2" range="6"/>
         <hud>
-            <line>Damage: 3</line>
+            <line>Damage: 2</line>
             <line>Range: 6</line>
             <line>Projectile Speed: 7</line>
             <line>Shoots 5 projectiles</line>

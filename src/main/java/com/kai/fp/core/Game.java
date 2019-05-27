@@ -70,6 +70,14 @@ public class Game implements Runnable, Updatable {
     }
 
     public void update(long delta) {
+        if (currentWorld != null) {
+            if (worldAddQueue.size() > 0) {
+                for (GameObject o : worldAddQueue) {
+                    currentWorld.addObject(o);
+                }
+                worldAddQueue.clear();
+            }
+        }
 
         camera.update(delta);
         display.update(delta);
@@ -101,13 +109,10 @@ public class Game implements Runnable, Updatable {
         worldAddQueue = new ArrayList<>();
         currentWorld = null;
         currentWorld = new World(id);
-        for (GameObject o: worldAddQueue) {
-            currentWorld.addObject(o);
-        }
-        worldAddQueue.clear();
 
         if (player == null) {
             player = new Player(new WorldLocation(0,0));
+            currentWorld.addObject(player);
         } else {
             player.getLocation().setWorldX(0);
             player.getLocation().setWorldY(0);

@@ -1,5 +1,6 @@
 package com.kai.fp.objs.entities.enemies;
 
+import com.kai.fp.core.Camera;
 import com.kai.fp.core.Game;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.items.Rarity;
@@ -15,6 +16,7 @@ import com.kai.fp.world.WorldLocation;
 import com.kai.fp.world.WorldTile;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 //THIS IS MELEE ENEMY
@@ -25,7 +27,7 @@ public abstract class Enemy extends Entity {
     private EnemyTier tier;
     private String id;
     private double rateOfFire = 1;
-
+    private List<Projectile> projectiles;
     int attackTick, maxAttackTick;
 
     public Enemy(WorldLocation location, int width, int height) {
@@ -33,17 +35,19 @@ public abstract class Enemy extends Entity {
         Game.getWorld().removeObject(this);
     }
 
-    public Enemy(WorldLocation location, Enemy base) {
+    public Enemy(WorldLocation location, EnemyResource base) {
         super(location, base.getWidth(), base.getHeight());
+        projectiles = new ArrayList<>();
+        base.projectiles.forEach((p) -> projectiles.add(p));
         active = true;
         tier = base.getTier();
         id = base.getId();
         for (StatManager.Stat s : base.getStats().getStats().values()) {
             getStat(s.getName()).baseValue = s.baseValue;
         }
-        rateOfFire = base.getRateofFire();
+        rateOfFire = base.getRateOfFire();
 
-        attackTick = 1000;
+        attackTick = 10000;
         maxAttackTick = (int)(Globals.FRAMES_PER_SECOND / rateOfFire);
     }
 
@@ -52,7 +56,7 @@ public abstract class Enemy extends Entity {
         if (active) {
             super.render(dp, g);
             g.setColor(Color.RED);
-            g.fillRect(getScreenX(), getScreenY() - 10,
+            g.fillRect(getScreenX() - Camera.x, getScreenY() - 10 - Camera.y,
                     (int) (((getStat("health").getValue() / (double) (getStat("max health").getValue()))) * getWidth()), 5);
         }
     }
@@ -72,7 +76,7 @@ public abstract class Enemy extends Entity {
 
     public abstract void move();
 
-    private void attack() {
+    public void attack() {
         if (checkCollision(Game.getPlayer())) {
             Game.getPlayer().takeDamage(getStat("damage").getValue());
         }
@@ -82,16 +86,16 @@ public abstract class Enemy extends Entity {
     public void die() {
         super.die();
         //TODO: have correct calculations later
-        WorldTile tile = Game.getWorld().getTile(getCenterX()/WorldTile.WIDTH, (getCenterY())/WorldTile.HEIGHT);
-        LootChest chest = new LootChest(new WorldLocation(getCenterX()/WorldTile.WIDTH, getCenterY()/WorldTile.HEIGHT));
-        if (tier == EnemyTier.REGULAR) {
-            chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));
-        } else if (tier == EnemyTier.ELITE) {
-            chest.addItem(ItemLoader.getRandomItem(Rarity.RARE)) ;
-        } else if (tier == EnemyTier.BOSS) {
-            chest.addItem(ItemLoader.getRandomItem(Rarity.GLYPHIC));
-        }
-        tile.setOccupying(chest);
+//        WorldTile tile = Game.getWorld().getTile(getCenterX()/WorldTile.WIDTH, (getCenterY())/WorldTile.HEIGHT);
+//        LootChest chest = new LootChest(new WorldLocation(getCenterX()/WorldTile.WIDTH, getCenterY()/WorldTile.HEIGHT));
+//        if (tier == EnemyTier.REGULAR) {
+//            chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));
+//        } else if (tier == EnemyTier.ELITE) {
+//            chest.addItem(ItemLoader.getRandomItem(Rarity.RARE)) ;
+//        } else if (tier == EnemyTier.BOSS) {
+//            chest.addItem(ItemLoader.getRandomItem(Rarity.GLYPHIC));
+//        }
+//        tile.setOccupying(chest);
     }
 
     public EnemyTier getTier() {
@@ -118,4 +122,17 @@ public abstract class Enemy extends Entity {
         this.id = id;
     }
 
+    public List<Projectile> getProjectiles() {
+        return projectiles;
+    }
+
+    @Override
+    public String toString() {
+        return "Enemy{" +
+                "tier=" + tier +
+                ", id='" + id + '\'' +
+                ", rateOfFire=" + rateOfFire +
+                ", stats=" + getStats() +
+                '}';
+    }
 }

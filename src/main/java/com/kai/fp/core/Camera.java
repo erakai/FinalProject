@@ -29,7 +29,7 @@ public class Camera implements Updatable {
 
         List<GameObject> toRemove = new ArrayList<>();
         for (GameObject e: gameObjects) {
-            if (e.distanceTo(getCenterX(), getCenterY()) < Math.sqrt(width*width + height*height)) {
+            if (e.distanceTo(getCenterX(), getCenterY()) < Math.sqrt(width*width + height*height)/2) {
                 if (e instanceof Updatable) {
                     ((Updatable) e).update(delta);
                 }

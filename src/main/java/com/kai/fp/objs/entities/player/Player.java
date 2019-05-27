@@ -5,10 +5,13 @@ import com.kai.fp.core.Game;
 import com.kai.fp.display.Screen;
 import com.kai.fp.objs.Animation;
 import com.kai.fp.objs.entities.Entity;
+import com.kai.fp.util.DrawPoint;
+import com.kai.fp.util.MFont;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.world.WorldLocation;
 import com.kai.fp.world.WorldTile;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
@@ -76,6 +79,11 @@ public class Player extends Entity {
         Camera.x = getLocation().getWorldX() - Camera.width / 2;
         Camera.y = getLocation().getWorldY() - Camera.height / 2;
 
+    }
+
+    @Override
+    public void render(DrawPoint dp, Graphics g) {
+        super.render(dp, g);
     }
 
     @Override
