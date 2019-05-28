@@ -30,6 +30,26 @@ public enum CombatBehavior {
                 }
             }
         }
+    },
+    FLY_CHASE {
+        public void act(Enemy actor, Entity target) {
+            if (actor.distanceTo(target) > actor.getWidth()/2) {
+                final int variance = 8;
+
+                int targetX = target.getCenterX() + ((int)(Math.random() * variance * 2 - variance));
+                int targetY = target.getCenterY() + ((int)(Math.random() * variance * 2 - variance));
+
+                double deltaX = targetX - actor.getCenterX();
+                double deltaY = targetY - actor.getCenterY();
+                double direction = Math.atan2(deltaY, deltaX);
+
+                int xChange = (int)(actor.getStat("speed").getValue() * Math.cos(direction));
+                int yChange = (int)(actor.getStat("speed").getValue() * Math.sin(direction));
+
+                actor.getLocation().setWorldX(actor.getScreenX() + xChange);
+                actor.getLocation().setWorldY(actor.getScreenY() + yChange);
+            }
+        }
     };
 
     public abstract void act(Enemy actor, Entity target);

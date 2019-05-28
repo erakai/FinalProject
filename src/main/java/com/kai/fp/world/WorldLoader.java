@@ -6,6 +6,7 @@ import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.entities.enemies.w1.Goblin;
 import com.kai.fp.objs.entities.enemies.w1.RangedGoblin;
 import com.kai.fp.objs.entities.enemies.w1.Sludge;
+import com.kai.fp.objs.entities.enemies.w2.Eyeball;
 import com.kai.fp.objs.inanimate.*;
 import com.kai.fp.objs.npcs.JohnCharacter;
 import com.kai.fp.objs.npcs.SallyCharacter;
@@ -121,6 +122,9 @@ class WorldLoader {
                     break;
                 case "?":
                     Game.addToWorldQueue(new RangedGoblin(new WorldLocation(location)));
+                    break;
+                case "@":
+                    Game.addToWorldQueue(new Eyeball(new WorldLocation(location)));
                     break;
                 case "1":
                     tile.setOccupying(new JohnCharacter(new WorldLocation(row, col)));
