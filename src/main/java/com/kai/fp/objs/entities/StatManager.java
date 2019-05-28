@@ -86,9 +86,7 @@ public class StatManager {
         public String toString() {
             return "Stat{" +
                     "name='" + name + '\'' +
-                    ", baseValue=" + baseValue +
-                    ", positiveChange=" + positiveChange +
-                    ", negativeChange=" + negativeChange +
+                    ", value=" + getValue() +
                     '}';
         }
     }

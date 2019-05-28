@@ -15,9 +15,19 @@ public enum CombatBehavior {
                 double deltaY = targetY - actor.getCenterY();
                 double direction = Math.atan2(deltaY, deltaX);
 
+                int xChange = (int)(actor.getStat("speed").getValue() * Math.cos(direction));
+                int yChange = (int)(actor.getStat("speed").getValue() * Math.sin(direction));
 
-                actor.getLocation().setWorldX((int) (actor.getScreenX() + (actor.getStat("speed").getValue()) * Math.cos(direction)));
-                actor.getLocation().setWorldY((int) (actor.getScreenY() + (actor.getStat("speed").getValue()) * Math.sin(direction)));
+                if (xChange>0) {
+                    actor.moveRight(xChange);
+                } else if (xChange<0) {
+                    actor.moveLeft(xChange);
+                }
+                if (yChange > 0) {
+                    actor.moveDown(yChange);
+                } else if (yChange <0) {
+                    actor.moveUp(yChange);
+                }
             }
         }
     };

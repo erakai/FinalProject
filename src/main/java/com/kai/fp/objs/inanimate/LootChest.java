@@ -29,11 +29,8 @@ public class LootChest extends InanimateObj implements Updatable {
     public LootChest(WorldLocation location) {
         super(location);
         setPhysical(false);
-        if (Game.getWorld() != null) {
-            Game.getWorld().addObject(this);
-        } else {
-            Game.addToWorldQueue(this);
-        }
+        Game.addToWorldQueue(this);
+
 
         items = new ItemFrame[4];
         for (int i = 0; i < 4; i++) {

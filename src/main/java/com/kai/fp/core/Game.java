@@ -107,7 +107,6 @@ public class Game implements Runnable, Updatable {
         InputHandler.reset();
         display.init();
         worldAddQueue = new ArrayList<>();
-        currentWorld = null;
         currentWorld = new World(id);
 
         if (player == null) {

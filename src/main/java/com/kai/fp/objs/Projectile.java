@@ -94,7 +94,7 @@ public class Projectile extends GameObject implements Updatable {
         }
 
         WorldTile tile = Game.getWorld().getTile(getCenterX()/WorldTile.WIDTH, (getCenterY())/WorldTile.HEIGHT);
-        if (tile == null || !tile.isWalkable()) {
+        if (tile != null && !tile.getType().equals("void") && !tile.isWalkable()) {
             die();
         }
     }
