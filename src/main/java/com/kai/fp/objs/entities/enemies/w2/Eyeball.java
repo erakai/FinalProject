@@ -9,6 +9,7 @@ import com.kai.fp.objs.entities.enemies.ProjectileEnemy;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.world.WorldLocation;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
@@ -16,10 +17,8 @@ import java.awt.image.BufferedImage;
  */
 public class Eyeball extends ProjectileEnemy {
     private static BufferedImage[] frames = {
-            ResourceManager.splice(ResourceManager.getSprite("enemies"), 0, 96 ,32 , 32),
-            ResourceManager.splice(ResourceManager.getSprite("enemies"), 32, 96, 32, 32),
-            ResourceManager.splice(ResourceManager.getSprite("enemies"), 64, 96, 32, 32),
-            ResourceManager.splice(ResourceManager.getSprite("enemies"), 96, 96, 32, 32)
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 0, 128 ,32 , 32).getScaledInstance(24,24, Image.SCALE_SMOOTH)),
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 32, 128 ,32 , 32).getScaledInstance(24,24, Image.SCALE_SMOOTH)),
     };
 
 

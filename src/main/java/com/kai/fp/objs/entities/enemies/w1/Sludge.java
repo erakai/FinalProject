@@ -17,10 +17,10 @@ import java.awt.image.BufferedImage;
  */
 public class Sludge extends ProjectileEnemy {
     private static BufferedImage[] frames = {
-            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 0, 0, 32, 32).getScaledInstance(24,24, Image.SCALE_FAST)),
-            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 32, 0, 32, 32).getScaledInstance(24,24, Image.SCALE_FAST)),
-            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 64, 0, 32, 32).getScaledInstance(24,24, Image.SCALE_FAST)),
-            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 96, 0, 32, 32).getScaledInstance(24,24, Image.SCALE_FAST))
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 0, 96, 32, 32).getScaledInstance(32,32, Image.SCALE_FAST)),
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 32, 96, 32, 32).getScaledInstance(32,32, Image.SCALE_FAST)),
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 64, 96, 32, 32).getScaledInstance(32,32, Image.SCALE_FAST)),
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 96, 96, 32, 32).getScaledInstance(32,32, Image.SCALE_FAST))
     };
 
 

@@ -25,12 +25,12 @@
         <projectile imgcoords="24 0" width="12" height="12" speed="5" variance="40" damage="4" range="25"/>
     </Enemy>
     <Enemy id="eyeball" tier="REGULAR" firemode="STRAIGHT_SINGLE_FIRE" width="24" height="24">
-        <rof>0.75</rof>
-        <stat id="speed">3</stat>
+        <rof>2</rof>
+        <stat id="speed">4</stat>
         <stat id="max health">6</stat>
         <stat id="damage">1</stat>
         <stat id="defense">2</stat>
-        <projectile imgcoords="0 16" width="8" height="8" speed="3" variance="10" damage="3" range="25"/>
+        <projectile imgcoords="0 16" width="12" height="12" speed="5" variance="10" damage="3" range="25"/>
     </Enemy>
 
 
