@@ -3,7 +3,6 @@ package com.kai.fp.objs.entities.enemies;
 import com.kai.fp.objs.Projectile;
 import com.kai.fp.util.ProjectileLoader;
 import com.kai.fp.util.ResourceManager;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -69,6 +68,10 @@ public class EnemyLoader {
                 enemy.width = Integer.valueOf(e.getAttribute("width"));
                 enemy.height = Integer.valueOf(e.getAttribute("height"));
                 enemy.rateOfFire = Double.valueOf(e.getElementsByTagName("rof").item(0).getTextContent());
+
+                if (e.hasAttribute("firemode")) {
+                    enemy.firemode = EnemyFire.valueOf(e.getAttribute("firemode"));
+                }
 
                 NodeList statlist = e.getElementsByTagName("stat");
                 for (int st = 0; st < statlist.getLength(); st++) {

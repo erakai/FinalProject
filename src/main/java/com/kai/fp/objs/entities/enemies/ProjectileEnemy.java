@@ -12,6 +12,6 @@ public abstract class ProjectileEnemy extends Enemy {
 
     @Override
     public void attack() {
-        Game.addToWorldQueue(new Projectile(new WorldLocation(this.getCenterX(), this.getCenterY()), new WorldLocation(Game.getPlayer().getLocation()), this, getProjectiles().get(0)));
+        getFire().fire(this, Game.getPlayer());
     }
 }

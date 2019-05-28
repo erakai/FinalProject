@@ -5,6 +5,7 @@ import com.kai.fp.items.ItemLoader;
 import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.entities.enemies.w1.Goblin;
 import com.kai.fp.objs.entities.enemies.w1.RangedGoblin;
+import com.kai.fp.objs.entities.enemies.w1.Sludge;
 import com.kai.fp.objs.inanimate.*;
 import com.kai.fp.objs.npcs.JohnCharacter;
 import com.kai.fp.objs.npcs.SallyCharacter;
@@ -126,6 +127,9 @@ class WorldLoader {
                     break;
                 case "2":
                     tile.setOccupying(new SallyCharacter(new WorldLocation(row, col)));
+                    break;
+                case ";":
+                    Game.addToWorldQueue(new Sludge(new WorldLocation(location)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

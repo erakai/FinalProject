@@ -17,18 +17,16 @@ public class Camera implements Updatable {
     public static int x = 0, y = 0;
     public static int width = Globals.DISPLAY_WIDTH, height = Globals.DISPLAY_HEIGHT;
 
-    private List<GameObject> gameObjects = new ArrayList<>();
 
     @Override
     public void update(long delta) {
-        if (Game.getWorld() != null) {
-            if (Game.getWorld().isObjectsModified()) {
-                this.gameObjects = Game.getWorld().getObjects();
-            }
-        }
+        //TODO: Garbage way to do this but im too lazy to do it some other way.
+        List<GameObject> gameObjects = Game.getWorld().getObjects();
 
         List<GameObject> toRemove = new ArrayList<>();
-        for (GameObject e: gameObjects) {
+        for (int i = 0; i < gameObjects.size() ;i++) {
+            GameObject e = gameObjects.get(i);
+
             if (e.distanceTo(getCenterX(), getCenterY()) < Math.sqrt(width*width + height*height)/5 * 2) {
                 if (e instanceof Updatable) {
                     ((Updatable) e).update(delta);
@@ -53,7 +51,4 @@ public class Camera implements Updatable {
         return y + (height/2);
     }
 
-    public List<GameObject> getGameObjects() {
-        return gameObjects;
-    }
 }

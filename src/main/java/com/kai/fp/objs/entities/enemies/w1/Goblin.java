@@ -13,10 +13,10 @@ import java.awt.image.BufferedImage;
 
 public class Goblin extends Enemy {
     private static BufferedImage[] frames = {
-            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 0, 0, 32, 32).getScaledInstance(16,16, Image.SCALE_FAST)),
-            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 32, 0, 32, 32).getScaledInstance(16,16, Image.SCALE_FAST)),
-            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 64, 0, 32, 32).getScaledInstance(16,16, Image.SCALE_FAST)),
-            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 96, 0, 32, 32).getScaledInstance(16,16, Image.SCALE_FAST))
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 128, 0, 32, 32).getScaledInstance(24,24, Image.SCALE_FAST)),
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 160, 0, 32, 32).getScaledInstance(24,24, Image.SCALE_FAST)),
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 192, 0, 32, 32).getScaledInstance(24,24, Image.SCALE_FAST)),
+            ResourceManager.toBufferedImage(ResourceManager.splice(ResourceManager.getSprite("enemies"), 224, 0, 32, 32).getScaledInstance(24,24, Image.SCALE_FAST))
     };
 
 

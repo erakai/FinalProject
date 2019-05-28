@@ -28,6 +28,7 @@ public abstract class Enemy extends Entity {
     private String id;
     private double rateOfFire = 1;
     private List<Projectile> projectiles;
+    private EnemyFire fire;
     int attackTick, maxAttackTick;
 
     public Enemy(WorldLocation location, int width, int height) {
@@ -39,6 +40,7 @@ public abstract class Enemy extends Entity {
         super(location, base.getWidth(), base.getHeight());
         projectiles = new ArrayList<>();
         base.projectiles.forEach((p) -> projectiles.add(p));
+        fire = base.firemode;
         active = true;
         tier = base.getTier();
         id = base.getId();
@@ -124,6 +126,14 @@ public abstract class Enemy extends Entity {
 
     public List<Projectile> getProjectiles() {
         return projectiles;
+    }
+
+    public EnemyFire getFire() {
+        return fire;
+    }
+
+    public void setFire(EnemyFire fire) {
+        this.fire = fire;
     }
 
     @Override

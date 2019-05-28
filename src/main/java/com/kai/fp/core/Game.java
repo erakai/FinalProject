@@ -113,6 +113,10 @@ public class Game implements Runnable, Updatable {
             player = new Player(new WorldLocation(0,0));
             currentWorld.addObject(player);
         } else {
+            player.getStats().setStat("health", player.getStat("max health").getValue());
+            player.getStats().getStat("health").negativeChange = 0;
+            player.getStats().getStat("health").positiveChange = 0;
+
             player.getLocation().setWorldX(0);
             player.getLocation().setWorldY(0);
             currentWorld.addObject(player);
@@ -124,7 +128,6 @@ public class Game implements Runnable, Updatable {
         camera = new Camera();
         Camera.x = player.getScreenX() - Globals.DISPLAY_WIDTH/2;
         Camera.y = player.getScreenY() - Globals.DISPLAY_HEIGHT/2;
-        camera.getGameObjects().clear();
         gamestate = State.RUNNING;
     }
 

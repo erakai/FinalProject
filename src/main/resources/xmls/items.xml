@@ -13,7 +13,6 @@
         <stat id="speed">3</stat>
         <description>An shiny armor used to test human capacity to survive long programming sessions.</description>
     </Item>
-
     <Item type="weapon" id="Test Weapon" firemode="STRAIGHT_FIRE" rarity="common" imgcoords="0 16">
         <stat id="speed">1</stat>
         <description>A fairly weak weapon designed to show proof of concept for weapons.</description>

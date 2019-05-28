@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <enemies>
-    <Enemy id="goblin" tier="REGULAR" width="12" height="12">
+    <Enemy id="goblin" tier="REGULAR" width="18" height="18">
         <rof>2</rof>
         <stat id="speed">4</stat>
         <stat id="max health">20</stat>
         <stat id="damage">3</stat>
         <stat id="defense">0</stat>
     </Enemy>
-    <Enemy id="ranged goblin" tier="REGULAR" width="24" height="24">
+    <Enemy id="ranged goblin" tier="REGULAR" firemode="STRAIGHT_SINGLE_FIRE" width="24" height="24">
         <rof>1</rof>
         <stat id="speed">2</stat>
         <stat id="max health">40</stat>
         <stat id="damage">0</stat>
-        <stat id="defense">2</stat>
+        <stat id="defense">0</stat>
         <projectile imgcoords="0 0" width="16" height="16" speed="7" variance="15" damage="6" range="35"/>
     </Enemy>
-
-
-
+    <Enemy id="sludge" tier="ELITE" firemode="CIRCULAR_FIRE" width="32" height="32">
+        <rof>0.5</rof>
+        <stat id="speed">2</stat>
+        <stat id="max health">50</stat>
+        <stat id="damage">1</stat>
+        <stat id="defense">2</stat>
+        <projectile imgcoords="24 0" width="12" height="12" speed="5" variance="40" damage="4" range="25"/>
+    </Enemy>
 </enemies>

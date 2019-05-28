@@ -12,6 +12,7 @@ public class EnemyResource {
     public String id;
     public double rateOfFire = 1;
     public int width, height;
+    public EnemyFire firemode;
     public List<Projectile> projectiles;
 
     public EnemyResource() {
