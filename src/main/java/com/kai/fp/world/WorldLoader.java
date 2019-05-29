@@ -3,6 +3,7 @@ package com.kai.fp.world;
 import com.kai.fp.core.Game;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.items.Rarity;
+import com.kai.fp.objs.entities.enemies.bosses.Boulderfist;
 import com.kai.fp.objs.entities.enemies.w1.Goblin;
 import com.kai.fp.objs.entities.enemies.w1.RangedGoblin;
 import com.kai.fp.objs.entities.enemies.w1.Sludge;
@@ -160,6 +161,9 @@ class WorldLoader {
                     break;
                 case "$":
                     Game.addToWorldQueue(new DemonTank(new WorldLocation(location)));
+                    break;
+                case "%":
+                    Game.addToWorldQueue(new Boulderfist(new WorldLocation(location)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

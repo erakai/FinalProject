@@ -5,6 +5,7 @@
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/display/HUDComponent.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/display/FPButton.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/Entity.java
+/Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/w2/Eyeball.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/Enemy.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/world/WorldTile.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/util/ResourceManager.java
@@ -19,6 +20,7 @@
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/world/TileResource.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/core/Camera.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/net/ClientConnection.java
+/Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/w2/SkeleTony.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/EnemyLoader.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/items/Rarity.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/items/ItemBehavior.java
@@ -26,6 +28,7 @@
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/inanimate/RedWall.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/w1/RangedGoblin.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/player/Player.java
+/Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/display/RisingText.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/core/Renderable.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/items/ItemFire.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/core/Game.java
@@ -38,6 +41,7 @@
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/CombatBehavior.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/EnemyResource.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/Projectile.java
+/Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/w2/DemonTank.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/npcs/SallyCharacter.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/util/DrawPoint.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/npcs/Character.java
@@ -45,6 +49,7 @@
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/inanimate/Portal.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/core/Updatable.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/w1/Goblin.java
+/Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/npcs/EricCharacter.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/EnemyFire.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/entities/enemies/ProjectileEnemy.java
 /Users/mbp/Documents/JavaPrograms/FinalProject/src/main/java/com/kai/fp/objs/GameObject.java

@@ -48,5 +48,15 @@
         <stat id="damage">10</stat>
         <stat id="defense">2</stat>
     </Enemy>
+    <Enemy id="boulderfist" tier="BOSS" firemode="RANDOM_FIRE" width="72" height="72">
+        <rof>2</rof>
+        <stat id="speed">3</stat>
+        <stat id="max health">250</stat>
+        <stat id="damage">5</stat>
+        <stat id="defense">3</stat>
+        <projectile imgcoords="16 8" width="16" height="16" speed="9" variance="10" damage="5" range="35"/>
+        <projectile imgcoords="24 8" width="16" height="16" speed="9" variance="10" damage="5" range="35"/>
+        <projectile imgcoords="8 8" width="14" height="14" speed="5" variance="0" damage="3" range="45"/>
+    </Enemy>
 
 </enemies>

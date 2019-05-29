@@ -27,7 +27,7 @@ public class Camera implements Updatable {
         for (int i = 0; i < gameObjects.size() ;i++) {
             GameObject e = gameObjects.get(i);
 
-            if (e.distanceTo(getCenterX(), getCenterY()) < Math.sqrt(width*width + height*height)/5 * 2) {
+            if (e.distanceTo(getCenterX(), getCenterY()) < Math.sqrt(width*width + height*height)/2) {
                 if (e instanceof Updatable) {
                     ((Updatable) e).update(delta);
                 }

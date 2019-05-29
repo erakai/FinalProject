@@ -89,17 +89,15 @@ public abstract class Enemy extends Entity {
     @Override
     public void die() {
         super.die();
-        //TODO: have correct calculations later
-//        WorldTile tile = Game.getWorld().getTile(getCenterX()/WorldTile.WIDTH, (getCenterY())/WorldTile.HEIGHT);
-//        LootChest chest = new LootChest(new WorldLocation(getCenterX()/WorldTile.WIDTH, getCenterY()/WorldTile.HEIGHT));
-//        if (tier == EnemyTier.REGULAR) {
-//            chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));
-//        } else if (tier == EnemyTier.ELITE) {
-//            chest.addItem(ItemLoader.getRandomItem(Rarity.RARE)) ;
-//        } else if (tier == EnemyTier.BOSS) {
-//            chest.addItem(ItemLoader.getRandomItem(Rarity.GLYPHIC));
-//        }
-//        tile.setOccupying(chest);
+        WorldTile tile = Game.getWorld().getTile(getCenterX()/WorldTile.WIDTH, (getCenterY())/WorldTile.HEIGHT);
+        LootChest chest = new LootChest(new WorldLocation(getCenterX()/WorldTile.WIDTH, getCenterY()/WorldTile.HEIGHT));
+        if (tier == EnemyTier.ELITE && Math.random() < 0.3) {
+            chest.addItem(ItemLoader.getRandomItem(Rarity.RARE));
+            tile.setOccupying(chest);
+        }else if (tier == EnemyTier.BOSS) {
+            chest.addItem(ItemLoader.getRandomItem(Rarity.GLYPHIC));
+            tile.setOccupying(chest);
+        }
     }
 
     public EnemyTier getTier() {
@@ -112,6 +110,7 @@ public abstract class Enemy extends Entity {
 
     public void setRateofFire(double rateofFire) {
         this.rateOfFire = rateofFire;
+        maxAttackTick = (int)(Globals.FRAMES_PER_SECOND / rateOfFire);
     }
 
     public void setTier(EnemyTier tier) {

@@ -89,7 +89,7 @@ public abstract class Entity extends GameObject implements Updatable {
     public void takeDamage(int amu) {
         int realAmount = (int)(amu - (getStat("defense").getValue()));
         stats.decStat("health", realAmount);
-        new RisingText(this, "-" + amu, Color.RED);
+        new RisingText(this, "-" + realAmount, Color.RED);
     }
 
     public void heal(int amu) {
