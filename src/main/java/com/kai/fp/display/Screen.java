@@ -1,10 +1,12 @@
 package com.kai.fp.display;
 
 import com.kai.fp.core.*;
+import com.kai.fp.objs.GameObject;
 import com.kai.fp.util.DrawPoint;
 import com.kai.fp.util.Globals;
 import com.kai.fp.util.MFont;
 
+import javax.annotation.processing.RoundEnvironment;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class Screen extends JPanel implements Updatable {
     private static HUD hud;
 
     private static Map<DrawPoint, Renderable> renderOnTop;
+    private List<Renderable> renderables = new ArrayList<>();
 
     public Screen() {
         init();
@@ -82,6 +85,18 @@ public class Screen extends JPanel implements Updatable {
 
             renderOnTop.clear();
         }
+
+        List<Renderable> toRemove = new ArrayList<>();
+        for (Renderable r: renderables) {
+            r.render(new DrawPoint(0,0), g);
+            if (r instanceof GameObject && ((GameObject) r).isMarkedForRemoval()) {
+                toRemove.add(r);
+            }
+            if (r instanceof HUDComponent && ((HUDComponent) r).isMarkedForRemoval()) {
+                toRemove.add(r);
+            }
+        }
+        renderables.removeAll(toRemove);
     }
 
     public static HUD getHud() {
@@ -98,6 +113,14 @@ public class Screen extends JPanel implements Updatable {
 
     public InputHandler getInputHandler() {
         return inputHandler;
+    }
+
+    public List<Renderable> getRenderables() {
+        return renderables;
+    }
+
+    public static void addRenderable(Renderable r) {
+        getInstance().getRenderables().add(r);
     }
 
 }

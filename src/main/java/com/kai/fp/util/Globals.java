@@ -13,7 +13,7 @@ public class Globals {
     /**
      * The initial size of the display in pixels.
      */
-    public static final int DISPLAY_WIDTH = 802, DISPLAY_HEIGHT = 602;
+    public static  int DISPLAY_WIDTH = 802, DISPLAY_HEIGHT = 602;
 
     /**
      * The ideal/max frames per second of the app.

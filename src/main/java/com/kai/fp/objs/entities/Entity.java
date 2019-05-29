@@ -2,10 +2,15 @@ package com.kai.fp.objs.entities;
 
 import com.kai.fp.core.Game;
 import com.kai.fp.core.Updatable;
+import com.kai.fp.display.RisingText;
+import com.kai.fp.display.Screen;
 import com.kai.fp.objs.AnimationPlayer;
 import com.kai.fp.objs.GameObject;
+import com.kai.fp.util.DrawPoint;
 import com.kai.fp.world.WorldLocation;
 import com.kai.fp.world.WorldTile;
+
+import java.awt.*;
 
 /**
  * @author Kai on May 15, 2019
@@ -84,10 +89,12 @@ public abstract class Entity extends GameObject implements Updatable {
     public void takeDamage(int amu) {
         int realAmount = (int)(amu - (getStat("defense").getValue()));
         stats.decStat("health", realAmount);
+        new RisingText(this, "-" + amu, Color.RED);
     }
 
     public void heal(int amu) {
         stats.removeDecStat("health", amu);
+        new RisingText(this, "+" + amu, Color.GREEN);
     }
 
 

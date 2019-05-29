@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class StatManager {
 
+    //TODO: total rewrite of this garbage class
     private Map<String, Stat> stats;
 
     public StatManager() {
@@ -35,22 +36,38 @@ public class StatManager {
 
     public void incStat(String name, int amount) {
         Stat stat = getStat(name);
-        if (stat!=null) stat.positiveChange += amount;
+        stat.baseValue += amount;
+
+        if (name.equals("max health")) {
+            incStat("health", amount);
+            if (getStat("health").getValue() > getStat("max health").getValue()) {
+                getStat("health").baseValue = stat.baseValue;
+            }
+        }
     }
 
     public void removeIncStat(String name, int amount) {
-        Stat stat = getStat(name);
-        if (stat!=null) stat.positiveChange -= amount;
+        decStat(name, amount);
     }
 
     public void decStat(String name, int amount) {
         Stat stat = getStat(name);
-        if (stat!=null) stat.negativeChange += amount;
+        stat.baseValue -= amount;
+
+        if (name.equals("max health")) {
+            getStat("health").baseValue -= amount;
+            if (getStat("health").getValue() < 1) {
+                Stat health = getStat("health");
+                health.baseValue = 1;
+            }
+            if (getStat("health").getValue() > getStat("max health").getValue()) {
+                getStat("health").baseValue = stat.baseValue;
+            }
+        }
     }
 
     public void removeDecStat(String name, int amount) {
-        Stat stat = getStat(name);
-        if (stat!=null) stat.negativeChange -= amount;
+        incStat(name, amount);
     }
 
     public Map<String, Stat> getStats() {

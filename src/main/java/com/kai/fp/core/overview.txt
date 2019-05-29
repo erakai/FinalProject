@@ -69,6 +69,9 @@ to finish items:
 
 
 OKAY
+    also need to make it so that weapons have a rate of fire
+    hold down to shoot
+
     1. add more tiles and stuff for world 3
     2. add like a couple more common items
     3. fix the heccin level design

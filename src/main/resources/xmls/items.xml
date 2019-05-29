@@ -3,19 +3,19 @@
 <items>
     <Item type ="armor" id="Speed Armor" rarity="common" imgcoords="0 0">
         <stat id="speed">1</stat>
-        <description>Speed is key.             </description>
+        <description>I hope you will agree when I say speed is key.</description>
     </Item>
-    <Item type="armor" id="+1 Speed Vest" rarity="rare" imgcoords="8 0">
+    <Item type="armor" id="Upgraded Speed Vest" rarity="rare" imgcoords="8 0">
         <stat id="speed">2</stat>
-        <description>Speed is key, but more speed is keyer.</description>
+        <description>Have you ever considered merely... going faster?</description>
     </Item>
     <Item type="armor" id="Forest Queen Camo" rarity="glyphic" imgcoords="16 0">
         <stat id="speed">3</stat>
         <stat id="defense">1</stat>
+        <stat id="max health">15</stat>
         <description>Often used by hunters camouflaging in the jungle, this armor provides a sense of security.</description>
     </Item>
     <Item type="weapon" id="Apprentice Staff" firemode="STRAIGHT_FIRE" rarity="common" imgcoords="8 16">
-        <stat id="speed">1</stat>
         <description>A fairly weak weapon handed out to beginner adventurers.</description>
         <projectile imgcoords="16 0" width="8" height="8" speed="8" variance="15" damage="8" range="15"/>
         <hud>
@@ -24,7 +24,7 @@
             <line>Projectile Speed: 8</line>
         </hud>
     </Item>
-    <Item type="weapon" id="Ivy Shotgun" firemode="GLYPHIC_SHOTGUN_FIRE" rarity="rare" imgcoords="32 16">
+    <Item type="weapon" id="Ivy Shotgun" firemode="SHOTGUN_FIRE" rarity="rare" imgcoords="32 16">
         <stat id="damage">2</stat>
         <description>Wrapped in ivy, this shotgun shoots damaging poison ivy at its enemies.</description>
         <projectile imgcoords="40 0" width="8" height="8" speed="7" variance="15" damage="2" range="8"/>
@@ -35,13 +35,23 @@
             <line>Shoots 5 projectiles</line>
         </hud>
     </Item>
+    <Item type="weapon" id="Red Blaster" firemode="STRAIGHT_FIRE" rarity="rare" imgcoords="48 16">
+        <description>This blessed weapon grants the wielder perfect accuracy (only while killing things, of course).</description>
+        <projectile imgcoords="0 24" width="24" height="24" speed="9" variance="0" damage="14" range="40"/>
+        <hud>
+            <line>Damage: 14</line>
+            <line>Range: 40</line>
+            <line>Projectile Speed: 9</line>
+            <line>Perfectly accurate.</line>
+        </hud>
+    </Item>
     <Item type="weapon" id="Twinstick" firemode="DUAL_FIRE" rarity="glyphic" imgcoords="16 16">
         <stat id="defense">1</stat>
         <description>Shooting at enemies is beneficial to the player. Shooting twice is extra beneficial.</description>
-        <projectile imgcoords="48 0" width="8" height="8" speed="7" variance="30" damage="3" range="35"/>
-        <projectile imgcoords="56 0" width="12" height="12" speed="2" variance="5" damage="6" range="9"/>
+        <projectile imgcoords="48 0" width="8" height="8" speed="7" variance="15" damage="3" range="35"/>
+        <projectile imgcoords="56 0" width="12" height="12" speed="2" variance="5" damage="7" range="9"/>
         <hud>
-            <line>Damage: 3/6</line>
+            <line>Damage: 3/7</line>
             <line>Range: 35/9</line>
             <line>Projectile Speed: 7/4</line>
             <line>Fires 1 fast, low damaging projectile.</line>

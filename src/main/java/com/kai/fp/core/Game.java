@@ -1,5 +1,6 @@
 package com.kai.fp.core;
 
+import com.kai.fp.display.HUDComponent;
 import com.kai.fp.display.Screen;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.objs.GameObject;
@@ -91,6 +92,9 @@ public class Game implements Runnable, Updatable {
         for (Updatable u: updatables) {
             u.update(delta);
             if (u instanceof GameObject && ((GameObject) u).isMarkedForRemoval()) {
+                toRemove.add(u);
+            }
+            if (u instanceof HUDComponent && ((HUDComponent) u).isMarkedForRemoval()) {
                 toRemove.add(u);
             }
         }

@@ -21,6 +21,8 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
     private static List<Hoverable> hoverables = new ArrayList<>();
     private static List<Clickable> clickables = new ArrayList<>();
     private int currentMouseX, currentMouseY;
+    private List<int[]> fireAt = new ArrayList<>();
+    private List<int[]> checkClicks = new ArrayList<>();
 
     public void mouseExists(int cx, int cy) {
         this.currentMouseX = cx;
@@ -94,6 +96,31 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
             }
         }
         hoverables.removeAll(toRemove);
+
+        if (fireAt.size() > 0) {
+            Weapon w = Game.getPlayer().getInventory().getWeapon();
+            if (w != null) {
+                for (int[] pair : fireAt) {
+                    w.fire(new WorldLocation(pair[0] + Camera.x, pair[1] + Camera.y));
+
+                }
+                fireAt.clear();
+            }
+        }
+
+        if (checkClicks.size() > 0) {
+            List<Clickable> rem = new ArrayList<>();
+            for (int[] pair: checkClicks) {
+                for (Clickable c : clickables) {
+                    c.possibleClick(pair[0], pair[1]);
+                    if (c instanceof HUDComponent) {
+                        if (((HUDComponent) c).isMarkedForRemoval()) rem.add(c);
+                    }
+                }
+            }
+            clickables.removeAll(rem);
+            checkClicks.clear();
+        }
     }
 
     @Override
@@ -104,25 +131,17 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
     @Override
     public void mousePressed(MouseEvent e) {
         SwingUtilities.invokeLater(() -> {
-            Weapon w = Game.getPlayer().getInventory().getWeapon();
-            if (w != null) {
-                int screenX = e.getX();
-                int screenY = e.getY();
-                w.fire(new WorldLocation(screenX+Camera.x,screenY+Camera.y));
-            }
+            int screenX = e.getX();
+            int screenY = e.getY();
+            fireAt.add(new int[] {screenX, screenY});
         });
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        List<Clickable> toRemove = new ArrayList<>();
-        for (Clickable c: clickables) {
-            c.possibleClick(e.getX(), e.getY());
-            if (c instanceof HUDComponent) {
-                if (((HUDComponent) c).isMarkedForRemoval()) toRemove.add(c);
-            }
-        }
-        clickables.removeAll(toRemove);
+        SwingUtilities.invokeLater(() -> {
+            checkClicks.add(new int[] {e.getX(), e.getY()});
+        });
     }
 
     @Override
