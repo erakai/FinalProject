@@ -6,9 +6,11 @@ import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.entities.enemies.w1.Goblin;
 import com.kai.fp.objs.entities.enemies.w1.RangedGoblin;
 import com.kai.fp.objs.entities.enemies.w1.Sludge;
+import com.kai.fp.objs.entities.enemies.w2.DemonTank;
 import com.kai.fp.objs.entities.enemies.w2.Eyeball;
 import com.kai.fp.objs.entities.enemies.w2.SkeleTony;
 import com.kai.fp.objs.inanimate.*;
+import com.kai.fp.objs.npcs.EricCharacter;
 import com.kai.fp.objs.npcs.JohnCharacter;
 import com.kai.fp.objs.npcs.SallyCharacter;
 import com.kai.fp.util.ResourceManager;
@@ -147,11 +149,17 @@ class WorldLoader {
                 case "2":
                     tile.setOccupying(new SallyCharacter(new WorldLocation(row, col)));
                     break;
+                case "3":
+                    tile.setOccupying(new EricCharacter(new WorldLocation(row, col)));
+                    break;
                 case ";":
                     Game.addToWorldQueue(new Sludge(new WorldLocation(location)));
                     break;
                 case "/":
                     Game.addToWorldQueue(new SkeleTony(new WorldLocation(location)));
+                    break;
+                case "$":
+                    Game.addToWorldQueue(new DemonTank(new WorldLocation(location)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

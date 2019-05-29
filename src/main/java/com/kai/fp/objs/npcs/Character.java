@@ -34,7 +34,7 @@ public abstract class Character extends InanimateObj implements Updatable {
 
         if (showDialogue) {
             int stringHeight = g.getFontMetrics().getAscent()+4;
-            int stringWidth = (int)(g.getFontMetrics().stringWidth(longestLine)*1.1);
+            int stringWidth = (int)(g.getFontMetrics().stringWidth(longestLine)*1.25);
             int totalStringHeight = stringHeight * dialogueToShow.length;
 
             g.setColor(new Color(230,230,230));

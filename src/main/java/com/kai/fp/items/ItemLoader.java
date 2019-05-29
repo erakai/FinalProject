@@ -120,7 +120,9 @@ public class ItemLoader {
                     hudLines[m] = lineList.item(m).getTextContent();
                 }
 
-                item = new Weapon(id, image, behaviors, description, rarity, firemode, hudLines, projList);
+                double rof = Double.valueOf(itemElement.getElementsByTagName("rof").item(0).getTextContent());
+
+                item = new Weapon(id, image, behaviors, description, rarity, firemode, hudLines, projList, rof);
             }
             if (rarity == Rarity.COMMON) {
                 commonItems.put(id, item);

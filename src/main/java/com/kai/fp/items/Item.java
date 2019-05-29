@@ -53,7 +53,7 @@ public abstract class Item implements Renderable, ItemBehavior {
 
         int stringHeight = g.getFontMetrics().getAscent()+4;
         int vstringWidth = (int)(g.getFontMetrics().stringWidth(description) * 0.90);
-        int totalStringHeight = stringHeight * (5 + behaviors.size() + (behaviors.size()-1));
+        int totalStringHeight = stringHeight * (5 + behaviors.size());
         if (stringWidth != vstringWidth) stringWidth = vstringWidth;
 
         g.setColor(new Color(50, 78, 105));

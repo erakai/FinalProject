@@ -21,6 +21,7 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
     private static List<Hoverable> hoverables = new ArrayList<>();
     private static List<Clickable> clickables = new ArrayList<>();
     private int currentMouseX, currentMouseY;
+    private boolean mouseHeldDown = false;
     private List<int[]> fireAt = new ArrayList<>();
     private List<int[]> checkClicks = new ArrayList<>();
 
@@ -102,7 +103,6 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
             if (w != null) {
                 for (int[] pair : fireAt) {
                     w.fire(new WorldLocation(pair[0] + Camera.x, pair[1] + Camera.y));
-
                 }
                 fireAt.clear();
             }
@@ -121,6 +121,10 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
             clickables.removeAll(rem);
             checkClicks.clear();
         }
+
+        if (mouseHeldDown) {
+            Game.getPlayer().getInventory().getWeapon().fire(new WorldLocation(currentMouseX + Camera.x, currentMouseY + Camera.y));
+        }
     }
 
     @Override
@@ -130,6 +134,7 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        mouseHeldDown = true;
         SwingUtilities.invokeLater(() -> {
             int screenX = e.getX();
             int screenY = e.getY();
@@ -139,6 +144,7 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        mouseHeldDown = false;
         SwingUtilities.invokeLater(() -> {
             checkClicks.add(new int[] {e.getX(), e.getY()});
         });

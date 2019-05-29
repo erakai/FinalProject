@@ -29,7 +29,7 @@
         <stat id="speed">7</stat>
         <stat id="max health">7</stat>
         <stat id="damage">1</stat>
-        <stat id="defense">2</stat>
+        <stat id="defense">0</stat>
         <projectile imgcoords="0 16" width="12" height="12" speed="5" variance="10" damage="3" range="25"/>
     </Enemy>
     <Enemy id="skele tony" tier="REGULAR" firemode="DUAL_FIRE" width="32" height="32">
@@ -41,6 +41,12 @@
         <projectile imgcoords="32 0" width="18" height="18" speed="7" variance="10" damage="4" range="17"/>
         <projectile imgcoords="0 32" width="18" height="18" speed="7" variance="10" damage="5" range="16"/>
     </Enemy>
-
+    <Enemy id="demon tank" tier="ELITE" width="48" height="48">
+        <rof>5</rof>
+        <stat id="speed">2</stat>
+        <stat id="max health">80</stat>
+        <stat id="damage">10</stat>
+        <stat id="defense">2</stat>
+    </Enemy>
 
 </enemies>

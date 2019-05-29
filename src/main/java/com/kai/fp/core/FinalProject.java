@@ -12,13 +12,16 @@ import java.util.Scanner;
 public class FinalProject {
 
     public static void main(String[] args) {
-        String coords = JOptionPane.showInputDialog("Display size? 802x602 is recommended. Format: \"[width] [height]\".");
-        if (coords != null && coords.split(" ").length == 2) {
-            try {
-                Globals.DISPLAY_WIDTH = Integer.valueOf(coords.split(" ")[0]);
-                Globals.DISPLAY_HEIGHT = Integer.valueOf(coords.split(" ")[1]);
-                System.out.println();
-            } catch(Exception ex) {}
+        if (Globals.CUSTOM_DISPLAY_SIZE) {
+            String coords = JOptionPane.showInputDialog("Display size? 802x602 is recommended. Format: \"[width] [height]\".");
+            if (coords != null && coords.split(" ").length == 2) {
+                try {
+                    Globals.DISPLAY_WIDTH = Integer.valueOf(coords.split(" ")[0]);
+                    Globals.DISPLAY_HEIGHT = Integer.valueOf(coords.split(" ")[1]);
+                    System.out.println();
+                } catch (Exception ex) {
+                }
+            }
         }
 
         JFrame frame = new JFrame("Final Project");

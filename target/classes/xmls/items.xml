@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <items>
-    <Item type ="armor" id="Speed Armor" rarity="common" imgcoords="0 0">
+    <Item type="armor" id="Speed Armor" rarity="common" imgcoords="0 0">
         <stat id="speed">1</stat>
         <description>I hope you will agree when I say speed is key.</description>
+    </Item>
+    <Item type="armor" id="Damage Armor" rarity="common"  imgcoords="32 0">
+        <stat id="damage">1</stat>
+        <description>Going fast is irrelevant in comparison to killing things.</description>
+    </Item>
+    <Item type="armor" id="Defense Armor" rarity="common" imgcoords="40 0">
+        <stat id="defense">1</stat>
+        <description>You want to survive? Wear this. Protecting yourself is the most important part of life.</description>
     </Item>
     <Item type="armor" id="Upgraded Speed Vest" rarity="rare" imgcoords="8 0">
         <stat id="speed">2</stat>
         <description>Have you ever considered merely... going faster?</description>
     </Item>
+    <Item type="armor" id="Imminent Danger" rarity="rare" imgcoords="64 0">
+        <stat id="defense">2</stat>
+        <stat id="max health">5</stat>
+        <description>DANGER IS IMMINENT. PROCEED WITH CAUTION.</description>
+    </Item>
     <Item type="armor" id="Forest Queen Camo" rarity="glyphic" imgcoords="16 0">
         <stat id="speed">3</stat>
         <stat id="defense">1</stat>
-        <stat id="max health">15</stat>
+        <stat id="damage">-1</stat>
+        <stat id="max health">35</stat>
         <description>Often used by hunters camouflaging in the jungle, this armor provides a sense of security.</description>
     </Item>
     <Item type="weapon" id="Apprentice Staff" firemode="STRAIGHT_FIRE" rarity="common" imgcoords="8 16">
+        <rof>4</rof>
         <description>A fairly weak weapon handed out to beginner adventurers.</description>
         <projectile imgcoords="16 0" width="8" height="8" speed="8" variance="15" damage="8" range="15"/>
         <hud>
             <line>Damage: 8</line>
             <line>Range: 15</line>
             <line>Projectile Speed: 8</line>
+            <line>Attack Speed: 100%</line>
         </hud>
     </Item>
     <Item type="weapon" id="Ivy Shotgun" firemode="SHOTGUN_FIRE" rarity="rare" imgcoords="32 16">
+        <rof>2</rof>
         <stat id="damage">2</stat>
         <description>Wrapped in ivy, this shotgun shoots damaging poison ivy at its enemies.</description>
         <projectile imgcoords="40 0" width="8" height="8" speed="7" variance="15" damage="2" range="8"/>
@@ -32,28 +49,33 @@
             <line>Damage: 2</line>
             <line>Range: 8</line>
             <line>Projectile Speed: 7</line>
+            <line>Attack Speed: 50%</line>
             <line>Shoots 5 projectiles</line>
         </hud>
     </Item>
-    <Item type="weapon" id="Red Blaster" firemode="STRAIGHT_FIRE" rarity="rare" imgcoords="48 16">
+    <Item type="weapon" id="Red Targeter" firemode="STRAIGHT_FIRE" rarity="rare" imgcoords="48 16">
+        <rof>1.5</rof>
         <description>This blessed weapon grants the wielder perfect accuracy (only while killing things, of course).</description>
         <projectile imgcoords="0 24" width="24" height="24" speed="9" variance="0" damage="14" range="40"/>
         <hud>
             <line>Damage: 14</line>
             <line>Range: 40</line>
             <line>Projectile Speed: 9</line>
+            <line>Attack Speed: 37%</line>
             <line>Perfectly accurate.</line>
         </hud>
     </Item>
     <Item type="weapon" id="Twinstick" firemode="DUAL_FIRE" rarity="glyphic" imgcoords="16 16">
+        <rof>8</rof>
         <stat id="defense">1</stat>
-        <description>Shooting at enemies is beneficial to the player. Shooting twice is extra beneficial.</description>
+        <description>They are always wary of the first bullet. The second one always leaves them dead.</description>
         <projectile imgcoords="48 0" width="8" height="8" speed="7" variance="15" damage="3" range="35"/>
         <projectile imgcoords="56 0" width="12" height="12" speed="2" variance="5" damage="7" range="9"/>
         <hud>
             <line>Damage: 3/7</line>
             <line>Range: 35/9</line>
             <line>Projectile Speed: 7/4</line>
+            <line>Attack Speed: 200%</line>
             <line>Fires 1 fast, low damaging projectile.</line>
             <line>Fires 1 slow, high damaging projectile.</line>
         </hud>

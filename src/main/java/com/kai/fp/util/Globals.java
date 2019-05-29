@@ -26,5 +26,9 @@ public class Globals {
      */
     public static final Font ORIGINAL_FONT = new JPanel().getFont();
 
+    /**
+     * If set to true, the user will be prompted to enter a custom display size.
+     */
+    public static final boolean CUSTOM_DISPLAY_SIZE = false;
 
 }

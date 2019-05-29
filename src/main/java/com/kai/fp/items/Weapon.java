@@ -15,13 +15,17 @@ public class Weapon extends Item {
     private String[] hudLines;
     private ItemFire fireMode;
 
+    private double rof = 4;
+    private long lastFired = -1;
+
     //TODO: Add delay between attacks based on item rate of fire.
 
-    public Weapon(String id, BufferedImage image, List<ItemBehavior> behaviors, String description, Rarity rarity, ItemFire fireMode, String[] hudLines, List<Projectile> projectiles) {
+    public Weapon(String id, BufferedImage image, List<ItemBehavior> behaviors, String description, Rarity rarity, ItemFire fireMode, String[] hudLines, List<Projectile> projectiles, double rof) {
         super(id, image, behaviors, description, ItemType.WEAPON, rarity);
         this.fireMode = fireMode;
         this.hudLines = hudLines;
         this.projectiles = projectiles;
+        this.rof = rof;
     }
 
     public Weapon(Weapon otherItem) {
@@ -29,6 +33,7 @@ public class Weapon extends Item {
         this.hudLines = otherItem.getHudLines();
         this.fireMode = otherItem.getFireMode();
         this.projectiles = otherItem.getProjectiles();
+        this.rof = otherItem.getRof();
     }
 
     @Override
@@ -49,7 +54,10 @@ public class Weapon extends Item {
     }
 
     public void fire(WorldLocation target) {
-        fireMode.fire(this, target, Game.getPlayer());
+        if ((System.currentTimeMillis() - lastFired) / 1000.0 > (1.0/rof)) {
+            lastFired = System.currentTimeMillis();
+            fireMode.fire(this, target, Game.getPlayer());
+        }
     }
 
     public Projectile getProjectile(int index) {
@@ -66,5 +74,9 @@ public class Weapon extends Item {
 
     public ItemFire getFireMode() {
         return fireMode;
+    }
+
+    public double getRof() {
+        return rof;
     }
 }

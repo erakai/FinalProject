@@ -51,7 +51,7 @@ to finish items:
     - easy
 5. let you see gui when hovering over frames
    - easy but kinda stupid
-6. make the armor equippable on click
+6. make the armor equippable on clickd
     - took a little bit (like 90 minutes) to write the 7 lines of code htat solved everything but i did it
 
 
@@ -64,17 +64,17 @@ to finish items:
 
 
 
-
+dialogue box is being drawn under tiles
 
 
 
 OKAY
-    also need to make it so that weapons have a rate of fire
-    hold down to shoot
+    CHECK also need to make it so that weapons have a rate of fire
+    CHECK hold down to shoot
 
-    1. add more tiles and stuff for world 3
     2. add like a couple more common items
     3. fix the heccin level design
+    make basic starter items that aren't common
     4. add boss implementation
     5. possibly create 1-3 bosses
     6. start screen + instructions + end screen + win screen + all that
