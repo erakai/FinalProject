@@ -17,6 +17,10 @@
     <Tile id="fleshy" x="0" y="32"/>
     <Tile id="extra red fleshy" x="32" y="32"/>
     <Tile id="red light" x="64" y="32"/>
+    <Tile id="spacey thingy 1" x="0" y="64"/>
+    <Tile id="spacey thingy 2" x="32" y="64"/>
+    <Tile id="spacey thingy 3" x="64" y="64"/>
+    <Tile id="horrible light thingy" x="96" y="64" walkable="false"/>
 
 
 

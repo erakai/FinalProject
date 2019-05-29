@@ -70,12 +70,14 @@ public class Game implements Runnable, Updatable {
     }
 
     public void update(long delta) {
-        if (currentWorld != null) {
-            if (worldAddQueue.size() > 0) {
-                for (GameObject o : worldAddQueue) {
-                    currentWorld.addObject(o);
+        if (gamestate == State.RUNNING) {
+            if (currentWorld != null) {
+                if (worldAddQueue.size() > 0) {
+                    for (GameObject o : worldAddQueue) {
+                        currentWorld.addObject(o);
+                    }
+                    worldAddQueue.clear();
                 }
-                worldAddQueue.clear();
             }
         }
 
@@ -100,6 +102,7 @@ public class Game implements Runnable, Updatable {
     }
 
     public static void nextWorld(String id) {
+        gamestate = State.LOADING;
         //TODO: rewrite this method so it doesnt break every other second
         System.out.println("Transitioning to " + id);
         currentWorldName = id;

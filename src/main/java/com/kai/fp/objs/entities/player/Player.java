@@ -38,6 +38,8 @@ public class Player extends Entity {
 
     public Player(WorldLocation location) {
         super(location, 30, 35);
+        getStat("max health").baseValue = 75;
+        getStat("health").baseValue = 75;
         inventory = new PlayerInventory(this);
     }
 
@@ -50,6 +52,7 @@ public class Player extends Entity {
 
     @Override
     public void update(long delta) {
+        super.update(delta);
         if (right) {
             anim.setRepeatingAnim("run right");
         } else if (left) {
@@ -79,6 +82,12 @@ public class Player extends Entity {
         Camera.x = getLocation().getWorldX() - Camera.width / 2;
         Camera.y = getLocation().getWorldY() - Camera.height / 2;
 
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        System.exit(0);
     }
 
     @Override

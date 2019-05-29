@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <items>
-    <Item type ="armor" id="Test Armor" rarity="common" imgcoords="0 0">
+    <Item type ="armor" id="Speed Armor" rarity="common" imgcoords="0 0">
         <stat id="speed">1</stat>
-        <description>An extremely dull armor used to test human capacity to survive long programming sessions.</description>
+        <description>Speed is key.             </description>
     </Item>
-    <Item type="armor" id="Rare Test Armor" rarity="rare" imgcoords="0 0">
+    <Item type="armor" id="+1 Speed Vest" rarity="rare" imgcoords="8 0">
         <stat id="speed">2</stat>
-        <description>A dull armor used to test human capacity to survive long programming sessions.</description>
+        <description>Speed is key, but more speed is keyer.</description>
     </Item>
-    <Item type="armor" id="Glyphic Test Armor" rarity="glyphic" imgcoords="0 0">
+    <Item type="armor" id="Forest Queen Camo" rarity="glyphic" imgcoords="16 0">
         <stat id="speed">3</stat>
-        <description>An shiny armor used to test human capacity to survive long programming sessions.</description>
+        <stat id="defense">1</stat>
+        <description>Often used by hunters camouflaging in the jungle, this armor provides a sense of security.</description>
     </Item>
-    <Item type="weapon" id="Test Weapon" firemode="STRAIGHT_FIRE" rarity="common" imgcoords="0 16">
+    <Item type="weapon" id="Apprentice Staff" firemode="STRAIGHT_FIRE" rarity="common" imgcoords="8 16">
         <stat id="speed">1</stat>
-        <description>A fairly weak weapon designed to show proof of concept for weapons.</description>
-        <projectile imgcoords="8 0" width="8" height="8" speed="8" variance="15" damage="8" range="15"/>
+        <description>A fairly weak weapon handed out to beginner adventurers.</description>
+        <projectile imgcoords="16 0" width="8" height="8" speed="8" variance="15" damage="8" range="15"/>
         <hud>
             <line>Damage: 8</line>
             <line>Range: 15</line>
             <line>Projectile Speed: 8</line>
         </hud>
     </Item>
-    <Item type="weapon" id="Test Glyphic Shotgun" firemode="GLYPHIC_SHOTGUN_FIRE" rarity="glyphic" imgcoords="0 16">
+    <Item type="weapon" id="Ivy Shotgun" firemode="GLYPHIC_SHOTGUN_FIRE" rarity="rare" imgcoords="32 16">
         <stat id="damage">2</stat>
-        <description>A random item designed to test if weapons actually work.</description>
-        <projectile imgcoords="16 0" width="8" height="8" speed="7" variance="15" damage="2" range="6"/>
+        <description>Wrapped in ivy, this shotgun shoots damaging poison ivy at its enemies.</description>
+        <projectile imgcoords="40 0" width="8" height="8" speed="7" variance="15" damage="2" range="8"/>
         <hud>
             <line>Damage: 2</line>
-            <line>Range: 6</line>
+            <line>Range: 8</line>
             <line>Projectile Speed: 7</line>
             <line>Shoots 5 projectiles</line>
+        </hud>
+    </Item>
+    <Item type="weapon" id="Twinstick" firemode="DUAL_FIRE" rarity="glyphic" imgcoords="16 16">
+        <stat id="defense">1</stat>
+        <description>Shooting at enemies is beneficial to the player. Shooting twice is extra beneficial.</description>
+        <projectile imgcoords="48 0" width="8" height="8" speed="7" variance="30" damage="3" range="35"/>
+        <projectile imgcoords="56 0" width="12" height="12" speed="2" variance="5" damage="6" range="9"/>
+        <hud>
+            <line>Damage: 3/6</line>
+            <line>Range: 35/9</line>
+            <line>Projectile Speed: 7/4</line>
+            <line>Fires 1 fast, low damaging projectile.</line>
+            <line>Fires 1 slow, high damaging projectile.</line>
         </hud>
     </Item>
 

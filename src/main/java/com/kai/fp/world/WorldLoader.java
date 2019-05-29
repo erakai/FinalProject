@@ -7,12 +7,14 @@ import com.kai.fp.objs.entities.enemies.w1.Goblin;
 import com.kai.fp.objs.entities.enemies.w1.RangedGoblin;
 import com.kai.fp.objs.entities.enemies.w1.Sludge;
 import com.kai.fp.objs.entities.enemies.w2.Eyeball;
+import com.kai.fp.objs.entities.enemies.w2.SkeleTony;
 import com.kai.fp.objs.inanimate.*;
 import com.kai.fp.objs.npcs.JohnCharacter;
 import com.kai.fp.objs.npcs.SallyCharacter;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.util.TextFileLoader;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +85,19 @@ class WorldLoader {
             case "l":
                 tile = new WorldTile(location, ResourceManager.getTileResource("red light"));
                 break;
+            case "y":
+                double random = Math.random();
+                if (random > 0.666) {
+                    tile = new WorldTile(location, ResourceManager.getTileResource("spacey thingy 1"));
+                } else if (random > 0.333) {
+                    tile = new WorldTile(location, ResourceManager.getTileResource("spacey thingy 2"));
+                } else {
+                    tile = new WorldTile(location, ResourceManager.getTileResource("spacey thingy 3"));
+                }
+                break;
+            case "m":
+                tile = new WorldTile(location, ResourceManager.getTileResource("horrible light thingy"));
+                break;
             default:
                 System.out.println(tileString + " is not recognized as a tile.");
 
@@ -134,6 +149,9 @@ class WorldLoader {
                     break;
                 case ";":
                     Game.addToWorldQueue(new Sludge(new WorldLocation(location)));
+                    break;
+                case "/":
+                    Game.addToWorldQueue(new SkeleTony(new WorldLocation(location)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

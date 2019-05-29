@@ -16,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * @author Kai on May 16, 2019
  */
-public class InputHandler implements Updatable, MouseListener {
+public class InputHandler implements Updatable, MouseListener, KeyListener {
 
     private static List<Hoverable> hoverables = new ArrayList<>();
     private static List<Clickable> clickables = new ArrayList<>();
@@ -75,6 +75,8 @@ public class InputHandler implements Updatable, MouseListener {
         im.put(KeyStroke.getKeyStroke("released DOWN"), "down-released");
         im.put(KeyStroke.getKeyStroke("released S"), "down-released");
         am.put("down-released", new DirectionAction("down", false));
+
+
     }
 
     @Override
@@ -133,6 +135,24 @@ public class InputHandler implements Updatable, MouseListener {
 
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyChar() == 'p') {
+            String name = Game.getCurrentWorldName();
+            name = name.substring(0,name.length()-1) + (Integer.valueOf(name.substring(name.length()-1)) + 1);
+            Game.nextWorld(name);
+        }
+    }
 
     class DirectionAction extends AbstractAction {
         private String dir;

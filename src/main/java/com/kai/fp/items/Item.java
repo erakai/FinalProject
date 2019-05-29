@@ -77,7 +77,9 @@ public abstract class Item implements Renderable, ItemBehavior {
 
         for (ItemBehavior behavior: behaviors) {
             g.drawString(behavior.getDescription(), dp.getX()+15, dp.getY()+36+(stringHeight * (2+i)));
+            i++;
         }
+        i--;
 
         if (hudLength != dp.getY()+36+(stringHeight * (2+i))) {
             hudLength = dp.getY()+36+(stringHeight * (2+i));

@@ -11,8 +11,8 @@ public class PlayerInventory {
 
     public PlayerInventory(Player owner) {
         this.owner = owner;
-        equipItem(ItemLoader.getItem("Test Armor", Rarity.COMMON));
-        equipItem(ItemLoader.getItem("Test Weapon", Rarity.COMMON));
+        equipItem(ItemLoader.getItem("Speed Armor", Rarity.COMMON));
+        equipItem(ItemLoader.getItem("Apprentice Staff", Rarity.COMMON));
     }
 
     public void equipItem(Item i) {

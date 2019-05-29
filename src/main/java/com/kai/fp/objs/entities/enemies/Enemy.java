@@ -21,7 +21,9 @@ import java.util.List;
 
 //THIS IS MELEE ENEMY
 public abstract class Enemy extends Entity {
-    public enum EnemyTier {REGULAR, ELITE, BOSS}
+    public enum EnemyTier {
+        REGULAR, ELITE, BOSS
+    }
 
     boolean active = false;
     private EnemyTier tier;
@@ -57,7 +59,7 @@ public abstract class Enemy extends Entity {
     public void render(DrawPoint dp, Graphics g) {
         if (active) {
             super.render(dp, g);
-            g.setColor(Color.RED);
+            g.setColor(new Color(59, 219, 228));
             g.fillRect(getScreenX() - Camera.x, getScreenY() - 10 - Camera.y,
                     (int) (((getStat("health").getValue() / (double) (getStat("max health").getValue()))) * getWidth()), 5);
         }

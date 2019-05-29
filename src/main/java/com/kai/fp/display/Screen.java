@@ -35,10 +35,12 @@ public class Screen extends JPanel implements Updatable {
 
         if (inputHandler != null ) {
             removeMouseListener(inputHandler);
+            removeKeyListener(inputHandler);
         }
         inputHandler = new InputHandler();
         inputHandler.createMap(this);
         addMouseListener(inputHandler);
+        addKeyListener(inputHandler);
         hud = new HUD();
         hud.getArmorFrame().setOnScreen(true);
         hud.getWeaponFrame().setOnScreen(true);

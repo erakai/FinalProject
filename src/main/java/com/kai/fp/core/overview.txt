@@ -59,8 +59,39 @@ to finish items:
 
 1. make armor equippable CHECK
 2. add portals CHECK
-3. add npc
-4. add dialogue
+3. add npc CHEKC
+4. add dialogue CHECK
+
+
+
+
+
+
+
+OKAY
+    1. add more tiles and stuff for world 3
+    2. add like a couple more common items
+    3. fix the heccin level design
+    4. add boss implementation
+    5. possibly create 1-3 bosses
+    6. start screen + instructions + end screen + win screen + all that
+    7. sounds
+
+
+
+1. realm damage number above head
+2. online leaderboard
+3. PATH F I N D I N G
+4. skills bound to items
+5. more levels n stuff
+
+
+
+
+
+
+
+
 
 
 
