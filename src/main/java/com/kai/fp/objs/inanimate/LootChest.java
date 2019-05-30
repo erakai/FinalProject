@@ -31,7 +31,6 @@ public class LootChest extends InanimateObj implements Updatable {
         setPhysical(false);
         Game.addToWorldQueue(this);
 
-
         items = new ItemFrame[4];
         for (int i = 0; i < 4; i++) {
             items[i] = new ItemFrame(0,0);
@@ -82,6 +81,14 @@ public class LootChest extends InanimateObj implements Updatable {
         }
 
         updateLoneImage();
+    }
+
+    public int getItemCount() {
+        int sum = 0;
+        for (ItemFrame frame: items) {
+            if (frame.getItem() != null) sum++;
+        }
+        return sum;
     }
 
     @Override

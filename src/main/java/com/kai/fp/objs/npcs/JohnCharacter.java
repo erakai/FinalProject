@@ -17,9 +17,14 @@ public class JohnCharacter extends Character {
             "Please kill monsters so im less scared",
             "Theres a portal and items around too"
     };
+    private static String[] secondLines = {
+            "there is an angry kitchen dude in there",
+            "the portal is behind him so good luck",
+            "if you aren't fast enough i will die )))))):"
+    };
 
-    public JohnCharacter(WorldLocation location) {
-        super(location, lines, lines[1]);
+    public JohnCharacter(WorldLocation location, boolean variation) {
+        super(location, ((!variation) ? lines : secondLines), ((!variation) ? lines[1] : secondLines[2]));
         anim.setFramesPerSecond(2);
     }
 

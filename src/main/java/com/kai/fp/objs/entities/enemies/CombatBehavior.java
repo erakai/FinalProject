@@ -50,6 +50,11 @@ public enum CombatBehavior {
                 actor.getLocation().setWorldY(actor.getScreenY() + yChange);
             }
         }
+    },
+    PATHFINDING_CHASE {
+        public void act(Enemy actor, Entity target) {
+            //todo: do it
+        }
     };
 
     public abstract void act(Enemy actor, Entity target);

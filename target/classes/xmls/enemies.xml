@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <enemies>
-    <Enemy id="goblin" tier="REGULAR" width="18" height="18">
+    <Enemy id="goblin" tier="FODDER" width="18" height="18">
         <rof>2</rof>
         <stat id="speed">4</stat>
         <stat id="max health">20</stat>
@@ -24,11 +24,11 @@
         <stat id="defense">2</stat>
         <projectile imgcoords="24 0" width="12" height="12" speed="5" variance="40" damage="4" range="25"/>
     </Enemy>
-    <Enemy id="eyeball" tier="REGULAR" firemode="STRAIGHT_SINGLE_FIRE" width="24" height="24">
+    <Enemy id="eyeball" tier="FODDER" firemode="STRAIGHT_SINGLE_FIRE" width="24" height="24">
         <rof>2</rof>
         <stat id="speed">7</stat>
         <stat id="max health">7</stat>
-        <stat id="damage">1</stat>
+        <stat id="damage">6</stat>
         <stat id="defense">0</stat>
         <projectile imgcoords="0 16" width="12" height="12" speed="5" variance="10" damage="3" range="25"/>
     </Enemy>
@@ -57,6 +57,15 @@
         <projectile imgcoords="16 8" width="16" height="16" speed="9" variance="10" damage="5" range="35"/>
         <projectile imgcoords="24 8" width="16" height="16" speed="9" variance="10" damage="5" range="35"/>
         <projectile imgcoords="8 8" width="14" height="14" speed="5" variance="0" damage="3" range="45"/>
+    </Enemy>
+    <Enemy id="shrieker" tier="BOSS" firemode="CIRCULAR_FIRE" width="96" height="96">
+        <rof>1</rof>
+        <stat id="speed">8</stat>
+        <stat id="max health">375</stat>
+        <stat id="damage">11</stat>
+        <stat id="defense">4</stat>
+        <projectile imgcoords="40 8" width="12" height="12" speed="8" variance="30" damage="5" range="20"/>
+        <projectile imgcoords="32 8" width="32" height="32" speed="5" variance="0" damage="35" range="100"/>
     </Enemy>
 
 </enemies>

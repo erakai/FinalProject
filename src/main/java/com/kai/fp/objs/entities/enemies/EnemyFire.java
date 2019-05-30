@@ -19,14 +19,14 @@ public enum EnemyFire {
     CIRCULAR_FIRE {
         @Override
         public void fire(Enemy actor, Player target) {
-            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()-actor.getWidth()*3/2, actor.getCenterY()-actor.getHeight()*3/2), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
-            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()+actor.getWidth()*3/2, actor.getCenterY()+actor.getHeight()*3/2), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
-            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()-actor.getWidth()*3/2, actor.getCenterY()+actor.getHeight()*3/2), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
-            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()+actor.getWidth()*3/2, actor.getCenterY()-actor.getHeight()*3/2), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
-            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX(), actor.getCenterY()-actor.getHeight()*3/2), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
-            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()-actor.getWidth()*3/2, actor.getCenterY()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
-            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()+actor.getWidth()*3/2, actor.getCenterY()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
-            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX(), actor.getCenterY()+actor.getHeight()*3/2), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()-actor.getWidth(), actor.getCenterY()-actor.getHeight()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()+actor.getWidth(), actor.getCenterY()+actor.getHeight()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()-actor.getWidth(), actor.getCenterY()+actor.getHeight()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()+actor.getWidth(), actor.getCenterY()-actor.getHeight()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX(), actor.getCenterY()-actor.getHeight()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()-actor.getWidth(), actor.getCenterY()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX()+actor.getWidth(), actor.getCenterY()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX(), actor.getCenterY()+actor.getHeight()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(0)));
         }
     },
     DUAL_FIRE {
@@ -47,6 +47,12 @@ public enum EnemyFire {
                 int tY = actor.getScreenY() + ((Math.random() > 0.5) ? ((int)(Math.random() * 500)) : ((int)(-1 * (Math.random() * 500))));
                 Game.getWorld().addObject(new Projectile(new WorldLocation(actor.getCenterX(), actor.getCenterY()), new WorldLocation(tX, tY), actor, actor.getProjectiles().get(2)));
             }
+        }
+    },
+    SECONDARY_FIRE {
+        @Override
+        public void fire(Enemy actor, Player target) {
+            Game.addToWorldQueue(new Projectile(new WorldLocation(actor.getCenterX(), actor.getCenterY()), new WorldLocation(target.getLocation()), actor, actor.getProjectiles().get(1)));
         }
     };
 

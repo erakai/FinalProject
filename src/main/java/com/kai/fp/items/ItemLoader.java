@@ -27,6 +27,10 @@ public class ItemLoader {
     public static Map<String, Item> commonItems = new HashMap<>();
     public static Map<String, Item> rareItems = new HashMap<>();
     public static Map<String, Item> glyphicItems = new HashMap<>();
+    public static Map<String, Item> starterItems = new HashMap<>();
+
+    public static Map<String, Potion> commonPotions = new HashMap<>();
+    public static Map<String, Potion> rarePotions = new HashMap<>();
 
     static {
         try {
@@ -37,16 +41,6 @@ public class ItemLoader {
             e.printStackTrace();
         } catch (SAXException e) {
             e.printStackTrace();
-        }
-
-        for (Item i : commonItems.values()) {
-            System.out.println(i);
-        }
-        for (Item i : rareItems.values()) {
-            System.out.println(i);
-        }
-        for (Item i : glyphicItems.values()) {
-            System.out.println(i);
         }
 
         System.out.println(" ==== ITEM LOADING FINISHED ====\n");
@@ -103,9 +97,10 @@ public class ItemLoader {
             }
 
             Item item = null;
-            if (itemElement.getAttribute("type").equals("armor")) {
+            String type = itemElement.getAttribute(("type"));
+            if (type.equals("armor")) {
                 item = new Armor(id, image, behaviors, description, rarity);
-            } else if (itemElement.getAttribute("type").equals("weapon")) {
+            } else if (type.equals("weapon")) {
                 ItemFire firemode = ItemFire.valueOf(itemElement.getAttribute("firemode"));
                 List<Projectile> projList = new ArrayList<>();
 
@@ -123,13 +118,27 @@ public class ItemLoader {
                 double rof = Double.valueOf(itemElement.getElementsByTagName("rof").item(0).getTextContent());
 
                 item = new Weapon(id, image, behaviors, description, rarity, firemode, hudLines, projList, rof);
+            } else if (type.equals("potion")) {
+                item = new Potion(id, image, behaviors, description, rarity);
             }
-            if (rarity == Rarity.COMMON) {
-                commonItems.put(id, item);
-            } else if (rarity == Rarity.RARE) {
-                rareItems.put(id, item);
-            } else if (rarity == Rarity.GLYPHIC) {
-                glyphicItems.put(id, item);
+
+            System.out.println(item);
+            if (!type.equals("potion")) {
+                if (rarity == Rarity.COMMON) {
+                    commonItems.put(id, item);
+                } else if (rarity == Rarity.RARE) {
+                    rareItems.put(id, item);
+                } else if (rarity == Rarity.GLYPHIC) {
+                    glyphicItems.put(id, item);
+                } else if (rarity == Rarity.STARTER) {
+                    starterItems.put(id, item);
+                }
+            } else {
+                if (rarity == Rarity.COMMON) {
+                    commonPotions.put(id, (Potion)item);
+                } else if (rarity == Rarity.RARE) {
+                    rarePotions.put(id, (Potion)item);
+                }
             }
         }
     }
@@ -144,6 +153,8 @@ public class ItemLoader {
 
     public static Rarity getRarity(String base) {
         switch (base.toLowerCase()) {
+            case "starter":
+                return Rarity.STARTER;
             case "common":
                 return Rarity.COMMON;
             case "rare":
@@ -175,7 +186,15 @@ public class ItemLoader {
         if (r == Rarity.COMMON) items = commonItems;
         if (r == Rarity.RARE) items = rareItems;
         if (r == Rarity.GLYPHIC) items = glyphicItems;
+        if (r == Rarity.STARTER) items = starterItems;
         return items;
+    }
+
+    public static Potion getRandomPotion(Rarity r) {
+        Map<String, Potion> potions = (r == Rarity.COMMON) ? commonPotions : rarePotions;
+        Object[] keys = potions.keySet().toArray();
+        String name =  (String)keys[new Random().nextInt(keys.length)];
+        return new Potion(potions.get(name));
     }
 
 

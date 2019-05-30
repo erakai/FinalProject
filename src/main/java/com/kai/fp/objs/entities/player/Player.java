@@ -38,8 +38,8 @@ public class Player extends Entity {
 
     public Player(WorldLocation location) {
         super(location, 30, 35);
-        getStat("max health").baseValue = 75;
-        getStat("health").baseValue = 75;
+        getStat("max health").baseValue = 100;
+        getStat("health").baseValue = 100;
         getStat("speed").baseValue = 4;
         inventory = new PlayerInventory(this);
     }

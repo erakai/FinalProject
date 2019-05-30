@@ -15,9 +15,10 @@ public class EricCharacter extends Character {
 
     };
     private static String[] lines = {
+            "i am eric",
             "hey john and sally DIEd because u were too slow",
             "go avenge them by taking out your frusturation and killing innocent monsters",
-            "you have a moral obligation to"
+            "you have a moral obligation"
     };
 
     public EricCharacter(WorldLocation location) {

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <items>
+    <Item type="armor" id="Useless Jacket" rarity="starter" imgcoords="24 0">
+        <description>This useless jacket is completely useless and provides no noticeable benefits.</description>
+    </Item>
     <Item type="armor" id="Speed Armor" rarity="common" imgcoords="0 0">
         <stat id="speed">1</stat>
         <description>I hope you will agree when I say speed is key.</description>
     </Item>
     <Item type="armor" id="Damage Armor" rarity="common"  imgcoords="32 0">
-        <stat id="damage">1</stat>
+        <stat id="damage">2</stat>
         <description>Going fast is irrelevant in comparison to killing things.</description>
     </Item>
     <Item type="armor" id="Defense Armor" rarity="common" imgcoords="40 0">
-        <stat id="defense">1</stat>
+        <stat id="defense">2</stat>
         <description>You want to survive? Wear this. Protecting yourself is the most important part of life.</description>
     </Item>
     <Item type="armor" id="Upgraded Speed Vest" rarity="rare" imgcoords="8 0">
@@ -29,7 +32,25 @@
         <stat id="max health">35</stat>
         <description>Often used by hunters camouflaging in the jungle, this armor provides a sense of security.</description>
     </Item>
-    <Item type="weapon" id="Apprentice Staff" firemode="STRAIGHT_FIRE" rarity="common" imgcoords="8 16">
+
+    <Item type="potion" id="Defense Potion" rarity="common" imgcoords="8 40">
+        <stat id="defense">1</stat>
+        <description>This potion permanently increases defense by 1.</description>
+    </Item>
+    <Item type="potion" id="Damage Potion" rarity="common" imgcoords="0 40">
+        <stat id="damage">1</stat>
+        <description>This potion permanently increases damage by 1.</description>
+    </Item>
+    <Item type="potion" id="Speed Potion" rarity="rare" imgcoords="16 40">
+        <stat id="speed">1</stat>
+        <description>This potion permanently increases speed by 1.</description>
+    </Item>
+    <Item type="potion" id="Max Health Potion" rarity="rare" imgcoords="24 40">
+        <stat id="max health">5</stat>
+        <description>This potion permanently increases maximum health by 5.</description>
+    </Item>
+
+    <Item type="weapon" id="Apprentice Staff" firemode="STRAIGHT_FIRE" rarity="starter" imgcoords="8 16">
         <rof>4</rof>
         <description>A fairly weak weapon handed out to beginner adventurers.</description>
         <projectile imgcoords="16 0" width="8" height="8" speed="8" variance="15" damage="8" range="15"/>
@@ -40,13 +61,13 @@
             <line>Attack Speed: 100%</line>
         </hud>
     </Item>
-    <Item type="weapon" id="Ivy Shotgun" firemode="SHOTGUN_FIRE" rarity="rare" imgcoords="32 16">
+    <Item type="weapon" id="Ivy Shotgun" firemode="SHOTGUN_FIRE" rarity="common" imgcoords="32 16">
         <rof>2</rof>
         <stat id="damage">2</stat>
         <description>Wrapped in ivy, this shotgun shoots damaging poison ivy at its enemies.</description>
-        <projectile imgcoords="40 0" width="8" height="8" speed="7" variance="15" damage="2" range="8"/>
+        <projectile imgcoords="40 0" width="8" height="8" speed="7" variance="15" damage="3" range="8"/>
         <hud>
-            <line>Damage: 2</line>
+            <line>Damage: 3</line>
             <line>Range: 8</line>
             <line>Projectile Speed: 7</line>
             <line>Attack Speed: 50%</line>
@@ -80,7 +101,4 @@
             <line>Fires 1 slow, high damaging projectile.</line>
         </hud>
     </Item>
-
-
-
 </items>

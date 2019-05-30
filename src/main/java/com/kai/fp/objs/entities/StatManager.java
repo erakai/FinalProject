@@ -52,7 +52,11 @@ public class StatManager {
 
     public void decStat(String name, int amount) {
         Stat stat = getStat(name);
-        stat.baseValue -= amount;
+        if (amount < 0) {
+            stat.baseValue += amount;
+        } else {
+            stat.baseValue -= amount;
+        }
 
         if (name.equals("max health")) {
             getStat("health").baseValue -= amount;

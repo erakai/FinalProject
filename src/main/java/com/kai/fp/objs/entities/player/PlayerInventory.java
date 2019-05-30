@@ -11,8 +11,8 @@ public class PlayerInventory {
 
     public PlayerInventory(Player owner) {
         this.owner = owner;
-        equipItem(ItemLoader.getItem("Speed Armor", Rarity.COMMON));
-        equipItem(ItemLoader.getItem("Apprentice Staff", Rarity.COMMON));
+        equipItem(ItemLoader.getItem("Useless Jacket", Rarity.STARTER));
+        equipItem(ItemLoader.getItem("Apprentice Staff", Rarity.STARTER));
     }
 
     public void equipItem(Item i) {
@@ -59,5 +59,9 @@ public class PlayerInventory {
 
     public Armor getArmor() {
         return armor;
+    }
+
+    public void drinkPotion(Potion p) {
+        p.onEquip(owner);
     }
 }

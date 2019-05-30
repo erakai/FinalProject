@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
  * @author Kai on May 20, 2019
  */
 public abstract class Item implements Renderable, ItemBehavior {
-    public enum ItemType {WEAPON, ARMOR}
+    public enum ItemType {POTION, WEAPON, ARMOR}
 
     private String id;
     private String description;

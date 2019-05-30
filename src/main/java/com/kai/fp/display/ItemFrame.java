@@ -3,6 +3,7 @@ package com.kai.fp.display;
 import com.kai.fp.core.Game;
 import com.kai.fp.core.InputHandler;
 import com.kai.fp.items.Item;
+import com.kai.fp.items.Potion;
 import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.entities.player.Player;
 import com.kai.fp.objs.entities.player.PlayerInventory;
@@ -64,7 +65,11 @@ public class ItemFrame extends HUDComponent implements Hoverable, Clickable {
                 i = p.removeWeapon();
             }
 
-            p.equipItem(item);
+            if (item.getType() != Item.ItemType.POTION) {
+                p.equipItem(item);
+            } else {
+                p.drinkPotion((Potion)item);
+            }
             removeItem();
             if (i != null) {
                 //System.out.println(i.getRarity());

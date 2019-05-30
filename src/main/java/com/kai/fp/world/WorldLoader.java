@@ -4,6 +4,7 @@ import com.kai.fp.core.Game;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.entities.enemies.bosses.Boulderfist;
+import com.kai.fp.objs.entities.enemies.bosses.Shrieker;
 import com.kai.fp.objs.entities.enemies.w1.Goblin;
 import com.kai.fp.objs.entities.enemies.w1.RangedGoblin;
 import com.kai.fp.objs.entities.enemies.w1.Sludge;
@@ -113,12 +114,20 @@ class WorldLoader {
                     break;
                 case "C":
                     LootChest chest = new LootChest(new WorldLocation(row, col));
-                    chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));
+                    if (Math.random() > 0.55) {
+                        chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));
+                    } else {
+                        chest.addItem(ItemLoader.getRandomPotion(Rarity.COMMON));
+                    }
                     tile.setOccupying(chest);
                     break;
                 case "R":
                     LootChest rareChest = new LootChest(new WorldLocation(row, col));
-                    rareChest.addItem(ItemLoader.getRandomItem(Rarity.RARE));
+                    if (Math.random() > 0.3) {
+                        rareChest.addItem(ItemLoader.getRandomItem(Rarity.RARE));
+                    } else {
+                        rareChest.addItem(ItemLoader.getRandomPotion(Rarity.RARE));
+                    }
                     tile.setOccupying(rareChest);
                     break;
                 case "G":
@@ -145,13 +154,16 @@ class WorldLoader {
                     Game.addToWorldQueue(new Eyeball(new WorldLocation(location)));
                     break;
                 case "1":
-                    tile.setOccupying(new JohnCharacter(new WorldLocation(row, col)));
+                    tile.setOccupying(new JohnCharacter(new WorldLocation(row, col), false));
                     break;
                 case "2":
                     tile.setOccupying(new SallyCharacter(new WorldLocation(row, col)));
                     break;
                 case "3":
                     tile.setOccupying(new EricCharacter(new WorldLocation(row, col)));
+                    break;
+                case "4":
+                    tile.setOccupying(new JohnCharacter(new WorldLocation(row, col), true));
                     break;
                 case ";":
                     Game.addToWorldQueue(new Sludge(new WorldLocation(location)));
@@ -164,6 +176,9 @@ class WorldLoader {
                     break;
                 case "%":
                     Game.addToWorldQueue(new Boulderfist(new WorldLocation(location)));
+                    break;
+                case ":":
+                    Game.addToWorldQueue(new Shrieker(new WorldLocation(location)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

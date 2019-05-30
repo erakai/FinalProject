@@ -35,7 +35,7 @@ public class Boulderfist extends Boss {
 
     public Boulderfist(WorldLocation location) {
         super(location, EnemyLoader.getEnemyResource("boulderfist"), 5);
-        spawnRate = 3.5;
+        spawnRate = 4;
     }
 
     @Override
@@ -48,23 +48,14 @@ public class Boulderfist extends Boss {
                 break;
             case 3:
                 CombatBehavior.STRAIGHT_CHASE.act(this, Game.getPlayer());
+                manageSpawning();
                 break;
             case 4:
                 CombatBehavior.STRAIGHT_CHASE.act(this, Game.getPlayer());
-                manageSpawning();
                 break;
         }
     }
 
-    @Override
-    public void attack() {
-        super.attack();
-        switch(stage) {
-            case 2: case 3: case 4:
-                createProjectile();
-                break;
-        }
-    }
 
     @Override
     public void createProjectile() {
@@ -73,10 +64,10 @@ public class Boulderfist extends Boss {
                 getFire().fire(this, Game.getPlayer());
                 break;
             case 3:
-                getFire().fire(this, Game.getPlayer());
                 EnemyFire.DUAL_FIRE.fire(this, Game.getPlayer());
                 break;
             case 4:
+                getFire().fire(this, Game.getPlayer());
                 EnemyFire.DUAL_FIRE.fire(this, Game.getPlayer());
                 break;
         }
@@ -93,12 +84,13 @@ public class Boulderfist extends Boss {
                 }
                 break;
             case 2:
-                if (healthTransition(0.60)) {
+                if (healthTransition(0.65)) {
                     nextStage();
+                    setRateofFire(2.8);
                 }
                 break;
             case 3:
-                if (healthTransition(0.40)) {
+                if (healthTransition(0.25)) {
                     nextStage();
                 }
                 break;
@@ -109,16 +101,9 @@ public class Boulderfist extends Boss {
     @Override
     public void spawnMinion() {
         WorldLocation location = new WorldLocation(getLocation());
-        location.setWorldX(location.getWorldX() + (int)(Math.random () * 40 - 20));
-        location.setWorldY(location.getWorldY() + (int)(Math.random () * 40 - 20));
-        int spawnRandom = (int)(Math.random() * 10);
-        if (spawnRandom < 6) {
-            Game.addToWorldQueue(new Goblin(new WorldLocation(location)));
-        } else if (spawnRandom < 8) {
-            Game.addToWorldQueue(new RangedGoblin(new WorldLocation(location)));
-        } else if (spawnRandom < 10) {
-            Game.addToWorldQueue(new Sludge(new WorldLocation(location)));
-        }
+        location.setWorldX(location.getWorldX() + (int)(Math.random () * 40 - 20) + ((Math.random() > 0.5) ? -60 : 60));
+        location.setWorldY(location.getWorldY() + (int)(Math.random () * 40 - 20) + ((Math.random() > 0.5) ? -60 : 60));
+        Game.addToWorldQueue(new Goblin(new WorldLocation(location)));
     }
 
     @Override

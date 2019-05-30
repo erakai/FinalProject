@@ -66,7 +66,11 @@ public abstract class Boss extends Enemy {
         }
     }
 
-
+    @Override
+    public void attack() {
+        super.attack();
+        createProjectile();
+    }
 
     void manageSpawning() {
         currentSpawnTick++;
