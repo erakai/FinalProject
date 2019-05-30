@@ -122,11 +122,11 @@ public class Projectile extends GameObject implements Updatable {
     }
 
     public int getRange() {
-        return range;
+        return range/15;
     }
 
     public void setRange(int range) {
-        this.range = range;
+        this.range = range * 15;
     }
 
     public int getDamage() {

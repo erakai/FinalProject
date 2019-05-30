@@ -19,7 +19,7 @@ public class RisingText extends HUDComponent implements Updatable {
     private static final int speed = 2;
 
     private int yDiff = 0, frameDuration;
-    private int xDiff = (int)(Math.random() * 20) - 10;
+    private int xDiff = 0;
 
     public RisingText(Entity owner, String text, Color color, int frameDuration) {
         super(0, 0, null, 0, 0);
@@ -29,6 +29,12 @@ public class RisingText extends HUDComponent implements Updatable {
         this.text = text;
         this.color = color;
         this.frameDuration = frameDuration * speed;
+        if (text.length() < 5) {
+            xDiff = (int)(Math.random() * 20) - 10;
+        } else {
+            yDiff = (int)(Math.random() * 10) -5;
+            xDiff = (int)(Math.random() * 40) - 55;
+        }
     }
 
     public RisingText(Entity owner, String text, Color color) {

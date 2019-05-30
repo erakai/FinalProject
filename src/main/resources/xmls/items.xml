@@ -26,7 +26,7 @@
         <description>DANGER IS IMMINENT. PROCEED WITH CAUTION.</description>
     </Item>
     <Item type="armor" id="Forest Queen Camo" rarity="glyphic" imgcoords="16 0">
-        <stat id="speed">3</stat>
+        <stat id="speed">2</stat>
         <stat id="defense">1</stat>
         <stat id="damage">-1</stat>
         <stat id="max health">35</stat>
@@ -88,7 +88,7 @@
     </Item>
     <Item type="weapon" id="Twinstick" firemode="DUAL_FIRE" rarity="glyphic" imgcoords="16 16">
         <rof>8</rof>
-        <stat id="defense">1</stat>
+        <stat id="damage">1</stat>
         <description>They are always wary of the first bullet. The second one always leaves them dead.</description>
         <projectile imgcoords="48 0" width="8" height="8" speed="7" variance="15" damage="3" range="35"/>
         <projectile imgcoords="56 0" width="12" height="12" speed="2" variance="5" damage="7" range="9"/>
@@ -99,6 +99,22 @@
             <line>Attack Speed: 200%</line>
             <line>Fires 1 fast, low damaging projectile.</line>
             <line>Fires 1 slow, high damaging projectile.</line>
+        </hud>
+    </Item>
+    <Item type="weapon" id="Rings" firemode="RANDOM_FIRE" rarity="glyphic" imgcoords="40 16">
+        <rof>0.8</rof>
+        <stat id="defense">3</stat>
+        <stat id="speed">1</stat>
+        <description>Rings, rings, rings, rings, rings, rings, rings, rings, rings, rings, rings.</description>
+        <projectile imgcoords="8 16" width="24" height="24" speed="7" variance="0" damage="5" range="30"/>
+        <projectile imgcoords="16 16" width="24" height="24" speed="3" variance="0" damage="14" range="25"/>
+        <hud>
+            <line>Damage: 10/18</line>
+            <line>Range: 30</line>
+            <line>Projectile Speed: 7/3</line>
+            <line>Attack Speed: 40%</line>
+            <line>Fires 10 projectiles in a ring.</line>
+            <line>Projectiles are chosen from 2 different options.</line>
         </hud>
     </Item>
 </items>

@@ -61,11 +61,12 @@
     <Enemy id="shrieker" tier="BOSS" firemode="CIRCULAR_FIRE" width="96" height="96">
         <rof>1</rof>
         <stat id="speed">8</stat>
-        <stat id="max health">375</stat>
+        <stat id="max health">325</stat>
         <stat id="damage">11</stat>
         <stat id="defense">4</stat>
         <projectile imgcoords="40 8" width="12" height="12" speed="8" variance="30" damage="5" range="20"/>
-        <projectile imgcoords="32 8" width="32" height="32" speed="5" variance="0" damage="35" range="100"/>
+        <projectile imgcoords="32 8" width="32" height="32" speed="6" variance="0" damage="35" range="120"/>
+        <projectile imgcoords="48 8" width="24" height="24" speed="3" variance="0" damage="10" range="50"/>
     </Enemy>
 
 </enemies>

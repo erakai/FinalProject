@@ -1,7 +1,10 @@
 package com.kai.fp.objs.entities.player;
 
+import com.kai.fp.display.RisingText;
 import com.kai.fp.display.Screen;
 import com.kai.fp.items.*;
+
+import java.awt.*;
 
 public class PlayerInventory {
     private Player owner;
@@ -62,6 +65,7 @@ public class PlayerInventory {
     }
 
     public void drinkPotion(Potion p) {
+        new RisingText(owner, p.getBehaviors().get(0).getDescription(), Color.CYAN);
         p.onEquip(owner);
     }
 }

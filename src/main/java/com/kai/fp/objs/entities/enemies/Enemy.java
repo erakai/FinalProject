@@ -93,38 +93,40 @@ public abstract class Enemy extends Entity {
         super.die();
         WorldTile tile = Game.getWorld().getTile(getCenterX()/WorldTile.WIDTH, (getCenterY())/WorldTile.HEIGHT);
         LootChest chest = new LootChest(new WorldLocation(getCenterX()/WorldTile.WIDTH, getCenterY()/WorldTile.HEIGHT));
-        if (tier == EnemyTier.REGULAR && Math.random() < 0.45) {
-            if (Math.random() < 0.5) chest.addItem(ItemLoader.getRandomPotion(Rarity.COMMON));
-            if (Math.random() < 0.7) chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));
-            if (chest.getItemCount() != 0) {
-                tile.setOccupying(chest);
-            }
-        } else if (tier == EnemyTier.ELITE && Math.random() < 0.55) {
-            if (Math.random() < 0.5) chest.addItem(ItemLoader.getRandomPotion(Rarity.RARE));
-            if (Math.random() < 0.7) chest.addItem(ItemLoader.getRandomItem(Rarity.RARE));
-            if (chest.getItemCount() != 0) {
-                double x = 0.4;
-                while(Math.random() < x) {
+        if (tile != null) {
+            if (tier == EnemyTier.REGULAR && Math.random() < 0.45) {
+                if (Math.random() < 0.5) chest.addItem(ItemLoader.getRandomPotion(Rarity.COMMON));
+                if (Math.random() < 0.7) chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));
+                if (chest.getItemCount() != 0) {
+                    tile.setOccupying(chest);
+                }
+            } else if (tier == EnemyTier.ELITE && Math.random() < 0.5) {
+                if (Math.random() < 0.4) chest.addItem(ItemLoader.getRandomPotion(Rarity.RARE));
+                if (Math.random() < 0.7) chest.addItem(ItemLoader.getRandomItem(Rarity.RARE));
+                if (chest.getItemCount() != 0) {
+                    double x = 0.4;
+                    while (Math.random() < x) {
+                        chest.addItem(ItemLoader.getRandomPotion(Rarity.COMMON));
+                        x -= 0.1;
+                    }
+                    tile.setOccupying(chest);
+                }
+            } else if (tier == EnemyTier.BOSS) {
+                chest.addItem(ItemLoader.getRandomItem(Rarity.GLYPHIC));
+
+                double x = 0.6;
+                while (Math.random() < x) {
+                    chest.addItem(ItemLoader.getRandomPotion(Rarity.RARE));
+                    x -= 0.4;
+                }
+                x = 0.5;
+                while (Math.random() < x) {
                     chest.addItem(ItemLoader.getRandomPotion(Rarity.COMMON));
                     x -= 0.1;
                 }
                 tile.setOccupying(chest);
-            }
-        } else if (tier == EnemyTier.BOSS) {
-            chest.addItem(ItemLoader.getRandomItem(Rarity.GLYPHIC));
 
-            double x = 0.6;
-            while (Math.random() < x) {
-                chest.addItem(ItemLoader.getRandomPotion(Rarity.RARE));
-                x -= 0.4;
             }
-            x = 0.5;
-            while (Math.random() < x) {
-                chest.addItem(ItemLoader.getRandomPotion(Rarity.COMMON));
-                x-=0.1;
-            }
-            tile.setOccupying(chest);
-
         }
     }
 

@@ -3,10 +3,12 @@ package com.kai.fp.objs.entities.enemies.bosses;
 import com.kai.fp.core.Game;
 import com.kai.fp.objs.Animation;
 import com.kai.fp.objs.Projectile;
+import com.kai.fp.objs.entities.Entity;
 import com.kai.fp.objs.entities.enemies.CombatBehavior;
 import com.kai.fp.objs.entities.enemies.EnemyFire;
 import com.kai.fp.objs.entities.enemies.EnemyLoader;
 import com.kai.fp.objs.entities.enemies.EnemyResource;
+import com.kai.fp.objs.entities.enemies.w2.SkeleTony;
 import com.kai.fp.util.Globals;
 import com.kai.fp.util.ResourceManager;
 import com.kai.fp.world.WorldLocation;
@@ -49,11 +51,11 @@ public class Shrieker extends Boss {
     public void createProjectile() {
         switch(stage) {
             case 2:
-                EnemyFire.CIRCULAR_FIRE.fire(this, Game.getPlayer());
+                fireCorners(Game.getPlayer());
                 break;
             case 3:
                 EnemyFire.SECONDARY_FIRE.fire(this, Game.getPlayer());
-                EnemyFire.CIRCULAR_FIRE.fire(this, Game.getPlayer());
+                fireCorners(Game.getPlayer());
             break;
         }
     }
@@ -70,7 +72,8 @@ public class Shrieker extends Boss {
             case 2:
                 if (healthTransition(0.50)) {
                     nextStage();
-                    setChargeRate(1.8);
+                    setChargeRate(1.6);
+                    getProjectiles().get(0).setRange(12);
                 }
                 break;
         }
@@ -100,6 +103,12 @@ public class Shrieker extends Boss {
             if (chargeTick > maxChargeTick) {
                 chargeTick = 0;
                 charging = true;
+                if (stage == 3) {
+                    if (Math.random() > 0.7) {
+                        spawnMinion();
+                    }
+                    EnemyFire.RANDOM_FIRE.fire(this, Game.getPlayer());
+                }
                 tx = Game.getPlayer().getScreenX();
                 ty = Game.getPlayer().getScreenY();
             }
@@ -112,9 +121,16 @@ public class Shrieker extends Boss {
         }
     }
 
+    private void fireCorners(Entity target) {
+        Game.addToWorldQueue(new Projectile(new WorldLocation(getCenterX()-getWidth(), getCenterY()-getHeight()), new WorldLocation(target.getLocation()), this, this.getProjectiles().get(0)));
+        Game.addToWorldQueue(new Projectile(new WorldLocation(getCenterX()+getWidth(), getCenterY()+getHeight()), new WorldLocation(target.getLocation()), this, this.getProjectiles().get(0)));
+        Game.addToWorldQueue(new Projectile(new WorldLocation(getCenterX()-getWidth(), getCenterY()+getHeight()), new WorldLocation(target.getLocation()), this, this.getProjectiles().get(0)));
+        Game.addToWorldQueue(new Projectile(new WorldLocation(getCenterX()+getWidth(), getCenterY()-getHeight()), new WorldLocation(target.getLocation()), this, this.getProjectiles().get(0)));
+    }
+
     @Override
     public void spawnMinion() {
-        //dont
+        Game.addToWorldQueue(new SkeleTony(new WorldLocation(getLocation())));
     }
 
     @Override

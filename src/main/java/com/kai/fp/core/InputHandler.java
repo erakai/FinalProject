@@ -1,13 +1,11 @@
 package com.kai.fp.core;
 
-import com.kai.fp.display.Clickable;
-import com.kai.fp.display.HUDComponent;
-import com.kai.fp.display.Hoverable;
-import com.kai.fp.display.Screen;
+import com.kai.fp.display.*;
 import com.kai.fp.items.Weapon;
 import com.kai.fp.world.WorldLocation;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,7 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
     private static List<Hoverable> hoverables = new ArrayList<>();
     private static List<Clickable> clickables = new ArrayList<>();
     private int currentMouseX, currentMouseY;
-    private boolean mouseHeldDown = false;
+    private boolean mouseHeldDown = false, autofire = false;
     private List<int[]> fireAt = new ArrayList<>();
     private List<int[]> checkClicks = new ArrayList<>();
 
@@ -122,7 +120,7 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
             checkClicks.clear();
         }
 
-        if (mouseHeldDown) {
+        if (mouseHeldDown || autofire) {
             Game.getPlayer().getInventory().getWeapon().fire(new WorldLocation(currentMouseX + Camera.x, currentMouseY + Camera.y));
         }
     }
@@ -167,7 +165,6 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
     }
 
     @Override
@@ -177,6 +174,15 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
             name = name.substring(0,name.length()-1) + (Integer.valueOf(name.substring(name.length()-1)) + 1);
             Game.nextWorld(name);
         }
+        if (e.getKeyChar() == 'l') {
+            Game.getPlayer().getStats().incStat("max health", 30);
+            Game.getPlayer().getStats().incStat("damage", 2);
+            Game.getPlayer().getStats().incStat("defense", 2);
+            new RisingText(Game.getPlayer(), "+30 Max health", Color.CYAN);
+            new RisingText(Game.getPlayer(), "+2 Damage", Color.CYAN);
+            new RisingText(Game.getPlayer(), "+2 Defense", Color.CYAN);
+        }
+        if (e.getKeyChar() == 't') autofire = !autofire;
     }
 
     class DirectionAction extends AbstractAction {

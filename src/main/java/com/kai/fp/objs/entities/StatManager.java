@@ -40,9 +40,10 @@ public class StatManager {
 
         if (name.equals("max health")) {
             incStat("health", amount);
-            if (getStat("health").getValue() > getStat("max health").getValue()) {
-                getStat("health").baseValue = stat.baseValue;
-            }
+        }
+
+        if (getStat("health").getValue() > getStat("max health").getValue()) {
+            getStat("health").baseValue = stat.baseValue;
         }
     }
 

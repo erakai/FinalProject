@@ -54,6 +54,7 @@ public class WorldTile extends GameObject implements Renderable {
     public void setOccupying(GameObject occupying) {
         this.occupying = occupying;
         this.occupying.setLocation(getLocation());
+        setWalkable(!occupying.isPhysical());
     }
 
     public boolean isWalkable() {

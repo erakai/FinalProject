@@ -92,6 +92,8 @@ public class Boulderfist extends Boss {
             case 3:
                 if (healthTransition(0.25)) {
                     nextStage();
+                    getProjectiles().get(0).setRange(25);
+                    getProjectiles().get(0).setDamage(3);
                 }
                 break;
         }
