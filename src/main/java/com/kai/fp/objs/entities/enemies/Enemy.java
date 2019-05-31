@@ -10,6 +10,7 @@ import com.kai.fp.objs.Projectile;
 import com.kai.fp.objs.entities.Entity;
 import com.kai.fp.objs.entities.StatManager;
 import com.kai.fp.objs.inanimate.LootChest;
+import com.kai.fp.objs.inanimate.Portal;
 import com.kai.fp.util.DrawPoint;
 import com.kai.fp.util.Globals;
 import com.kai.fp.world.WorldLocation;
@@ -93,7 +94,7 @@ public abstract class Enemy extends Entity {
         super.die();
         WorldTile tile = Game.getWorld().getTile(getCenterX()/WorldTile.WIDTH, (getCenterY())/WorldTile.HEIGHT);
         LootChest chest = new LootChest(new WorldLocation(getCenterX()/WorldTile.WIDTH, getCenterY()/WorldTile.HEIGHT));
-        if (tile != null) {
+        if (tile != null && !(tile.getOccupying() instanceof Portal)) {
             if (tier == EnemyTier.REGULAR && Math.random() < 0.45) {
                 if (Math.random() < 0.5) chest.addItem(ItemLoader.getRandomPotion(Rarity.COMMON));
                 if (Math.random() < 0.7) chest.addItem(ItemLoader.getRandomItem(Rarity.COMMON));

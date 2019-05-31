@@ -40,6 +40,8 @@ public class HUD extends HUDComponent {
         g.fillRect(getX()+48, (int)(getY()+13 + ((1.00 - ((double)playerHealth/maxPlayerHealth)) * 78)), 14, (int)((double)playerHealth/maxPlayerHealth * 78));
 
         g.setColor(Color.BLACK);
+        g.setFont(new MFont(0.9));
+        g.drawString("Quest: " + Game.getCurrentWorldName().substring(Game.getCurrentWorldName().length()-1), getX() + 6, getY() + 10);
         g.setFont(new MFont(1.2));
         g.drawString(playerHealth + "", getX() + 68, getY() + 55);
         g.drawString("----", getX()+68, getY()+62);
