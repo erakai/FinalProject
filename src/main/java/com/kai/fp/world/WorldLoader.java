@@ -11,6 +11,8 @@ import com.kai.fp.objs.entities.enemies.w1.Sludge;
 import com.kai.fp.objs.entities.enemies.w2.DemonTank;
 import com.kai.fp.objs.entities.enemies.w2.Eyeball;
 import com.kai.fp.objs.entities.enemies.w2.SkeleTony;
+import com.kai.fp.objs.entities.enemies.w3.CandleMan;
+import com.kai.fp.objs.entities.enemies.w3.Waxy;
 import com.kai.fp.objs.inanimate.*;
 import com.kai.fp.objs.npcs.EricCharacter;
 import com.kai.fp.objs.npcs.JohnCharacter;
@@ -179,6 +181,12 @@ class WorldLoader {
                     break;
                 case ":":
                     Game.addToWorldQueue(new Shrieker(new WorldLocation(location)));
+                    break;
+                case "|":
+                    Game.addToWorldQueue(new Waxy(new WorldLocation(location)));
+                    break;
+                case "*":
+                    Game.addToWorldQueue(new CandleMan(new WorldLocation(location)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

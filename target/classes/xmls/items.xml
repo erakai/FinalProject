@@ -105,16 +105,16 @@
         <rof>0.8</rof>
         <stat id="defense">3</stat>
         <stat id="speed">1</stat>
-        <description>Rings, rings, rings, rings, rings, rings, rings, rings, rings.</description>
-        <projectile imgcoords="8 16" width="24" height="24" speed="7" variance="0" damage="10" range="30"/>
-        <projectile imgcoords="16 16" width="24" height="24" speed="3" variance="0" damage="18" range="30"/>
+        <description>Rings, rings, rings, rings, rings, rings, rings, rings, rings, rings, rings.</description>
+        <projectile imgcoords="8 16" width="24" height="24" speed="7" variance="0" damage="5" range="30"/>
+        <projectile imgcoords="16 16" width="24" height="24" speed="3" variance="0" damage="14" range="25"/>
         <hud>
             <line>Damage: 10/18</line>
             <line>Range: 30</line>
             <line>Projectile Speed: 7/3</line>
             <line>Attack Speed: 40%</line>
             <line>Fires 10 projectiles in a ring.</line>
-            <line>Projectiles are randomly selected between fast and slow.</line>
+            <line>Projectiles are chosen from 2 different options.</line>
         </hud>
     </Item>
 </items>

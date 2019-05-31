@@ -61,12 +61,30 @@
     <Enemy id="shrieker" tier="BOSS" firemode="CIRCULAR_FIRE" width="96" height="96">
         <rof>1</rof>
         <stat id="speed">8</stat>
-        <stat id="max health">325</stat>
-        <stat id="damage">11</stat>
-        <stat id="defense">4</stat>
-        <projectile imgcoords="40 8" width="12" height="12" speed="8" variance="30" damage="5" range="20"/>
+        <stat id="max health">350</stat>
+        <stat id="damage">14</stat>
+        <stat id="defense">6</stat>
+        <projectile imgcoords="40 8" width="12" height="12" speed="8" variance="30" damage="6" range="20"/>
         <projectile imgcoords="32 8" width="32" height="32" speed="6" variance="0" damage="35" range="120"/>
-        <projectile imgcoords="48 8" width="24" height="24" speed="3" variance="0" damage="10" range="50"/>
+        <projectile imgcoords="48 8" width="24" height="24" speed="3" variance="0" damage="12" range="50"/>
     </Enemy>
+    <Enemy id="waxy" tier="FODDER" width="24" height="24">
+        <rof>0.8</rof>
+        <stat id="speed">3</stat>
+        <stat id="max health">30</stat>
+        <stat id="damage">15</stat>
+        <stat id="defense">1</stat>
+    </Enemy>
+    <Enemy id="candleman" tier="REGULAR" firemode="RANDOM_FIRE" width="32" height="32">
+        <rof>1.8</rof>
+        <stat id="speed">0</stat>
+        <stat id="max health">50</stat>
+        <stat id="damage">3</stat>
+        <stat id="defense">2</stat>
+        <projectile imgcoords="24 16" width="16" height="16" speed="4" variance="0" damage="8" range="18"/>
+        <projectile imgcoords="24 16" width="16" height="16" speed="4" variance="0" damage="8" range="18"/>
+        <projectile imgcoords="24 16" width="16" height="16" speed="4" variance="0" damage="8" range="18"/>
+    </Enemy>
+
 
 </enemies>

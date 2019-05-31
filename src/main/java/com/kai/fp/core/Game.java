@@ -8,6 +8,7 @@ import com.kai.fp.objs.entities.enemies.EnemyLoader;
 import com.kai.fp.objs.entities.player.Player;
 import com.kai.fp.util.Globals;
 import com.kai.fp.util.ResourceManager;
+import com.kai.fp.util.Sound;
 import com.kai.fp.world.World;
 import com.kai.fp.world.WorldLocation;
 
@@ -44,6 +45,7 @@ public class Game implements Runnable, Updatable {
         new ItemLoader();
         new ResourceManager();
         new EnemyLoader();
+        Sound.initializeSound("NextLevelSound.wav");
 
         updatables = new ArrayList<>();
         addQueue = new ArrayList<>();
@@ -106,6 +108,7 @@ public class Game implements Runnable, Updatable {
     }
 
     public static void nextWorld(String id) {
+        Sound.playSound("NextLevelSound.wav");
         gamestate = State.LOADING;
         //TODO: rewrite this method so it doesnt break every other second
         System.out.println("Transitioning to " + id);
