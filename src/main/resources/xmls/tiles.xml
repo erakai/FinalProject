@@ -21,7 +21,7 @@
     <Tile id="spacey thingy 2" x="32" y="64"/>
     <Tile id="spacey thingy 3" x="64" y="64"/>
     <Tile id="horrible light thingy" x="96" y="64" walkable="false"/>
-
+    <Tile id="spawn indicator" x="0" y="96"/>
 
 
 </tiles>

@@ -42,40 +42,42 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
     }
 
     public void createMap(Screen comp) {
-        InputMap im = comp.getInputMap();
-        ActionMap am = comp.getActionMap();
+        if (Game.gamestate != Game.State.LOADING) {
+            InputMap im = comp.getInputMap();
+            ActionMap am = comp.getActionMap();
 
-        im.put(KeyStroke.getKeyStroke("pressed RIGHT"), "right-pressed");
-        im.put(KeyStroke.getKeyStroke("pressed D"), "right-pressed");
-        am.put("right-pressed", new DirectionAction("right", true));
+            im.put(KeyStroke.getKeyStroke("pressed RIGHT"), "right-pressed");
+            im.put(KeyStroke.getKeyStroke("pressed D"), "right-pressed");
+            am.put("right-pressed", new DirectionAction("right", true));
 
-        im.put(KeyStroke.getKeyStroke("pressed LEFT"), "left-pressed");
-        im.put(KeyStroke.getKeyStroke("pressed A"), "left-pressed");
-        am.put("left-pressed", new DirectionAction("left", true));
+            im.put(KeyStroke.getKeyStroke("pressed LEFT"), "left-pressed");
+            im.put(KeyStroke.getKeyStroke("pressed A"), "left-pressed");
+            am.put("left-pressed", new DirectionAction("left", true));
 
-        im.put(KeyStroke.getKeyStroke("pressed UP"), "up-pressed");
-        im.put(KeyStroke.getKeyStroke("pressed W"), "up-pressed");
-        am.put("up-pressed", new DirectionAction("up", true));
+            im.put(KeyStroke.getKeyStroke("pressed UP"), "up-pressed");
+            im.put(KeyStroke.getKeyStroke("pressed W"), "up-pressed");
+            am.put("up-pressed", new DirectionAction("up", true));
 
-        im.put(KeyStroke.getKeyStroke("pressed DOWN"), "down-pressed");
-        im.put(KeyStroke.getKeyStroke("pressed S"), "down-pressed");
-        am.put("down-pressed", new DirectionAction("down", true));
+            im.put(KeyStroke.getKeyStroke("pressed DOWN"), "down-pressed");
+            im.put(KeyStroke.getKeyStroke("pressed S"), "down-pressed");
+            am.put("down-pressed", new DirectionAction("down", true));
 
-        im.put(KeyStroke.getKeyStroke("released RIGHT"), "right-released");
-        im.put(KeyStroke.getKeyStroke("released D"), "right-released");
-        am.put("right-released", new DirectionAction("right", false));
+            im.put(KeyStroke.getKeyStroke("released RIGHT"), "right-released");
+            im.put(KeyStroke.getKeyStroke("released D"), "right-released");
+            am.put("right-released", new DirectionAction("right", false));
 
-        im.put(KeyStroke.getKeyStroke("released LEFT"), "left-released");
-        im.put(KeyStroke.getKeyStroke("released A"), "left-released");
-        am.put("left-released", new DirectionAction("left", false));
+            im.put(KeyStroke.getKeyStroke("released LEFT"), "left-released");
+            im.put(KeyStroke.getKeyStroke("released A"), "left-released");
+            am.put("left-released", new DirectionAction("left", false));
 
-        im.put(KeyStroke.getKeyStroke("released UP"), "up-released");
-        im.put(KeyStroke.getKeyStroke("released W"), "up-released");
-        am.put("up-released", new DirectionAction("up", false));
+            im.put(KeyStroke.getKeyStroke("released UP"), "up-released");
+            im.put(KeyStroke.getKeyStroke("released W"), "up-released");
+            am.put("up-released", new DirectionAction("up", false));
 
-        im.put(KeyStroke.getKeyStroke("released DOWN"), "down-released");
-        im.put(KeyStroke.getKeyStroke("released S"), "down-released");
-        am.put("down-released", new DirectionAction("down", false));
+            im.put(KeyStroke.getKeyStroke("released DOWN"), "down-released");
+            im.put(KeyStroke.getKeyStroke("released S"), "down-released");
+            am.put("down-released", new DirectionAction("down", false));
+        }
 
 
     }
@@ -87,41 +89,43 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
         if (up) Camera.y -= Camera.speed;
         if (down) Camera.y += Camera.speed;*/
 
-        List<Hoverable> toRemove = new ArrayList<>();
-        for (Hoverable h: hoverables) {
-            h.updateHovered(currentMouseX, currentMouseY);
-            if (h instanceof HUDComponent) {
-                if (((HUDComponent) h).isMarkedForRemoval()) toRemove.add(h);
-            }
-        }
-        hoverables.removeAll(toRemove);
-
-        if (fireAt.size() > 0) {
-            Weapon w = Game.getPlayer().getInventory().getWeapon();
-            if (w != null) {
-                for (int[] pair : fireAt) {
-                    w.fire(new WorldLocation(pair[0] + Camera.x, pair[1] + Camera.y));
+        if (Game.gamestate == Game.State.RUNNING) {
+            List<Hoverable> toRemove = new ArrayList<>();
+            for (Hoverable h : hoverables) {
+                h.updateHovered(currentMouseX, currentMouseY);
+                if (h instanceof HUDComponent) {
+                    if (((HUDComponent) h).isMarkedForRemoval()) toRemove.add(h);
                 }
-                fireAt.clear();
             }
-        }
+            hoverables.removeAll(toRemove);
 
-        if (checkClicks.size() > 0) {
-            List<Clickable> rem = new ArrayList<>();
-            for (int[] pair: checkClicks) {
-                for (Clickable c : clickables) {
-                    c.possibleClick(pair[0], pair[1]);
-                    if (c instanceof HUDComponent) {
-                        if (((HUDComponent) c).isMarkedForRemoval()) rem.add(c);
+            if (fireAt.size() > 0) {
+                Weapon w = Game.getPlayer().getInventory().getWeapon();
+                if (w != null) {
+                    for (int[] pair : fireAt) {
+                        w.fire(new WorldLocation(pair[0] + Camera.x, pair[1] + Camera.y));
+                    }
+                    fireAt.clear();
+                }
+            }
+
+            if (checkClicks.size() > 0) {
+                List<Clickable> rem = new ArrayList<>();
+                for (int[] pair : checkClicks) {
+                    for (Clickable c : clickables) {
+                        c.possibleClick(pair[0], pair[1]);
+                        if (c instanceof HUDComponent) {
+                            if (((HUDComponent) c).isMarkedForRemoval()) rem.add(c);
+                        }
                     }
                 }
+                clickables.removeAll(rem);
+                checkClicks.clear();
             }
-            clickables.removeAll(rem);
-            checkClicks.clear();
-        }
 
-        if (mouseHeldDown || autofire) {
-            Game.getPlayer().getInventory().getWeapon().fire(new WorldLocation(currentMouseX + Camera.x, currentMouseY + Camera.y));
+            if (mouseHeldDown || autofire) {
+                Game.getPlayer().getInventory().getWeapon().fire(new WorldLocation(currentMouseX + Camera.x, currentMouseY + Camera.y));
+            }
         }
     }
 
@@ -165,24 +169,30 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if (Game.gamestate == Game.State.START) {
+            Game.nextWorld("world1");
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyChar() == 'p') {
-            String name = Game.getCurrentWorldName();
-            name = name.substring(0,name.length()-1) + (Integer.valueOf(name.substring(name.length()-1)) + 1);
-            Game.nextWorld(name);
+
+        if (Game.gamestate == Game.State.RUNNING) {
+            if (e.getKeyChar() == 'p') {
+                String name = Game.getCurrentWorldName();
+                name = name.substring(0, name.length() - 1) + (Integer.valueOf(name.substring(name.length() - 1)) + 1);
+                Game.nextWorld(name);
+            }
+            if (e.getKeyChar() == 'l') {
+                Game.getPlayer().getStats().incStat("max health", 30);
+                Game.getPlayer().getStats().incStat("damage", 2);
+                Game.getPlayer().getStats().incStat("defense", 2);
+                new RisingText(Game.getPlayer(), "+30 Max health", Color.CYAN);
+                new RisingText(Game.getPlayer(), "+2 Damage", Color.CYAN);
+                new RisingText(Game.getPlayer(), "+2 Defense", Color.CYAN);
+            }
+            if (e.getKeyChar() == 't') autofire = !autofire;
         }
-        if (e.getKeyChar() == 'l') {
-            Game.getPlayer().getStats().incStat("max health", 30);
-            Game.getPlayer().getStats().incStat("damage", 2);
-            Game.getPlayer().getStats().incStat("defense", 2);
-            new RisingText(Game.getPlayer(), "+30 Max health", Color.CYAN);
-            new RisingText(Game.getPlayer(), "+2 Damage", Color.CYAN);
-            new RisingText(Game.getPlayer(), "+2 Defense", Color.CYAN);
-        }
-        if (e.getKeyChar() == 't') autofire = !autofire;
     }
 
     class DirectionAction extends AbstractAction {
@@ -195,10 +205,12 @@ public class InputHandler implements Updatable, MouseListener, KeyListener {
         }
 
         public void actionPerformed(ActionEvent e) {
-            if (dir.equals("right")) Game.getPlayer().right = setDirTo;
-            if (dir.equals("left")) Game.getPlayer().left = setDirTo;
-            if (dir.equals("up")) Game.getPlayer().up = setDirTo;
-            if (dir.equals("down")) Game.getPlayer().down = setDirTo;
+            if (Game.gamestate == Game.State.RUNNING) {
+                if (dir.equals("right")) Game.getPlayer().right = setDirTo;
+                if (dir.equals("left")) Game.getPlayer().left = setDirTo;
+                if (dir.equals("up")) Game.getPlayer().up = setDirTo;
+                if (dir.equals("down")) Game.getPlayer().down = setDirTo;
+            }
         }
     }
 }

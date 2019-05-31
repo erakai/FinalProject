@@ -2,6 +2,7 @@ package com.kai.fp.core;
 
 import com.kai.fp.display.HUDComponent;
 import com.kai.fp.display.Screen;
+import com.kai.fp.display.StartMenu;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.objs.GameObject;
 import com.kai.fp.objs.entities.enemies.EnemyLoader;
@@ -45,12 +46,11 @@ public class Game implements Runnable, Updatable {
         new ItemLoader();
         new ResourceManager();
         new EnemyLoader();
-        Sound.initializeSound("NextLevelSound.wav");
 
         updatables = new ArrayList<>();
         addQueue = new ArrayList<>();
 
-        nextWorld("world1");
+        new StartMenu();
     }
 
     public void run() {
@@ -73,6 +73,7 @@ public class Game implements Runnable, Updatable {
     }
 
     public void update(long delta) {
+        display.update(delta);
         if (gamestate == State.RUNNING) {
             if (currentWorld != null) {
                 if (worldAddQueue.size() > 0) {
@@ -82,25 +83,25 @@ public class Game implements Runnable, Updatable {
                     worldAddQueue.clear();
                 }
             }
-        }
 
-        camera.update(delta);
-        display.update(delta);
 
-        addQueue.forEach((u) -> updatables.add(u));
-        if (!addQueue.isEmpty()) addQueue.clear();
+            camera.update(delta);
 
-        List<Updatable> toRemove = new ArrayList<>();
-        for (Updatable u: updatables) {
-            u.update(delta);
-            if (u instanceof GameObject && ((GameObject) u).isMarkedForRemoval()) {
-                toRemove.add(u);
+            addQueue.forEach((u) -> updatables.add(u));
+            if (!addQueue.isEmpty()) addQueue.clear();
+
+            List<Updatable> toRemove = new ArrayList<>();
+            for (Updatable u : updatables) {
+                u.update(delta);
+                if (u instanceof GameObject && ((GameObject) u).isMarkedForRemoval()) {
+                    toRemove.add(u);
+                }
+                if (u instanceof HUDComponent && ((HUDComponent) u).isMarkedForRemoval()) {
+                    toRemove.add(u);
+                }
             }
-            if (u instanceof HUDComponent && ((HUDComponent) u).isMarkedForRemoval()) {
-                toRemove.add(u);
-            }
+            updatables.removeAll(toRemove);
         }
-        updatables.removeAll(toRemove);
     }
 
     public static World getWorld() {
@@ -108,7 +109,7 @@ public class Game implements Runnable, Updatable {
     }
 
     public static void nextWorld(String id) {
-        Sound.playSound("NextLevelSound.wav");
+        if (Globals.PLAY_SOUNDS) Sound.playSound("nextlevelsound.wav");
         gamestate = State.LOADING;
         //TODO: rewrite this method so it doesnt break every other second
         System.out.println("Transitioning to " + id);

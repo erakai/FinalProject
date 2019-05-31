@@ -31,4 +31,9 @@ public class Globals {
      */
     public static final boolean CUSTOM_DISPLAY_SIZE = false;
 
+    /**
+     * Enables/Disables sounds.
+     */
+    public static final boolean PLAY_SOUNDS = false;
+
 }

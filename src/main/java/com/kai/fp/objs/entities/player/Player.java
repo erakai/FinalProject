@@ -53,7 +53,9 @@ public class Player extends Entity {
 
     @Override
     public void update(long delta) {
-        super.update(delta);
+        if (!Game.getCurrentWorldName().equals("death")) {
+            super.update(delta);
+        }
         if (right) {
             anim.setRepeatingAnim("run right");
         } else if (left) {
@@ -87,8 +89,8 @@ public class Player extends Entity {
 
     @Override
     public void die() {
-        super.die();
-        System.exit(0);
+        getStat("health").baseValue = 1;
+        Game.nextWorld("death");
     }
 
     @Override

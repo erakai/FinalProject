@@ -29,7 +29,7 @@ public class Sound {
 
     private static Media getSound(String sound) {
         try {
-            return new Media(Sound.class.getResource("sounds/" + sound).toString());
+            return new Media(Sound.class.getResource("/sounds/" + sound).toString());
         } catch (Exception e) {
             System.out.println("Error loading sound file: " + sound);
         }
@@ -147,7 +147,7 @@ public class Sound {
     private static void playClip(String sound, double volume, boolean loop) {
         AudioClip clip;
         if(!clips.containsKey(sound)) {
-            clip = new AudioClip(Sound.class.getResource(sound).toString());
+            clip = new AudioClip(Sound.class.getResource("/sounds/" + sound).toString());
             clips.put(sound, clip);
         } else {
             clip = clips.get(sound);

@@ -80,4 +80,8 @@ public abstract class Boss extends Enemy {
         }
     }
 
+    public void setSpawnRate(double spawnRate) {
+        this.spawnRate = spawnRate;
+        maxSpawnTick = (int)(spawnRate * Globals.FRAMES_PER_SECOND);
+    }
 }

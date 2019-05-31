@@ -23,7 +23,7 @@ public class Screen extends JPanel implements Updatable {
     private static HUD hud;
 
     private static Map<DrawPoint, Renderable> renderOnTop;
-    private List<Renderable> renderables = new ArrayList<>();
+    private List<Renderable> renderables;
 
     public Screen() {
         init();
@@ -35,6 +35,7 @@ public class Screen extends JPanel implements Updatable {
         setPreferredSize(new Dimension(Globals.DISPLAY_WIDTH, Globals.DISPLAY_HEIGHT));
         setBackground(Color.black);
         instance = this;
+        renderables = new ArrayList<>();
 
         if (inputHandler != null ) {
             removeMouseListener(inputHandler);
@@ -44,9 +45,11 @@ public class Screen extends JPanel implements Updatable {
         inputHandler.createMap(this);
         addMouseListener(inputHandler);
         addKeyListener(inputHandler);
-        hud = new HUD();
-        hud.getArmorFrame().setOnScreen(true);
-        hud.getWeaponFrame().setOnScreen(true);
+        if (Game.gamestate != Game.State.START) {
+            hud = new HUD();
+            hud.getArmorFrame().setOnScreen(true);
+            hud.getWeaponFrame().setOnScreen(true);
+        }
 
         renderOnTop = new HashMap<>();
 

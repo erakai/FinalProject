@@ -15,14 +15,22 @@ public class EricCharacter extends Character {
 
     };
     private static String[] lines = {
-            "i am eric",
-            "hey john and sally DIEd because u were too slow",
-            "go avenge them by taking out your frusturation and killing innocent monsters",
-            "you have a moral obligation"
+            "I am Eric.",
+            "You are dead.",
+            "Nobody has ever left this place alive.",
+            "John and Sally sent you to die."
+    };
+    private static String[] secondLines = {
+            "Facing the Gravetaker is death.",
+            "We shall meet again in the afterlife."
+    };
+    private static String[] thirdLines = {
+            "Curious.",
+            "Survival was supposed to be impossible."
     };
 
-    public EricCharacter(WorldLocation location) {
-        super(location, lines, lines[1]);
+    public EricCharacter(WorldLocation location, int variation) {
+        super(location, ((variation == 0) ? lines : ((variation == 1) ?secondLines:thirdLines)), ((variation == 0) ? lines[2] : ((variation == 1) ? secondLines[1] : thirdLines[1])));
     }
 
     @Override

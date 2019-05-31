@@ -4,6 +4,7 @@ import com.kai.fp.core.Game;
 import com.kai.fp.items.ItemLoader;
 import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.entities.enemies.bosses.Boulderfist;
+import com.kai.fp.objs.entities.enemies.bosses.GraveTaker;
 import com.kai.fp.objs.entities.enemies.bosses.Shrieker;
 import com.kai.fp.objs.entities.enemies.w1.Goblin;
 import com.kai.fp.objs.entities.enemies.w1.RangedGoblin;
@@ -104,6 +105,9 @@ class WorldLoader {
             case "m":
                 tile = new WorldTile(location, ResourceManager.getTileResource("horrible light thingy"));
                 break;
+            case "i":
+                tile = new WorldTile(location, ResourceManager.getTileResource("spawn indicator"));
+                break;
             default:
                 System.out.println(tileString + " is not recognized as a tile.");
 
@@ -162,10 +166,16 @@ class WorldLoader {
                     tile.setOccupying(new SallyCharacter(new WorldLocation(row, col)));
                     break;
                 case "3":
-                    tile.setOccupying(new EricCharacter(new WorldLocation(row, col)));
+                    tile.setOccupying(new EricCharacter(new WorldLocation(row, col), 0));
                     break;
                 case "4":
                     tile.setOccupying(new JohnCharacter(new WorldLocation(row, col), true));
+                    break;
+                case "5":
+                    tile.setOccupying(new EricCharacter(new WorldLocation(row, col), 1));
+                    break;
+                case "6":
+                    tile.setOccupying(new EricCharacter(new WorldLocation(row, col), 2));
                     break;
                 case ";":
                     Game.addToWorldQueue(new Sludge(new WorldLocation(location)));
@@ -187,6 +197,9 @@ class WorldLoader {
                     break;
                 case "*":
                     Game.addToWorldQueue(new CandleMan(new WorldLocation(location)));
+                    break;
+                case "#":
+                    Game.addToWorldQueue(new GraveTaker(new WorldLocation(location)));
                     break;
                 default:
                     System.out.println(occupyingString + " produced an error.");

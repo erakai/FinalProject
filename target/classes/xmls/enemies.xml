@@ -68,14 +68,14 @@
         <projectile imgcoords="32 8" width="32" height="32" speed="6" variance="0" damage="35" range="120"/>
         <projectile imgcoords="48 8" width="24" height="24" speed="3" variance="0" damage="12" range="50"/>
     </Enemy>
-    <Enemy id="waxy" tier="FODDER" width="24" height="24">
+    <Enemy id="waxy" tier="REGULAR" width="24" height="24">
         <rof>0.8</rof>
         <stat id="speed">3</stat>
         <stat id="max health">30</stat>
         <stat id="damage">15</stat>
         <stat id="defense">1</stat>
     </Enemy>
-    <Enemy id="candleman" tier="REGULAR" firemode="RANDOM_FIRE" width="32" height="32">
+    <Enemy id="candleman" tier="ELITE" firemode="RANDOM_FIRE" width="32" height="32">
         <rof>1.8</rof>
         <stat id="speed">0</stat>
         <stat id="max health">50</stat>
@@ -83,7 +83,17 @@
         <stat id="defense">2</stat>
         <projectile imgcoords="24 16" width="16" height="16" speed="4" variance="0" damage="8" range="18"/>
         <projectile imgcoords="24 16" width="16" height="16" speed="4" variance="0" damage="8" range="18"/>
-        <projectile imgcoords="24 16" width="16" height="16" speed="4" variance="0" damage="8" range="18"/>
+        <projectile imgcoords="24 16" width="16" height="16" speed="4" variance="0" damage="8" range="12"/>
+    </Enemy>
+    <Enemy id="gravetaker" tier="BOSS" firemode="STRAIGHT_SINGLE_FIRE" width="64" height="64">
+        <rof>7</rof>
+        <stat id="speed">0</stat>
+        <stat id="max health">1000</stat>
+        <stat id="damage">25</stat>
+        <stat id="defense">8</stat>
+        <projectile imgcoords="32 16" width="26" height="26" speed="7" variance="10" damage="25" range="18"/>
+        <projectile imgcoords="48 16" width="32" height="32" speed="9" variance="0" damage="60" range="80"/>
+        <projectile imgcoords="40 16" width="16" height="16" speed="5" variance="0" damage="15" range="9"/>
     </Enemy>
 
 

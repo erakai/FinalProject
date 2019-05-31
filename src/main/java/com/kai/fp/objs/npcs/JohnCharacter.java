@@ -13,18 +13,18 @@ public class JohnCharacter extends Character {
             ResourceManager.splice(ResourceManager.getSprite("enemies"), 64, 32, 32, 32)
     };
     private static String[] lines = {
-            "My name is john and im scared",
-            "Please kill monsters so im less scared",
-            "Theres a portal and items around too"
+            "Hi, I'm john. What are you doing here?",
+            "You need to escape! It's not safe.",
+            "Try to pick up items to become stronger.",
+            "There's a portal around here somewhere."
     };
     private static String[] secondLines = {
-            "there is an angry kitchen dude in there",
-            "the portal is behind him so good luck",
-            "if you aren't fast enough i will die )))))):"
+            "There's a pretty tough dude guarding the portal in there.",
+            "You're going to have to go in - good luck.",
     };
 
     public JohnCharacter(WorldLocation location, boolean variation) {
-        super(location, ((!variation) ? lines : secondLines), ((!variation) ? lines[1] : secondLines[2]));
+        super(location, ((!variation) ? lines : secondLines), ((!variation) ? lines[2] : secondLines[1]));
         anim.setFramesPerSecond(2);
     }
 

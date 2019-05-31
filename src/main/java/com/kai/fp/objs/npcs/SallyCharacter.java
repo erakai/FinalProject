@@ -13,13 +13,14 @@ public class SallyCharacter extends Character {
             ResourceManager.splice(ResourceManager.getSprite("enemies"), 64, 64, 32, 32)
     };
     private static String[] lines = {
-            "My name is sally and im scared",
-            "Please kill monsters so im less scared",
-            "also why is there so much bloody fleshy stuff"
+            "It's been so long since I've seen another person!",
+            "I'm Sally - I assume you're trying to get out.",
+            "There should be one of the portals around here.",
+            "I hear there's something dangerous lurking near it."
     };
 
     public SallyCharacter(WorldLocation location) {
-        super(location, lines, lines[2]);
+        super(location, lines, lines[3]);
         anim.setFramesPerSecond(2);
     }
 

@@ -8,7 +8,9 @@ import com.kai.fp.items.Rarity;
 import com.kai.fp.objs.entities.player.Player;
 import com.kai.fp.objs.entities.player.PlayerInventory;
 import com.kai.fp.util.DrawPoint;
+import com.kai.fp.util.Globals;
 import com.kai.fp.util.ResourceManager;
+import com.kai.fp.util.Sound;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -55,6 +57,7 @@ public class ItemFrame extends HUDComponent implements Hoverable, Clickable {
     @Override
     public void possibleClick(int mouseX, int mouseY) {
         if (item != null && checkCollisionWithMouse(mouseX, mouseY) && setType == null && isOnScreen()) {
+            if (Globals.PLAY_SOUNDS) Sound.playSound("itempickup.wav");
             PlayerInventory p = Game.getPlayer().getInventory();
             Item i = null;
 
